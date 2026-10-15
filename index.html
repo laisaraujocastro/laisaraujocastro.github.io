@@ -27,10 +27,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);padding:12px 0}
 .hud-in{max-width:560px;margin:0 auto;padding:0 20px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}
 .lvl{background:var(--navy);color:#f4f2ed;border-radius:99px;padding:4px 16px;font-weight:800;font-size:14px;white-space:nowrap}
-.bar{flex:1;min-width:150px;height:24px;border-radius:99px;background:var(--track);position:relative;overflow:hidden}
-.bar>i{position:absolute;inset:0 auto 0 0;width:0;background:var(--yellow);border-radius:99px;transition:width .6s cubic-bezier(.2,.9,.3,1.1)}
+.bar{flex:1;min-width:150px;height:24px;border-radius:99px;var(--track);position:relative;overflow:hidden}
+.bar>i{position:absolute;inset:0 auto 0 0;width:0;var(--yellow);border-radius:99px;transition:width .6s cubic-bezier(.2,.9,.3,1.1)}
 .bar span{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:800;color:#132c4a}
-#theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
+#theme{border:0;var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
 /* Hero */
@@ -151,7 +151,7 @@ h2 {
     flex-wrap: wrap;
   }
 }
-.avatar{flex:none;width:110px;height:110px;aspect-ratio:1/1;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-size:40px;font-weight:800;letter-spacing:-.04em;overflow:hidden}
+.avatar{flex:none;width:110px;height:110px;aspect-ratio:1/1;border-radius:50%;background: transparent;color:var(--navy);display:grid;place-items:center;font-size:40px;font-weight:800;letter-spacing:-.04em;overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .about p{margin:0 0 14px;max-width:600px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
