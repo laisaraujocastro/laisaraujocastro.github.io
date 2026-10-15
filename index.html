@@ -141,7 +141,7 @@ h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:5
     <div>
       <h1>laís araújo</h1>
       <p class="tg">tech, psicologia e educação.</p>
-      <p>Designer instrucional. Transformo conteúdo difícil em experiências de aprendizagem que as pessoas querem completar. Explore minhas missões e ganhe XP.</p>
+      <p>Designer instrucional. Transformo conteúdo difícil em experiências de agem que as pessoas querem completar. Explore minhas missões e ganhe XP.</p>
       <a class="btn" href="#sobre">entrar</a>
       <p class="tip">Dica: nas amostras, clique em cada missão para ganhar XP e desbloquear conquistas.</p>
     </div>
@@ -192,7 +192,7 @@ var QUESTS = [
   { shape:"circle", color:"yellow", title:"Curso online de [tema]", tag:"EAD · Storyline",
     badge:"Mestra dos objetivos",
     desafio:"[Descreva o problema: ex. alta evasão, conteúdo extenso, público diverso.]",
-    fiz:"[O que você fez: mapeamento de público, objetivos de aprendizagem, roteiro, protótipo, testes.]",
+    fiz:"[O que você fez: mapeamento de público, objetivos de agem, roteiro, protótipo, testes.]",
     resultado:"[Resultado: ex. 85% de conclusão, nota de satisfação 4,7/5.]" },
   { shape:"half", color:"red", title:"Trilha gamificada de [tema]", tag:"Gamificação · Moodle",
     badge:"Game designer",
@@ -205,7 +205,7 @@ var QUESTS = [
     fiz:"[Ex.: reorganizei o conteúdo, criei infográficos e atividades.]",
     resultado:"[Ex.: professores reportaram aulas mais dinâmicas.]" },
   { shape:"arch", color:"navy", title:"Videoaulas e recursos interativos", tag:"Vídeo · H5P",
-    badge:"Diretora de aprendizagem",
+    badge:"Diretora de agem",
     desafio:"[Ex.: ensinar um processo técnico a distância.]",
     fiz:"[Ex.: roteirizei, gravei e inseri quizzes interativos.]",
     resultado:"[Ex.: redução de 30% nos chamados de dúvida.]" }
@@ -217,7 +217,7 @@ var SKILLS = [
   ["Gamificação e narrativa",5],
   ["Moodle / AVAs",4],
   ["Design gráfico (Canva, Figma)",3],
-  ["Avaliação e métricas de aprendizagem",4]
+  ["Avaliação e métricas de agem",4]
 ];
 var ABOUT = {
   foto:"", /* opcional: coloque o endereço de uma foto, ex.: foto.jpg (o arquivo vai na mesma pasta do site) */
@@ -246,7 +246,6 @@ var JOBS = [
 /* ===== fim da área de edição ===== */
 
 var PER = 100, total = QUESTS.length * PER, xp = 0, done = {};
-var NAMES = ["aprendiz","exploradora","estrategista","designer lendária","mestra suprema"];
 var $ = function(id){return document.getElementById(id)};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function shape(q,lock){return '<span class="shape s-'+q.shape+' c-'+q.color+(lock?' lock':'')+'" aria-hidden="true"><i></i></span>'}
