@@ -360,8 +360,6 @@ var ABOUT = {
   iniciais:"LA",
   text:[
     "olá! me chamo laís, tenho 25 anos e sou psicóloga de formação.",
-    "se você me perguntasse de onde surgiu a minha paixão pela educação interativa, eu provavelmente diria que foi na infância, lendo as revistas da mundo estranho. era uma forma de aprender algo novo de um jeito superdivertido."
-  "além do meu trabalho, também gosto de explorar minhas paixões para desenvolver a criatividade: adoro jogar jogos de tabuleiro, morrer 500 vezes em um jogo indie e assistir a conteúdos (ou aprender) sobre educação inclusiva."
   "criar objetos educacionais também revela um pouco de quem os cria, então eu coloco nos meus projetos tudo aquilo que me move: curiosidade, humor e vontade de aprender brincando."
   ],
   chips:["design instrucional","tecnologia","psicologia","educação"]
@@ -384,11 +382,11 @@ var JOBS = [
 /* ===== fim da área de edição ===== */
 
 var SECS = [
-  { k:"sobre",       label:"sobre mim",    badge:"Primeiro contato",     shape:"circle",  color:"yellow", n:1 },
-  { k:"formacao",    label:"formação",     badge:"Sempre aprendendo",    shape:"half",    color:"red",    n:EDU.length+1 },
-  { k:"experiencia", label:"experiências", badge:"Estrada percorrida",   shape:"quarter", color:"blue",   n:JOBS.length },
-  { k:"habilidades", label:"habilidades",  badge:"Caixa de ferramentas", shape:"arch",    color:"navy",   n:1 },
-  { k:"amostras",    label:"amostras",     badge:"Curadora de projetos", shape:"circle",  color:"red",    n:QUESTS.length }
+  { k:"sobre",       label:"sobre mim",    badge:"primeiro contato",     shape:"circle",  color:"yellow", n:1 },
+  { k:"formacao",    label:"formação",     badge:"sempre aprendendo",    shape:"half",    color:"red",    n:EDU.length+1 },
+  { k:"experiencia", label:"experiências", badge:"estrada percorrida",   shape:"quarter", color:"blue",   n:JOBS.length },
+  { k:"habilidades", label:"habilidades",  badge:"caixa de ferramentas", shape:"arch",    color:"navy",   n:1 },
+  { k:"amostras",    label:"amostras",     badge:"curadora de projetos", shape:"circle",  color:"red",    n:QUESTS.length }
 ];
 var S = {}, awarded = {}, points = 0;
 SECS.forEach(function(s){ S[s.k] = s; s.got = {}; s.count = 0; });
