@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -49,6 +49,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:56px 0 4px;text-transform:lowercase}
 .sub{margin:0 0 22px;color:var(--muted);font-weight:300;font-size:18px}
 
+.hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;display:block}
+
 /* Nav */
 .nav{max-width:900px;margin:0 auto;padding:8px 20px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;padding:4px 14px;border-radius:99px;background:var(--track)}
@@ -94,6 +96,8 @@ h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:5
 .quest.open .detail{display:block}
 .detail b{font-weight:800;font-size:14px;display:block;color:var(--red);text-transform:lowercase}
 .detail p{margin:2px 0 14px;max-width:640px}
+
+.detail img{width:100%;max-width:640px;border-radius:20px;display:block;margin:0 0 16px}
 
 /* Skills */
 .skills{display:grid;gap:14px;background:var(--card);border-radius:28px;padding:22px}
@@ -141,7 +145,7 @@ h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:5
     <div>
       <h1>laís araújo</h1>
       <p class="tg">tech, psicologia e educação.</p>
-      <p>Designer instrucional. Transformo conteúdo difícil em experiências de agem que as pessoas querem completar. Explore minhas missões e ganhe XP.</p>
+      <p>Designer instrucional. Transformo conteúdo difícil em experiências de aprendizagem que as pessoas querem completar. Explore minhas missões e ganhe XP.</p>
       <a class="btn" href="#sobre">entrar</a>
       <p class="tip">Dica: nas amostras, clique em cada missão para ganhar XP e desbloquear conquistas.</p>
     </div>
@@ -189,23 +193,23 @@ var PROFILE = { email:"seuemail@exemplo.com", linkedin:"https://www.linkedin.com
 
 /* shape: circle | half | quarter | arch   ·   color: yellow | red | blue | navy */
 var QUESTS = [
-  { shape:"circle", color:"yellow", title:"Curso online de [tema]", tag:"EAD · Storyline",
+  { shape:"circle", color:"yellow", title:"Curso online de [tema]", tag:"EAD · Storyline", img:"", /* imagem da missão: ex. "missao1.jpg" */
     badge:"Mestra dos objetivos",
     desafio:"[Descreva o problema: ex. alta evasão, conteúdo extenso, público diverso.]",
-    fiz:"[O que você fez: mapeamento de público, objetivos de agem, roteiro, protótipo, testes.]",
+    fiz:"[O que você fez: mapeamento de público, objetivos de aprendizagem, roteiro, protótipo, testes.]",
     resultado:"[Resultado: ex. 85% de conclusão, nota de satisfação 4,7/5.]" },
-  { shape:"half", color:"red", title:"Trilha gamificada de [tema]", tag:"Gamificação · Moodle",
+  { shape:"half", color:"red", title:"Trilha gamificada de [tema]", tag:"Gamificação · Moodle", img:"",
     badge:"Game designer",
     desafio:"[Ex.: engajar uma equipe que via o treinamento como obrigação.]",
     fiz:"[Ex.: criei narrativa, pontos, medalhas e desafios por nível.]",
     resultado:"[Ex.: participação subiu de 40% para 90%.]" },
-  { shape:"quarter", color:"blue", title:"Material didático impresso/digital", tag:"E-book · Canva",
+  { shape:"quarter", color:"blue", title:"Material didático impresso/digital", tag:"E-book · Canva", img:"",
     badge:"Mestra do layout",
     desafio:"[Ex.: transformar apostila densa em material acessível.]",
     fiz:"[Ex.: reorganizei o conteúdo, criei infográficos e atividades.]",
     resultado:"[Ex.: professores reportaram aulas mais dinâmicas.]" },
-  { shape:"arch", color:"navy", title:"Videoaulas e recursos interativos", tag:"Vídeo · H5P",
-    badge:"Diretora de agem",
+  { shape:"arch", color:"navy", title:"Videoaulas e recursos interativos", tag:"Vídeo · H5P", img:"",
+    badge:"Diretora de aprendizagem",
     desafio:"[Ex.: ensinar um processo técnico a distância.]",
     fiz:"[Ex.: roteirizei, gravei e inseri quizzes interativos.]",
     resultado:"[Ex.: redução de 30% nos chamados de dúvida.]" }
@@ -217,8 +221,10 @@ var SKILLS = [
   ["Gamificação e narrativa",5],
   ["Moodle / AVAs",4],
   ["Design gráfico (Canva, Figma)",3],
-  ["Avaliação e métricas de agem",4]
+  ["Avaliação e métricas de aprendizagem",4]
 ];
+var HERO_IMG = ""; /* foto ou logo do topo da página: ex. "topo.jpg". Se ficar vazio, aparecem as formas coloridas. */
+
 var ABOUT = {
   foto:"", /* opcional: coloque o endereço de uma foto, ex.: foto.jpg (o arquivo vai na mesma pasta do site) */
   iniciais:"LA",
@@ -246,6 +252,7 @@ var JOBS = [
 /* ===== fim da área de edição ===== */
 
 var PER = 100, total = QUESTS.length * PER, xp = 0, done = {};
+var NAMES = ["aprendiz","exploradora","estrategista","designer lendária","mestra suprema"];
 var $ = function(id){return document.getElementById(id)};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function shape(q,lock){return '<span class="shape s-'+q.shape+' c-'+q.color+(lock?' lock':'')+'" aria-hidden="true"><i></i></span>'}
@@ -256,7 +263,7 @@ function renderQuests(){
       '<div class="quest-top">'+shape(q)+
       '<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+
       '<span class="xp" id="xp'+i+'">+'+PER+' xp</span></div>'+
-      '<div class="detail"><b>desafio</b><p>'+esc(q.desafio)+'</p><b>o que eu fiz</b><p>'+esc(q.fiz)+'</p><b>resultado</b><p>'+esc(q.resultado)+'</p></div></button>';
+      '<div class="detail">'+(q.img?'<img src="'+esc(q.img)+'" alt="'+esc(q.title)+'">':'')+'<b>desafio</b><p>'+esc(q.desafio)+'</p><b>o que eu fiz</b><p>'+esc(q.fiz)+'</p><b>resultado</b><p>'+esc(q.resultado)+'</p></div></button>';
   }).join("");
   var b = document.querySelectorAll(".quest");
   for(var k=0;k<b.length;k++) b[k].addEventListener("click", onQuest);
@@ -316,6 +323,11 @@ function renderAbout(){
   var av = ABOUT.foto ? '<img src="'+esc(ABOUT.foto)+'" alt="Foto de perfil">' : esc(ABOUT.iniciais);
   $("about").innerHTML = '<div class="avatar">'+av+'</div><div>'+ABOUT.text.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+chips(ABOUT.chips)+'</div>';
 }
+function renderHero(){
+  if(!HERO_IMG) return;
+  var s = document.querySelector(".art");
+  s.outerHTML = '<img class="art hero-img" src="'+esc(HERO_IMG)+'" alt="Laís Araújo">';
+}
 function renderEdu(){ $("edu").innerHTML = tl(EDU)+'<h3 class="mini">cursos e certificações</h3>'+chips(COURSES); }
 function renderJobs(){ $("jobs").innerHTML = tl(JOBS); }
 
@@ -328,7 +340,7 @@ $("theme").addEventListener("click", function(){
   r.setAttribute("data-theme", dark ? "light" : "dark");
 });
 
-renderAbout(); renderEdu(); renderJobs(); renderQuests(); renderSkills(); update();
+renderHero(); renderAbout(); renderEdu(); renderJobs(); renderQuests(); renderSkills(); update();
 </script>
 </body>
 </html>
