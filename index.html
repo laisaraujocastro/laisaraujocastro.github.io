@@ -43,11 +43,30 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn:active{transform:scale(.96)}
 .btn.alt{background:var(--blue)}
 .tip{font-size:15px;color:var(--muted);margin-top:16px}
+  .hero .btn {
+  margin-bottom: 12px;
+}
+
+.hero .tip {
+  margin-top: 8px;
+}
 .art{width:100%;max-width:320px;justify-self:center}
 @media(max-width:640px){.hero{grid-template-columns:1fr}.art{max-width:220px;order:-1;justify-self:start}}
 
-h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:56px 0 4px;text-transform:lowercase}
-.sub{margin:0 0 22px;color:var(--muted);font-weight:300;font-size:18px}
+h2 {
+  font-size: clamp(28px, 5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: 40px 0 0;
+  text-transform: lowercase;
+}
+
+.sub {
+  margin: 4px 0 16px;
+  color: var(--muted);
+  font-weight: 300;
+  font-size: 18px;
+}
 
 .hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;display:block}
 
@@ -68,7 +87,7 @@ h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:5
 .tl{border-left:4px solid var(--track);margin-left:10px;padding-left:28px;display:grid;gap:18px}
 .tl-item{position:relative;background:var(--card);border-radius:24px;padding:16px 20px}
 .tl-item::before{content:"";position:absolute;left:-40px;top:20px;width:20px;height:20px;border-radius:50%;background:var(--c,var(--yellow));border:4px solid var(--bg)}
-.when{font-size:14px;font-weight:800;color:var(--red)}
+.when{font-size:14px;font-weight:800;color:var(--muted)}
 .tl-item h3{margin:2px 0 0;font-size:20px;font-weight:800;line-height:1.2}
 .where{color:var(--muted);font-weight:300;font-size:16px}
 .tl-item p{margin:8px 0 0;max-width:620px}
@@ -137,6 +156,9 @@ h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:5
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translate(-50%,130px);background:var(--navy);color:#f4f2ed;padding:11px 22px;border-radius:99px;font-weight:600;font-size:15px;transition:transform .35s;z-index:20;text-align:center;max-width:92vw}
 .toast.show{transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  h2 .pt {
+  display: none !important;
+}
 </style>
 </head>
 <body>
