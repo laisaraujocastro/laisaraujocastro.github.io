@@ -29,54 +29,35 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lvl{background:var(--navy);color:#f4f2ed;border-radius:99px;padding:4px 16px;font-weight:800;font-size:14px;white-space:nowrap}
 .bar{flex:1;min-width:150px;height:24px;border-radius:99px;background:var(--track);position:relative;overflow:hidden}
 .bar>i{position:absolute;inset:0 auto 0 0;width:0;background:var(--yellow);border-radius:99px;transition:width .6s cubic-bezier(.2,.9,.3,1.1)}
-.bar span{position:absolute;inset:0;:grid;place-items:center;font-size:12px;font-weight:800;color:#132c4a}
+.bar span{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:800;color:#132c4a}
 #theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
 /* Hero */
-.hero{:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 20px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 20px}
 .hero h1{font-size:clamp(44px,9vw,84px);line-height:.95;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;text-transform:lowercase}
 .hero .tg{font-size:clamp(20px,3.4vw,27px);font-weight:300;color:var(--muted);margin:0 0 18px}
 .hero p{max-width:480px;margin:0 0 24px}
-.btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;text-decoration:none;:inline-block;transition:transform .12s,background .12s}
+.btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
 .btn:hover{background:var(--red)}
 .btn:active{transform:scale(.96)}
 .btn.alt{background:var(--blue)}
 .tip{font-size:15px;color:var(--muted);margin-top:16px}
-  .hero .btn {
-  margin-bottom: 12px;
-}
-
-.hero .tip {
-  margin-top: 8px;
-}
 .art{width:100%;max-width:320px;justify-self:center}
 @media(max-width:640px){.hero{grid-template-columns:1fr}.art{max-width:220px;order:-1;justify-self:start}}
 
-h2 {
-  font-size: clamp(28px, 5vw, 38px);
-  font-weight: 800;
-  letter-spacing: -.02em;
-  margin: 40px 0 0;
-  text-transform: lowercase;
-}
+h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:56px 0 4px;text-transform:lowercase}
+.sub{margin:0 0 22px;color:var(--muted);font-weight:300;font-size:18px}
 
-.sub {
-  margin: 4px 0 16px;
-  color: var(--muted);
-  font-weight: 300;
-  font-size: 18px;
-}
-
-.hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;:block}
+.hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;display:block}
 
 /* Nav */
-.nav{max-width:900px;margin:0 auto;padding:8px 20px 0;:flex;gap:8px;overflow-x:auto;scrollbar-width:none;justify-content:center;justify-content:safe center}
+.nav{max-width:900px;margin:0 auto;padding:8px 20px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;justify-content:center;justify-content:safe center}
 .nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;padding:4px 14px;border-radius:99px;background:var(--track)}
 .nav a:hover{background:var(--yellow);color:#132c4a}
 
 /* Sobre, linha do tempo */
-.about{:flex;gap:24px;align-items:flex-start;background:var(--card);border-radius:36px;padding:28px;width:100%}
+.about{display:flex;gap:24px;align-items:flex-start;background:var(--card);border-radius:36px;padding:28px;width:100%}
 .about>div:not(.avatar){flex:1;min-width:0}
 .about h3{margin:0;font-size:21px;font-weight:800;line-height:1.2}
 .avatar{flex:none;width:110px;height:110px;aspect-ratio:1/1;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-size:40px;font-weight:800;letter-spacing:-.04em;overflow:hidden}
@@ -87,7 +68,7 @@ h2 {
 .tl{border-left:4px solid var(--track);margin-left:10px;padding-left:28px;display:grid;gap:18px}
 .tl-item{position:relative;background:var(--card);border-radius:24px;padding:16px 20px}
 .tl-item::before{content:"";position:absolute;left:-40px;top:20px;width:20px;height:20px;border-radius:50%;background:var(--c,var(--yellow));border:4px solid var(--bg)}
-.when{font-size:14px;font-weight:800;color:var(--muted)}
+.when{font-size:14px;font-weight:800;color:var(--red)}
 .tl-item h3{margin:2px 0 0;font-size:20px;font-weight:800;line-height:1.2}
 .where{color:var(--muted);font-weight:300;font-size:16px}
 .tl-item p{margin:8px 0 0;max-width:620px}
@@ -157,7 +138,6 @@ h2 {
 .toast.show{transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-  
 </head>
 <body>
 
@@ -175,9 +155,9 @@ h2 {
     <div>
       <h1>laís araújo</h1>
       <p class="tg">tech, psicologia e educação.</p>
-      <p>designer instrucional. me divirto criando e gosto de fazer as pessoas se divertirem aprendendo. para ver mais sobre mim, abra cada card, ganhe pontos e desbloqueie emblemas :)</p>
-        <a class="btn" href="#sobre">JOGAR</a>
-      <p class="tip">cada seção vale 1 ponto e 1 emblema. clique nos cards para abrir; ao abrir todos de uma seção, o ponto é seu.</p>
+      <p>Designer instrucional. Transformo conteúdo difícil em experiências de aprendizagem que as pessoas querem completar. Abra cada card, ganhe pontos e desbloqueie emblemas.</p>
+      <a class="btn" href="#sobre">entrar</a>
+      <p class="tip">Dica: cada seção vale 1 ponto e 1 emblema. Clique nos cards para abrir; ao abrir todos de uma seção, o ponto é seu.</p>
     </div>
     <svg class="art" viewBox="0 0 200 200" aria-hidden="true">
       <circle cx="100" cy="100" r="92" fill="#fbb814"/>
@@ -249,10 +229,10 @@ var SKILLS = [
   ["Design gráfico (Canva, Figma)",3],
   ["Avaliação e métricas de aprendizagem",4]
 ];
-var HERO_IMG = "Creative and Minimal Portfolio Presentation.png"; /*  ou logo do topo da página: ex. "topo.jpg". Se ficar vazio, aparecem as formas coloridas. */
+var HERO_IMG = ""; /* foto ou logo do topo da página: ex. "topo.jpg". Se ficar vazio, aparecem as formas coloridas. */
 
 var ABOUT = {
-  foto:"servletrecuperafoto (2).gif", /* opcional: coloque o endereço de uma foto, ex.: foto.jpg (o arquivo vai na mesma pasta do site) */
+  foto:"", /* opcional: coloque o endereço de uma foto, ex.: foto.jpg (o arquivo vai na mesma pasta do site) */
   iniciais:"LA",
   text:[
     "[Escreva 2 ou 3 frases sobre você: quem você é, o que te move e como une tecnologia, psicologia e educação no seu trabalho.]",
