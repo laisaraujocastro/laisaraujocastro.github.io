@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case · Trilha gamificada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #e6e4de;
+      --card: #f4f2ed;
+      --ink: #132c4a;
+      --yellow: #fbb814;
+      --blue: #2e7cc4;
+      --muted: #5b5f66;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px 20px 60px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Raleway', sans-serif;
+      line-height: 1.7;
+    }
+
+    main {
+      max-width: 820px;
+      margin: auto;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 36px;
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .tag {
+      font-weight: 800;
+      color: var(--blue);
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 64px);
+      line-height: 1.05;
+      margin: 12px 0;
+      letter-spacing: -.04em;
+    }
+
+    .intro {
+      font-size: 20px;
+      color: var(--muted);
+    }
+
+    section {
+      margin-top: 28px;
+      padding: 26px;
+      background: var(--card);
+      border-radius: 24px;
+    }
+
+    h2 {
+      margin-top: 0;
+      line-height: 1.2;
+    }
+
+    .highlight {
+      display: inline-block;
+      background: var(--yellow);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="../index.html">← voltar ao portfólio</a>
+
+    <p class="tag">case de design instrucional</p>
+    <h1>Trilha de aprendizagem gamificada</h1>
+    <p class="intro">
+      Como transformei um desafio educacional em uma experiência
+      de aprendizagem mais envolvente.
+    </p>
+
+    <section>
+      <h2>01. Contexto</h2>
+      <p>Apresente aqui o projeto, o público e o cenário educacional.</p>
+    </section>
+
+    <section>
+      <h2>02. O desafio</h2>
+      <p>Explique qual problema precisava ser resolvido.</p>
+    </section>
+
+    <section>
+      <h2>03. Meu processo</h2>
+      <p>Descreva as etapas, as decisões pedagógicas e as ferramentas utilizadas.</p>
+    </section>
+
+    <section>
+      <h2>04. Resultado e aprendizados</h2>
+      <p>Apresente os materiais entregues, os resultados observados e o que aprendeu.</p>
+      <p><span class="highlight">Seu aprendizado em destaque</span></p>
+    </section>
+  </main>
+</body>
+</html>
