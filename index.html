@@ -319,7 +319,7 @@ opacity: 0.9;
 <main class="wrap">
   <section class="hero">
     <div>
-      <h1>laís araújo</h1>
+      <h1> araújo</h1>
       <p class="tg">tech, psicologia e educação.</p>
       <p>designer instrucional. me divirto criando e gosto de fazer as pessoas se divertirem aprendendo. para saber mais sobre mim, abra cada card!</p>
       <a class="btn" href="#sobre">começar</a>
@@ -543,7 +543,7 @@ function tl(items,sec){
 function chips(a){return '<div class="chips">'+a.map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join("")+'</div>'}
 function renderAbout(){
   var av = ABOUT.foto ? '<img src="'+esc(ABOUT.foto)+'" alt="Foto de perfil">' : esc(ABOUT.iniciais);
-  $("about").innerHTML = '<div class="avatar">'+av+'</div><div><div class="quest-top"><div><h3>um pouco sobre mim</h3><div class="tag">olá! me chamo laís ;)</div></div>'+PILL+'</div>'+
+  $("about").innerHTML = '<div class="avatar">'+av+'</div><div><div class="quest-top"><div><h3>um pouco sobre mim</h3><div class="tag">olá! me chamo laís, moro em recife e sou psicóloga ;)</div></div>'+PILL+'</div>'+
     '<div class="detail">'+ABOUT.text.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+chips(ABOUT.chips)+'</div></div>';
 }
 function renderHero(){
