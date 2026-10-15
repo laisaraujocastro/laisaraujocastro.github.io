@@ -272,6 +272,27 @@ h2 {
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
   h2 .pt {
   display: none !important;
+} 
+  
+.case-link {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+margin-top: 16px;
+padding: 10px 16px;
+background: #fbb814;
+color: #132c4a;
+border-radius: 8px;
+font-weight: 700;
+font-size: 14px;
+text-decoration: none;
+transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.case-link {
+transform: translateY(-2px);
+opacity: 0.9;
 }
 </style>
 </head>
@@ -429,8 +450,7 @@ function bindGates(){
 
 function renderQuests(){
 $("quests").innerHTML = QUESTS.map(function(q,i){
-return '<div class="quest-wrap">'+
-'<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
+return '<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
 '<div class="quest-top">'+shape(q)+
 '<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+PILL+'</div>'+
 '<div class="detail">'+
@@ -438,11 +458,27 @@ return '<div class="quest-wrap">'+
 '<b>desafio</b><p>'+esc(q.desafio)+'</p>'+
 '<b>o que eu fiz</b><p>'+esc(q.fiz)+'</p>'+
 '<b>resultado</b><p>'+esc(q.resultado)+'</p>'+
-'</div>'+
-'</button>'+
-(q.url ? '<a class="case-link" href="'+esc(q.url)+'">Ver estudo de caso ↗</a>' : '')+
-'</div>';
+'</div></button>';
 }).join("");
+
+$("quests").querySelectorAll(".quest").forEach(function(card){
+var q = QUESTS[Number(card.dataset.i)];
+if(!q.url) return;
+
+var detail = card.querySelector(".detail");
+var link = document.createElement("a");
+link.className = "case-link";
+link.href = q.url;
+link.textContent = "Ver estudo de caso ↗";
+link.target = "_self";
+
+link.addEventListener("click", function(event){
+  event.stopPropagation();
+});
+
+detail.appendChild(link);
+
+});
 }
 
 function renderSkills(){
