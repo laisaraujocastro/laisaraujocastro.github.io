@@ -53,8 +53,20 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .art{width:100%;max-width:320px;justify-self:center}
 @media(max-width:640px){.hero{grid-template-columns:1fr}.art{max-width:220px;order:-1;justify-self:start}}
 
-h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:56px 0 4px;text-transform:lowercase}
-.sub{margin:0 0 22px;color:var(--muted);font-weight:300;font-size:18px}
+h2 {
+  font-size: clamp(28px, 5vw, 38px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: 40px 0 0;
+  text-transform: lowercase;
+}
+
+.sub {
+  margin: 4px 0 16px;
+  color: var(--muted);
+  font-weight: 300;
+  font-size: 18px;
+}
 
 .hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;display:block}
 
