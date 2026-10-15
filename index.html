@@ -534,7 +534,7 @@ function tl(items,sec){
 function chips(a){return '<div class="chips">'+a.map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join("")+'</div>'}
 function renderAbout(){
   var av = ABOUT.foto ? '<img src="'+esc(ABOUT.foto)+'" alt="Foto de perfil">' : esc(ABOUT.iniciais);
-  $("about").innerHTML = '<div class="avatar">'+av+'</div><div><div class="quest-top"><div><h3>um pouco sobre mim</h3><div class="tag">olá! me chamo laís, tenho 25 anos, sou psicóloga de formação e atualmente moro em recife</div></div>'+PILL+'</div>'+
+  $("about").innerHTML = '<div class="avatar">'+av+'</div><div><div class="quest-top"><div><h3>um pouco sobre mim</h3><div class="tag">olá! me chamo laís :)</div></div>'+PILL+'</div>'+
     '<div class="detail">'+ABOUT.text.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+chips(ABOUT.chips)+'</div></div>';
 }
 function renderHero(){
