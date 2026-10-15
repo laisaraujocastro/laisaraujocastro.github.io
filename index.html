@@ -459,7 +459,7 @@ function renderBoss(){
   var links = '<div class="links"><a class="btn" href="mailto:'+esc(PROFILE.email)+'">enviar e-mail</a><a class="btn alt" href="'+esc(PROFILE.linkedin)+'" target="_blank" rel="noopener">linkedin</a></div>';
   b.innerHTML = ok
     ? '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>você zerou o jogo!</h3><p>Que tal criar a próxima missão juntos? Conte qual é o seu desafio de aprendizagem.</p>'+links
-    : '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>Me conte qual é o seu desafio de aprendizagem. Bônus: conquiste os '+SECS.length+' emblemas para ver uma surpresa (faltam '+(SECS.length-points)+').</p>'+links;
+    : '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>me conte qual é o seu desafio de aprendizagem. bônus: conquiste os '+SECS.length+' emblemas para zerar o portfólio! (faltam '+(SECS.length-points)+').</p>'+links;
 }
 
 function renderPts(){
