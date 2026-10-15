@@ -129,12 +129,45 @@ h2 {
 .detail img{width:100%;max-width:640px;border-radius:20px;display:block;margin:0 0 16px}
 
 /* Skills */
-.skills{display:grid;gap:14px}
-.skill{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.skill .n{flex:1 1 220px;font-weight:600}
-.pips{display:flex;gap:6px}
-.pips i{width:22px;height:22px;border-radius:50%;background:var(--track)}
-.pips i.on{background:var(--blue)}
+.skills {
+  display: grid;
+  gap: 14px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.skill .n {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.pips {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.pips i {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--track);
+}
+
+.pips i.on {
+  background: var(--blue);
+}
 
 /* Badges */
 .badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
