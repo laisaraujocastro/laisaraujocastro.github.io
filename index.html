@@ -133,7 +133,7 @@ h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:5
 
 <div class="hud">
   <div class="hud-in">
-    <span class="lvl" id="lvl">nível 1</span>
+    <span class="lvl" id="lvl"> 1</span>
     <div class="bar" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="100" id="barwrap"><i id="fill"></i><span id="xptxt">0 / 400 xp</span></div>
     <button id="theme" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
@@ -201,7 +201,7 @@ var QUESTS = [
   { shape:"half", color:"red", title:"Trilha gamificada de [tema]", tag:"Gamificação · Moodle", img:"",
     badge:"Game designer",
     desafio:"[Ex.: engajar uma equipe que via o treinamento como obrigação.]",
-    fiz:"[Ex.: criei narrativa, pontos, medalhas e desafios por nível.]",
+    fiz:"[Ex.: criei narrativa, pontos, medalhas e desafios por .]",
     resultado:"[Ex.: participação subiu de 40% para 90%.]" },
   { shape:"quarter", color:"blue", title:"Material didático impresso/digital", tag:"E-book · Canva", img:"",
     badge:"Mestra do layout",
@@ -252,7 +252,7 @@ var JOBS = [
 /* ===== fim da área de edição ===== */
 
 var PER = 100, total = QUESTS.length * PER, xp = 0, done = {};
-var NAMES = ["aprendiz","exploradora","estrategista","designer lendária","mestra suprema"];
+var NAMES = ;
 var $ = function(id){return document.getElementById(id)};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function shape(q,lock){return '<span class="shape s-'+q.shape+' c-'+q.color+(lock?' lock':'')+'" aria-hidden="true"><i></i></span>'}
@@ -284,7 +284,7 @@ function onQuest(e){
 function renderSkills(){
   $("skills").innerHTML = SKILLS.map(function(s){
     var p = ""; for(var i=1;i<=5;i++) p += '<i class="'+(i<=s[1]?"on":"")+'"></i>';
-    return '<div class="skill"><span class="n">'+esc(s[0])+'</span><span class="pips" role="img" aria-label="Nível '+s[1]+' de 5">'+p+'</span></div>';
+    return '<div class="skill"><span class="n">'+esc(s[0])+'</span><span class="pips" role="img" aria-label=" '+s[1]+' de 5">'+p+'</span></div>';
   }).join("");
 }
 
