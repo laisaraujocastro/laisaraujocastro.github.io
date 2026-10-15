@@ -428,12 +428,21 @@ function bindGates(){
 }
 
 function renderQuests(){
-  $("quests").innerHTML = QUESTS.map(function(q,i){
-    return '<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
-      '<div class="quest-top">'+shape(q)+
-      '<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+PILL+'</div>'+
-      '<div class="detail">'+(q.img?'<img src="'+esc(q.img)+'" alt="'+esc(q.title)+'">':'')+'<b>desafio</b><p>'+esc(q.desafio)+'</p><b>o que eu fiz</b><p>'+esc(q.fiz)+'</p><b>resultado</b><p>'+esc(q.resultado)+'</p></div></button>';
-  }).join("");
+$("quests").innerHTML = QUESTS.map(function(q,i){
+return '<div class="quest-wrap">'+
+'<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
+'<div class="quest-top">'+shape(q)+
+'<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+PILL+'</div>'+
+'<div class="detail">'+
+(q.img?'<img src="'+esc(q.img)+'" alt="'+esc(q.title)+'">':'')+
+'<b>desafio</b><p>'+esc(q.desafio)+'</p>'+
+'<b>o que eu fiz</b><p>'+esc(q.fiz)+'</p>'+
+'<b>resultado</b><p>'+esc(q.resultado)+'</p>'+
+'</div>'+
+'</button>'+
+(q.url ? '<a class="case-link" href="'+esc(q.url)+'">Ver estudo de caso ↗</a>' : '')+
+'</div>';
+}).join("");
 }
 
 function renderSkills(){
