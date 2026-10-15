@@ -528,7 +528,7 @@ function tl(items,sec){
   return '<div class="tl">'+items.map(function(x,i){
     return '<button class="tl-item gate" data-sec="'+sec+'" data-i="'+i+'" aria-expanded="false" style="--c:var(--'+x.color+')">'+
       '<div class="quest-top"><div><div class="when">'+esc(x.when)+'</div><h3>'+esc(x.title)+'</h3></div>'+PILL+'</div>'+
-      '<div class="detail">'+(x.where?'<div class="where">'+esc(x.where)+'</div>':'')+(x.text?'<p>'+esc(x.text)+'</p>':'')+(x.html||'')+'</div></button>';
+      '<div class="detail">'+(x.where?chips([x.where]):');
   }).join("")+'</div>';
 }
 function chips(a){return '<div class="chips">'+a.map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join("")+'</div>'}
