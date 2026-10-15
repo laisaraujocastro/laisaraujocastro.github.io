@@ -81,22 +81,73 @@ h2 {
 .nav{max-width:900px;margin:0 auto;padding:8px 20px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;justify-content:center;justify-content:safe center}
 .nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;padding:4px 14px;border-radius:99px;background:var(--track)}
 .nav a:hover{background:var(--yellow);color:#132c4a}
-
+  
 /* Sobre, linha do tempo */
 .about {
   display: flex;
-  gap: 24px;
   align-items: flex-start;
+  gap: 24px;
   background: var(--card);
   border-radius: 36px;
   padding: 28px;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  overflow-wrap: anywhere;
 }
 
-/* ADICIONE ESTAS TRÊS LINHAS ABAIXO */
+.about > div:not(.avatar) {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.about h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.about .detail {
+  width: 100%;
+  min-width: 0;
+}
+
 .about .detail p {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   max-width: 100%;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.about .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about .chip {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 560px) {
+  .about {
+    flex-direction: column;
+    padding: 22px;
+    gap: 18px;
+  }
+
+  .about > div:not(.avatar) {
+    width: 100%;
+  }
+
+  .about .quest-top {
+    flex-wrap: wrap;
+ 
+}
+
 }
 .about>div:not(.avatar){flex:1;min-width:0}
 .about h3{margin:0;font-size:21px;font-weight:800;line-height:1.2}
