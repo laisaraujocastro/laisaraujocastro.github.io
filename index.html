@@ -25,61 +25,40 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* HUD */
 .hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);padding:12px 0}
-.hud-in{max-width:560px;margin:0 auto;padding:0 20px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}
+.hud-in{max-width:900px;margin:0 auto;padding:0 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .lvl{background:var(--navy);color:#f4f2ed;border-radius:99px;padding:4px 16px;font-weight:800;font-size:14px;white-space:nowrap}
 .bar{flex:1;min-width:150px;height:24px;border-radius:99px;background:var(--track);position:relative;overflow:hidden}
 .bar>i{position:absolute;inset:0 auto 0 0;width:0;background:var(--yellow);border-radius:99px;transition:width .6s cubic-bezier(.2,.9,.3,1.1)}
-.bar span{position:absolute;inset:0;:grid;place-items:center;font-size:12px;font-weight:800;color:#132c4a}
+.bar span{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:800;color:#132c4a}
 #theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
 /* Hero */
-.hero{:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 20px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 20px}
 .hero h1{font-size:clamp(44px,9vw,84px);line-height:.95;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;text-transform:lowercase}
 .hero .tg{font-size:clamp(20px,3.4vw,27px);font-weight:300;color:var(--muted);margin:0 0 18px}
 .hero p{max-width:480px;margin:0 0 24px}
-.btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;text-decoration:none;:inline-block;transition:transform .12s,background .12s}
+.btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
 .btn:hover{background:var(--red)}
 .btn:active{transform:scale(.96)}
 .btn.alt{background:var(--blue)}
 .tip{font-size:15px;color:var(--muted);margin-top:16px}
-  .hero .btn {
-  margin-bottom: 12px;
-}
-
-.hero .tip {
-  margin-top: 8px;
-}
 .art{width:100%;max-width:320px;justify-self:center}
 @media(max-width:640px){.hero{grid-template-columns:1fr}.art{max-width:220px;order:-1;justify-self:start}}
 
-h2 {
-  font-size: clamp(28px, 5vw, 38px);
-  font-weight: 800;
-  letter-spacing: -.02em;
-  margin: 40px 0 0;
-  text-transform: lowercase;
-}
+h2{font-size:clamp(28px,5vw,38px);font-weight:800;letter-spacing:-.02em;margin:56px 0 4px;text-transform:lowercase}
+.sub{margin:0 0 22px;color:var(--muted);font-weight:300;font-size:18px}
 
-.sub {
-  margin: 4px 0 16px;
-  color: var(--muted);
-  font-weight: 300;
-  font-size: 18px;
-}
-
-.hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;:block}
+.hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;display:block}
 
 /* Nav */
-.nav{max-width:900px;margin:0 auto;padding:8px 20px 0;:flex;gap:8px;overflow-x:auto;scrollbar-width:none;justify-content:center;justify-content:safe center}
+.nav{max-width:900px;margin:0 auto;padding:8px 20px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
 .nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;padding:4px 14px;border-radius:99px;background:var(--track)}
 .nav a:hover{background:var(--yellow);color:#132c4a}
 
 /* Sobre, linha do tempo */
-.about{:flex;gap:24px;align-items:flex-start;background:var(--card);border-radius:36px;padding:28px;width:100%}
-.about>div:not(.avatar){flex:1;min-width:0}
-.about h3{margin:0;font-size:21px;font-weight:800;line-height:1.2}
-.avatar{flex:none;width:110px;height:110px;aspect-ratio:1/1;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-size:40px;font-weight:800;letter-spacing:-.04em;overflow:hidden}
+.about{display:flex;gap:24px;align-items:flex-start;background:var(--card);border-radius:36px;padding:28px}
+.avatar{flex:none;width:110px;height:110px;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-size:40px;font-weight:800;letter-spacing:-.04em;overflow:hidden}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .about p{margin:0 0 14px;max-width:600px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
@@ -87,7 +66,7 @@ h2 {
 .tl{border-left:4px solid var(--track);margin-left:10px;padding-left:28px;display:grid;gap:18px}
 .tl-item{position:relative;background:var(--card);border-radius:24px;padding:16px 20px}
 .tl-item::before{content:"";position:absolute;left:-40px;top:20px;width:20px;height:20px;border-radius:50%;background:var(--c,var(--yellow));border:4px solid var(--bg)}
-.when{font-size:14px;font-weight:800;color:var(--muted)}
+.when{font-size:14px;font-weight:800;color:var(--red)}
 .tl-item h3{margin:2px 0 0;font-size:20px;font-weight:800;line-height:1.2}
 .where{color:var(--muted);font-weight:300;font-size:16px}
 .tl-item p{margin:8px 0 0;max-width:620px}
@@ -107,28 +86,21 @@ h2 {
 
 /* Quests */
 .quest{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--card);border:0;border-radius:28px;padding:20px 22px;margin-bottom:16px;cursor:pointer;transition:transform .15s}
-.gate{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;transition:transform .15s}
-.gate:hover{transform:translateY(-2px)}
-.tl-item.gate{width:100%;display:block}
-.tl-item .quest-top{align-items:flex-start}
-.tl-item .detail{margin-top:12px;padding-top:12px}
-.tl-item .detail .where{margin-bottom:0}
-.pt{display:inline-block;vertical-align:middle;margin-left:10px;font-size:13px;font-weight:800;background:var(--yellow);color:#132c4a;padding:3px 12px;border-radius:99px;letter-spacing:0;text-transform:none;line-height:1.5}
-.pt.done{background:var(--track);color:var(--ink)}
+.quest:hover{transform:translateY(-2px)}
 .quest-top{display:flex;gap:18px;align-items:center}
 .quest h3{margin:0;font-size:21px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
 .tag{font-size:15px;color:var(--muted);font-weight:300}
 .xp{margin-left:auto;font-weight:800;font-size:13px;background:var(--yellow);color:#132c4a;padding:4px 12px;border-radius:99px;white-space:nowrap}
-.gate.done .xp{background:var(--track);color:var(--ink)}
+.quest.done .xp{background:var(--track);color:var(--ink)}
 .detail{display:none;margin-top:18px;padding-top:16px;border-top:2px solid var(--track)}
-.gate.open .detail{display:block}
+.quest.open .detail{display:block}
 .detail b{font-weight:800;font-size:14px;display:block;color:var(--red);text-transform:lowercase}
 .detail p{margin:2px 0 14px;max-width:640px}
 
 .detail img{width:100%;max-width:640px;border-radius:20px;display:block;margin:0 0 16px}
 
 /* Skills */
-.skills{display:grid;gap:14px}
+.skills{display:grid;gap:14px;background:var(--card);border-radius:28px;padding:22px}
 .skill{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .skill .n{flex:1 1 220px;font-weight:600}
 .pips{display:flex;gap:6px}
@@ -139,7 +111,6 @@ h2 {
 .badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
 .badge{background:var(--card);border-radius:28px;padding:20px 12px;text-align:center;display:grid;justify-items:center;gap:10px}
 .badge small{font-size:15px;line-height:1.25;font-weight:600}
-.badge small.h{font-size:13px;font-weight:300;margin-top:-6px}
 .badge:not(.on){color:var(--muted)}
 .badge.on .shape{animation:pop .5s}
 @keyframes pop{0%{transform:scale(.6) rotate(-20deg)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
@@ -163,7 +134,7 @@ h2 {
 <div class="hud">
   <div class="hud-in">
     <span class="lvl" id="lvl">nível 1</span>
-    <div class="bar" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="100" id="barwrap"><i id="fill"></i><span id="xptxt">0 / 5 pontos</span></div>
+    <div class="bar" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="100" id="barwrap"><i id="fill"></i><span id="xptxt">0 / 400 xp</span></div>
     <button id="theme" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
   <nav class="nav" aria-label="Seções"><a href="#sobre">sobre mim</a><a href="#formacao">formação</a><a href="#experiencia">experiências</a><a href="#habilidades">habilidades</a><a href="#amostras">amostras</a><a href="#contato">contato</a></nav>
@@ -174,9 +145,9 @@ h2 {
     <div>
       <h1>laís araújo</h1>
       <p class="tg">tech, psicologia e educação.</p>
-      <p>designer instrucional. me divirto criando e gosto de fazer as pessoas se divertirem aprendendo. para ver mais sobre mim, abra cada card, ganhe pontos e desbloqueie emblemas :)</p>
-        <a class="btn" href="#sobre">JOGAR</a>
-      <p class="tip">cada seção vale 1 ponto e 1 emblema. clique nos cards para abrir; ao abrir todos de uma seção, o ponto é seu.</p>
+      <p>Designer instrucional. Transformo conteúdo difícil em experiências de aprendizagem que as pessoas querem completar. Explore minhas missões e ganhe XP.</p>
+      <a class="btn" href="#sobre">JOGAR</a>
+      <p class="tip">Dica: nas amostras, clique em cada missão para ganhar XP e desbloquear conquistas.</p>
     </div>
     <svg class="art" viewBox="0 0 200 200" aria-hidden="true">
       <circle cx="100" cy="100" r="92" fill="#fbb814"/>
@@ -187,27 +158,27 @@ h2 {
     </svg>
   </section>
 
-  <h2 id="sobre">sobre mim<span class="pt" id="pt-sobre"></span></h2>
+  <h2 id="sobre">sobre mim</h2>
   <p class="sub">Quem está por trás dos projetos.</p>
-  <button class="about gate" id="about" data-sec="sobre" data-i="0" aria-expanded="false"></button>
+  <div class="about" id="about"></div>
 
-  <h2 id="formacao">formação e cursos<span class="pt" id="pt-formacao"></span></h2>
+  <h2 id="formacao">formação e cursos</h2>
   <p class="sub">Onde estudei e o que continuo aprendendo.</p>
   <div id="edu"></div>
 
-  <h2 id="experiencia">experiências<span class="pt" id="pt-experiencia"></span></h2>
+  <h2 id="experiencia">experiências</h2>
   <p class="sub">Por onde passei e o que construí.</p>
   <div id="jobs"></div>
 
-  <h2 id="habilidades">habilidades<span class="pt" id="pt-habilidades"></span></h2>
+  <h2 id="habilidades">habilidades</h2>
   <p class="sub">Ferramentas e métodos que uso no dia a dia.</p>
-  <div id="skills"></div>
+  <div class="skills" id="skills"></div>
 
-  <h2 id="amostras">amostras<span class="pt" id="pt-amostras"></span></h2>
-  <p class="sub">Projetos que já fiz. Abra cada missão para ver o desafio, o que fiz e o resultado.</p>
+  <h2 id="amostras">amostras</h2>
+  <p class="sub">Projetos que já fiz. Clique em cada missão para ver o desafio, o que fiz e o resultado.</p>
   <div id="quests"></div>
 
-  <h3 class="mini">emblemas</h3>
+  <h3 class="mini">conquistas</h3>
   <div class="badges" id="badges"></div>
 
   <h2 id="contato">contato</h2>
@@ -223,18 +194,22 @@ var PROFILE = { email:"seuemail@exemplo.com", linkedin:"https://www.linkedin.com
 /* shape: circle | half | quarter | arch   ·   color: yellow | red | blue | navy */
 var QUESTS = [
   { shape:"circle", color:"yellow", title:"Curso online de [tema]", tag:"EAD · Storyline", img:"", /* imagem da missão: ex. "missao1.jpg" */
+    badge:"Mestra dos objetivos",
     desafio:"[Descreva o problema: ex. alta evasão, conteúdo extenso, público diverso.]",
     fiz:"[O que você fez: mapeamento de público, objetivos de aprendizagem, roteiro, protótipo, testes.]",
     resultado:"[Resultado: ex. 85% de conclusão, nota de satisfação 4,7/5.]" },
   { shape:"half", color:"red", title:"Trilha gamificada de [tema]", tag:"Gamificação · Moodle", img:"",
+    badge:"Game designer",
     desafio:"[Ex.: engajar uma equipe que via o treinamento como obrigação.]",
     fiz:"[Ex.: criei narrativa, pontos, medalhas e desafios por nível.]",
     resultado:"[Ex.: participação subiu de 40% para 90%.]" },
   { shape:"quarter", color:"blue", title:"Material didático impresso/digital", tag:"E-book · Canva", img:"",
+    badge:"Mestra do layout",
     desafio:"[Ex.: transformar apostila densa em material acessível.]",
     fiz:"[Ex.: reorganizei o conteúdo, criei infográficos e atividades.]",
     resultado:"[Ex.: professores reportaram aulas mais dinâmicas.]" },
   { shape:"arch", color:"navy", title:"Videoaulas e recursos interativos", tag:"Vídeo · H5P", img:"",
+    badge:"Diretora de aprendizagem",
     desafio:"[Ex.: ensinar um processo técnico a distância.]",
     fiz:"[Ex.: roteirizei, gravei e inseri quizzes interativos.]",
     resultado:"[Ex.: redução de 30% nos chamados de dúvida.]" }
@@ -276,112 +251,84 @@ var JOBS = [
 ];
 /* ===== fim da área de edição ===== */
 
-var SECS = [
-  { k:"sobre",       label:"sobre mim",    badge:"Primeiro contato",     shape:"circle",  color:"yellow", n:1 },
-  { k:"formacao",    label:"formação",     badge:"Sempre aprendendo",    shape:"half",    color:"red",    n:EDU.length+1 },
-  { k:"experiencia", label:"experiências", badge:"Estrada percorrida",   shape:"quarter", color:"blue",   n:JOBS.length },
-  { k:"habilidades", label:"habilidades",  badge:"Caixa de ferramentas", shape:"arch",    color:"navy",   n:1 },
-  { k:"amostras",    label:"amostras",     badge:"Curadora de projetos", shape:"circle",  color:"red",    n:QUESTS.length }
-];
-var S = {}, awarded = {}, points = 0;
-SECS.forEach(function(s){ S[s.k] = s; s.got = {}; s.count = 0; });
+var PER = 100, total = QUESTS.length * PER, xp = 0, done = {};
 var $ = function(id){return document.getElementById(id)};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function shape(q,lock){return '<span class="shape s-'+q.shape+' c-'+q.color+(lock?' lock':'')+'" aria-hidden="true"><i></i></span>'}
-var PILL = '<span class="xp">abrir</span>';
-
-function onGate(e){
-  var el = e.currentTarget, s = S[el.getAttribute("data-sec")], i = el.getAttribute("data-i");
-  var open = el.classList.toggle("open");
-  el.setAttribute("aria-expanded", open);
-  if(open && !s.got[i]){
-    s.got[i] = true; s.count++;
-    el.classList.add("done"); el.querySelector(".xp").textContent = "✔ visto";
-    if(s.count === s.n){
-      awarded[s.k] = true; points++; update();
-      toast("+1 ponto · emblema: "+s.badge);
-    } else renderPts();
-  }
-}
-function bindGates(){
-  var g = document.querySelectorAll(".gate");
-  for(var k=0;k<g.length;k++) g[k].addEventListener("click", onGate);
-}
 
 function renderQuests(){
   $("quests").innerHTML = QUESTS.map(function(q,i){
-    return '<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
+    return '<button class="quest" data-i="'+i+'" aria-expanded="false">'+
       '<div class="quest-top">'+shape(q)+
-      '<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+PILL+'</div>'+
+      '<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+
+      '<span class="xp" id="xp'+i+'">+'+PER+' xp</span></div>'+
       '<div class="detail">'+(q.img?'<img src="'+esc(q.img)+'" alt="'+esc(q.title)+'">':'')+'<b>desafio</b><p>'+esc(q.desafio)+'</p><b>o que eu fiz</b><p>'+esc(q.fiz)+'</p><b>resultado</b><p>'+esc(q.resultado)+'</p></div></button>';
   }).join("");
+  var b = document.querySelectorAll(".quest");
+  for(var k=0;k<b.length;k++) b[k].addEventListener("click", onQuest);
+}
+
+function onQuest(e){
+  var el = e.currentTarget, i = +el.getAttribute("data-i");
+  var open = el.classList.toggle("open");
+  el.setAttribute("aria-expanded", open);
+  if(open && !done[i]){
+    done[i] = true; xp += PER;
+    el.classList.add("done"); $("xp"+i).textContent = "✔ completa";
+    update();
+    toast("+"+PER+" xp · conquista: "+QUESTS[i].badge);
+  }
 }
 
 function renderSkills(){
-  var rows = SKILLS.map(function(s){
+  $("skills").innerHTML = SKILLS.map(function(s){
     var p = ""; for(var i=1;i<=5;i++) p += '<i class="'+(i<=s[1]?"on":"")+'"></i>';
     return '<div class="skill"><span class="n">'+esc(s[0])+'</span><span class="pips" role="img" aria-label="Nível '+s[1]+' de 5">'+p+'</span></div>';
   }).join("");
-  $("skills").innerHTML = '<button class="quest gate" data-sec="habilidades" data-i="0" aria-expanded="false">'+
-    '<div class="quest-top">'+shape({shape:"arch",color:"navy"})+'<div><h3>ferramentas e métodos</h3><div class="tag">'+SKILLS.length+' habilidades</div></div>'+PILL+'</div>'+
-    '<div class="detail"><div class="skills">'+rows+'</div></div></button>';
 }
 
 function renderBadges(){
-  $("badges").innerHTML = SECS.map(function(s){
-    var on = awarded[s.k];
-    return '<div class="badge'+(on?" on":"")+'">'+shape(s,!on)+'<small>'+(on?esc(s.badge):"bloqueada")+'</small><small class="h">'+(on?"":"abra: ")+esc(s.label)+'</small></div>';
+  $("badges").innerHTML = QUESTS.map(function(q,i){
+    var on = done[i];
+    return '<div class="badge'+(on?" on":"")+'">'+shape(q,!on)+'<small>'+(on?esc(q.badge):"bloqueada")+'</small></div>';
   }).join("");
 }
 
 function renderBoss(){
-  var ok = points === SECS.length, b = $("boss");
+  var n = Object.keys(done).length, ok = n === QUESTS.length, b = $("boss");
   b.className = "boss";
   var links = '<div class="links"><a class="btn" href="mailto:'+esc(PROFILE.email)+'">enviar e-mail</a><a class="btn alt" href="'+esc(PROFILE.linkedin)+'" target="_blank" rel="noopener">linkedin</a></div>';
   b.innerHTML = ok
     ? '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>você zerou o jogo!</h3><p>Que tal criar a próxima missão juntos? Conte qual é o seu desafio de aprendizagem.</p>'+links
-    : '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>Me conte qual é o seu desafio de aprendizagem. Bônus: conquiste os '+SECS.length+' emblemas para ver uma surpresa (faltam '+(SECS.length-points)+').</p>'+links;
-}
-
-function renderPts(){
-  SECS.forEach(function(s){
-    var p = $("pt-"+s.k), d = awarded[s.k];
-    p.className = "pt"+(d?" done":"");
-    p.textContent = d ? "✔ +1 ponto" : (s.n>1 ? s.count+"/"+s.n+" · +1 ponto" : "+1 ponto");
-  });
+    : '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>Me conte qual é o seu desafio de aprendizagem. Bônus: complete as '+QUESTS.length+' missões das amostras para ver uma surpresa (faltam '+(QUESTS.length-n)+').</p>'+links;
 }
 
 function update(){
-  var total = SECS.length, pct = Math.round(points/total*100);
+  var pct = Math.round(xp/total*100), lv = Math.min(Math.floor(xp/PER), QUESTS.length);
   $("fill").style.width = pct+"%";
-  $("xptxt").textContent = points+" / "+total+" pontos";
+  $("xptxt").textContent = xp+" / "+total+" xp";
   $("barwrap").setAttribute("aria-valuenow", pct);
-  $("lvl").textContent = "nível "+(points+1);
-  renderPts(); renderBadges(); renderBoss();
+  $("lvl").textContent = "nível "+(lv+1);
+  renderBadges(); renderBoss();
 }
 
-function tl(items,sec){
-  return '<div class="tl">'+items.map(function(x,i){
-    return '<button class="tl-item gate" data-sec="'+sec+'" data-i="'+i+'" aria-expanded="false" style="--c:var(--'+x.color+')">'+
-      '<div class="quest-top"><div><div class="when">'+esc(x.when)+'</div><h3>'+esc(x.title)+'</h3></div>'+PILL+'</div>'+
-      '<div class="detail">'+(x.where?'<div class="where">'+esc(x.where)+'</div>':'')+(x.text?'<p>'+esc(x.text)+'</p>':'')+(x.html||'')+'</div></button>';
+function tl(items){
+  return '<div class="tl">'+items.map(function(x){
+    return '<div class="tl-item" style="--c:var(--'+x.color+')"><div class="when">'+esc(x.when)+'</div><h3>'+esc(x.title)+'</h3><div class="where">'+esc(x.where)+'</div>'+(x.text?'<p>'+esc(x.text)+'</p>':'')+'</div>';
   }).join("")+'</div>';
 }
 function chips(a){return '<div class="chips">'+a.map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join("")+'</div>'}
 function renderAbout(){
   var av = ABOUT.foto ? '<img src="'+esc(ABOUT.foto)+'" alt="Foto de perfil">' : esc(ABOUT.iniciais);
-  $("about").innerHTML = '<div class="avatar">'+av+'</div><div><div class="quest-top"><div><h3>um pouco sobre mim</h3><div class="tag">toque para ler</div></div>'+PILL+'</div>'+
-    '<div class="detail">'+ABOUT.text.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+chips(ABOUT.chips)+'</div></div>';
+  $("about").innerHTML = '<div class="avatar">'+av+'</div><div>'+ABOUT.text.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+chips(ABOUT.chips)+'</div>';
 }
 function renderHero(){
   if(!HERO_IMG) return;
   var s = document.querySelector(".art");
   s.outerHTML = '<img class="art hero-img" src="'+esc(HERO_IMG)+'" alt="Laís Araújo">';
 }
-function renderEdu(){
-  $("edu").innerHTML = tl(EDU.concat([{ when:"complementar", title:"cursos e certificações", where:"", color:"yellow", html:chips(COURSES) }]), "formacao");
-}
-function renderJobs(){ $("jobs").innerHTML = tl(JOBS, "experiencia"); }
+function renderEdu(){ $("edu").innerHTML = tl(EDU)+'<h3 class="mini">cursos e certificações</h3>'+chips(COURSES); }
+function renderJobs(){ $("jobs").innerHTML = tl(JOBS); }
 
 var tt;
 function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("show")},2600)}
@@ -392,7 +339,7 @@ $("theme").addEventListener("click", function(){
   r.setAttribute("data-theme", dark ? "light" : "dark");
 });
 
-renderHero(); renderAbout(); renderEdu(); renderJobs(); renderQuests(); renderSkills(); bindGates(); update();
+renderHero(); renderAbout(); renderEdu(); renderJobs(); renderQuests(); renderSkills(); update();
 </script>
 </body>
 </html>
