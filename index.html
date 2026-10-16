@@ -277,6 +277,10 @@ h2 .pt { display: none !important; }
   .tl-item .detail p{
   max-width:none;
 }
+.toast{display:flex;align-items:center;gap:12px;background:var(--card);color:var(--ink);padding:10px 24px 10px 12px;box-shadow:0 8px 28px rgba(19,44,74,.2);text-align:left}
+.toast .shape{width:38px;height:38px}
+.toast small{display:block;font-size:13px;font-weight:600;color:var(--muted);line-height:1.2}
+.toast b{display:block;font-size:17px;font-weight:800;line-height:1.25}
 </style>
 </head>
 <body>
@@ -424,7 +428,7 @@ function onGate(e){
     if(s.count === s.n){
       awarded[s.k] = true; points++; update();
       bump($("lvl"),"bump"); bump($("barwrap"),"flash");
-      toast("+1 ponto · emblema: "+s.badge);
+      badgeToast(s);
       if(points === SECS.length) celebrate();
     } else renderPts();
   }
@@ -568,6 +572,12 @@ function celebrate(){
 }
 
 var tt;
+  function badgeToast(s){
+  var t=$("toast");
+  t.innerHTML = shape(s)+'<span><small>emblema conquistado · +1 ponto</small><b>'+esc(s.badge)+'</b></span>';
+  t.classList.add("show"); clearTimeout(tt);
+  tt=setTimeout(function(){t.classList.remove("show")},3200);
+}
 function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("show")},2600)}
 
 $("theme").addEventListener("click", function(){
