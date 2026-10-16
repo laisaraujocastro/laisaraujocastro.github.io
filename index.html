@@ -254,7 +254,7 @@ h2 .pt { display: none !important; }
   transition:transform .12s,background .12s;
 }
 .case-link:hover{background:var(--blue);color:#fff}
-.case-link:active{transform:scale(.96)}
+.case-link:active{transform:scale(.96)
 }
 
 /* ===== Animações ao clicar ===== */
@@ -282,7 +282,7 @@ h2 .pt { display: none !important; }
 .toast small{display:block;font-size:13px;font-weight:600;color:var(--muted);line-height:1.2}
 .toast b{display:block;font-size:17px;font-weight:800;line-height:1.25}
   .thumb{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;display:block}
-.gate.open .quest-top > .thumb{animation:wiggle .5s},
+.gate.open .quest-top > .thumb{animation:wiggle .5s}
   .case-link{
   display:flex;
   align-items:center;
@@ -356,6 +356,7 @@ h2 .pt { display: none !important; }
 .boss .links .btn.alt:hover{
   background:var(--blue);
   color:#fff;
+  .boss .shape{animation:jump 1s ease-in-out infinite}
 }
 </style>
 </head>
@@ -408,7 +409,8 @@ h2 .pt { display: none !important; }
   <p class="sub">projetos que já fiz</p>
   <div id="quests"></div>
 
-  <h3 class="mini">emblemas</h3>
+<h2 id="emblemas">emblemas</h2>
+<p class="sub">o que você conquistou ao explorar</p>
   <div class="badges" id="badges"></div>
 
   <h2 id="contato"></h2>
