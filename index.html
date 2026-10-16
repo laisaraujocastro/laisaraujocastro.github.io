@@ -199,6 +199,8 @@ h2 {
 .pt.done{background:var(--track);color:var(--ink)}
 .quest-top{display:flex;gap:18px;align-items:center}
 .quest h3{margin:0;font-size:21px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+  .thumb{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;display:block}
+.gate.open .quest-top > .thumb{animation:wiggle .5s}
 .tag{font-size:17px;color:var(--muted);font-weight:400}
 .xp{margin-left:auto;font-weight:800;font-size:13px;background:var(--yellow);color:#132c4a;padding:4px 12px;border-radius:99px;white-space:nowrap}
 .gate.done .xp{background:var(--track);color:var(--ink)}
@@ -345,7 +347,7 @@ var PROFILE = { email:"seuemail@exemplo.com", linkedin:"https://www.linkedin.com
 
 var QUESTS = [
   var QUESTS = [
-  { shape:"circle", color:"yellow", title:"joy education", tag:"slides, planos de aula e texto interativo", img:"Raleway (2).png", url: "cases/curso-online.html",
+  { shape:"circle", color:"yellow", title:"joy education", tag:"slides, planos de aula e texto interativo", foto:"Raleway (2).png", url: "cases/curso-online.html",
     papel:"[Qual era o seu papel: ex. designer instrucional responsável por roteiro, slides e textos interativos.]" },
   { shape:"half", color:"red", title:"Trilha gamificada de [tema]", tag:"Gamificação · Moodle", img:"",
     papel:"[Qual era o seu papel neste projeto.]" },
@@ -432,7 +434,7 @@ function bindGates(){
 function renderQuests(){
 $("quests").innerHTML = QUESTS.map(function(q,i){
 return '<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
-'<div class="quest-top">'+shape(q)+
+'<div class="quest-top">'+(q.foto?'<img class="thumb" src="'+esc(q.foto)+'" alt="">':shape(q))+
 '<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+PILL+'</div>'+
 '<div class="detail">'+
 (q.img?'<img src="'+esc(q.img)+'" alt="'+esc(q.title)+'">':'')+
