@@ -69,7 +69,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 }
 .hero p{max-width:480px;margin:0 0 16px}
 .btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
-.btn:hover{background:var(--red)}
 .btn:active{transform:scale(.96)}
 .btn.alt{background:var(--blue)}
 .tip{font-size:17px;color:var(--muted);margin-top:16px}
@@ -283,9 +282,7 @@ h2 .pt { display: none !important; }
 .toast small{display:block;font-size:13px;font-weight:600;color:var(--muted);line-height:1.2}
 .toast b{display:block;font-size:17px;font-weight:800;line-height:1.25}
   .thumb{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;display:block}
-.gate.open .quest-top > .thumb{animation:wiggle .5s}
-  .boss .btn:hover,
-.boss .btn.alt:hover{background:var(--red);color:#fff}
+.gate.open .quest-top > .thumb{animation:wiggle .5s},
   .case-link{
   display:flex;
   align-items:center;
@@ -313,9 +310,12 @@ h2 .pt { display: none !important; }
   font-size:16px;
   transition:transform .2s;
 }
-.case-link:hover{background:var(--red)}
 .case-link:hover .arr{transform:translateX(3px)}
 .case-link:active{transform:scale(.96)}
+  .btn:hover{background:var(--blue);color:#fff}
+.boss .btn:hover{background:var(--blue);color:#fff}
+.boss .btn.alt:hover{background:#5a9bd8;color:#fff}
+.case-link:hover{background:var(--blue)}
 </style>
 </head>
 <body>
