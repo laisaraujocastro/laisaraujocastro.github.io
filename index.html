@@ -634,7 +634,7 @@ function burst(x,y,n){
 }
 function celebrate(){
   for(var k=0;k<6;k++) (function(k){
-    setTimeout(function(){ burst(innerWidth*(k+1)/7, 140+Math.random()*80, 28); }, k*180);
+   setTimeout(function(){ burst(innerWidth*(k+1)/7, innerHeight*0.4+Math.random()*innerHeight*0.2, 28); }, k*180);
   })(k);
 }
 
