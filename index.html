@@ -241,19 +241,19 @@ h2 {
 h2 .pt { display: none !important; }
 
 .case-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-  padding: 10px 16px;
-  background: #fbb814;
-  color: #132c4a;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  display:inline-block;
+  margin-top:16px;
+  padding:11px 22px;
+  background:var(--yellow);
+  color:#132c4a;
+  border-radius:99px;
+  font-weight:800;
+  font-size:15px;
+  text-decoration:none;
+  transition:transform .12s,background .12s;
+}
+.case-link:hover{background:var(--blue);color:#fff}
+.case-link:active{transform:scale(.96)}
 }
 
 /* ===== Animações ao clicar ===== */
