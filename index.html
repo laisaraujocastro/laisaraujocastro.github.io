@@ -313,6 +313,15 @@ transition: transform 0.2s ease, opacity 0.2s ease;
 transform: translateY(-2px);
 opacity: 0.9;
 }
+
+  /* Emblemas no HUD */
+.slots{display:flex;gap:8px;align-items:center}
+.slots a{display:block;line-height:0;border-radius:50%;transition:transform .15s}
+.slots a:hover{transform:translateY(-2px)}
+.slots .shape{width:28px;height:28px}
+.slots .shape.lock i{background:var(--track)!important}
+.slots a.pop .shape{animation:pop .5s}
+  
 </style>
 </head>
 <body>
@@ -321,6 +330,7 @@ opacity: 0.9;
   <div class="hud-in">
     <span class="lvl" id="lvl">nível 1</span>
     <div class="bar" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="100" id="barwrap"><i id="fill"></i><span id="xptxt">0 / 5 pontos</span></div>
+    <div class="slots" id="slots" aria-label="Emblemas"></div>
     <button id="theme" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
   <nav class="nav" aria-label="Seções"><a href="#sobre">sobre mim</a><a href="#formacao">formação</a><a href="#experiencia">experiências</a><a href="#habilidades">habilidades</a><a href="#amostras">amostras</a><a href="#contato">contato</a></nav>
@@ -534,6 +544,19 @@ function renderPts(){
   });
 }
 
+  var shown = {};
+function renderSlots(){
+  $("slots").innerHTML = SECS.map(function(s){
+    var on = awarded[s.k];
+    var fresh = on && !shown[s.k];
+    if(on) shown[s.k] = true;
+    return '<a href="#'+s.k+'"'+(fresh?' class="pop"':'')+
+      ' title="'+esc(s.label)+(on?' · '+esc(s.badge):' · bloqueada')+'"'+
+      ' aria-label="'+esc(s.label)+(on?' (conquistada)':' (bloqueada)')+'">'+
+      shape(s,!on)+'</a>';
+  }).join("");
+}
+
 function update(){
   var total = SECS.length, pct = Math.round(points/total*100);
   $("fill").style.width = pct+"%";
@@ -541,6 +564,7 @@ function update(){
   $("barwrap").setAttribute("aria-valuenow", pct);
   $("lvl").textContent = "nível "+(points+1);
   renderPts(); renderBadges(); renderBoss();
+  renderSlots(); 
 }
 
 function tl(items,sec){
@@ -569,10 +593,10 @@ function renderJobs(){ $("jobs").innerHTML = tl(JOBS, "experiencia"); }
 var tt;
 function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("show")},2600)}
 
-$("theme").addEventListener("click", function(){
-  var r = document.documentElement, dark = r.getAttribute("data-theme")==="dark" ||
-    (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
-  r.setAttribute("data-theme", dark ? "light" : "dark");
+$("").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-")==="dark" ||
+    (!r.getAttribute("data-") && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-", dark ? "light" : "dark");
 });
 
 renderHero(); renderAbout(); renderEdu(); renderJobs(); renderQuests(); renderSkills(); bindGates(); update();
