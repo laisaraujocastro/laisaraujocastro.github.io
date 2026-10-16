@@ -50,7 +50,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 20px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 0px}
 .hero h1{font-size:clamp(44px,9vw,84px);line-height:.95;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;text-transform:lowercase}
 .hero .tg {
   font-size: clamp(20px, 3.4vw, 27px);
@@ -81,11 +81,11 @@ h2 {
   line-height: 1.1;
   margin: 40px 0 0;
   text-transform: lowercase;
-  #sobre {
-  margin-top: 20px;
-}
 }
 
+#sobre {
+  margin-top: 0;
+}
 .sub {
   margin: 0 0 16px;
   color: var(--muted);
