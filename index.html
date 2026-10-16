@@ -458,7 +458,7 @@ var EDU = [
   { when:"2019 - 2025", title:"graduação em psicologia", where:"universidade federal de pernambuco", text:"bolsista cnpq 2024 - 2025", color:"blue" },
   { when:"2025 - atual", title:"mestrado em psicologia", where:"universidade federal de pernambuco", text:"bolsista capes 2025 - 2027", color:"red" }
 ];
-var COURSES = ["aperfeiçoamento em design educacional · ifes","criação de conteúdo educacional personalizado · EBAC · 4 horas","narrativas e personagens para jogos · joy education"];
+var COURSES = ["aperfeiçoamento em design educacional · ifes","criação de conteúdo educacional personalizado · C · 4 horas","narrativas e personagens para jogos · joy education"];
 
 var JOBS = [
   { when:"2021 - 2021", title:"estagiária em educação inclusiva", where:"colégio vera cruz recife", color:"yellow",
@@ -567,7 +567,7 @@ function renderBoss(){
   b.className = "boss"+(ok?" win":"");
   var links = '<div class="links"><a class="btn" href="mailto:'+esc(PROFILE.email)+'">enviar e-mail</a><a class="btn alt" href="'+esc(PROFILE.linkedin)+'" target="_blank" rel="noopener">linkedin</a></div>';
   b.innerHTML = ok
-    ? '<span class="shape s-circle c-blue" aria-hidden="true"><i></i></span><h3>você zerou o jogo!</h3><p>eba, você chegou ao fim do portfólio! se curtiu, você pode entrar em contato comigo ;)</p>'+links
+    ? '<span class="shape s-circle c-blue" aria-hidden="true"><i></i></span><h3>você zerou o jogo!</h3><p>eba, você chegou ao fim do portfólio! se gostou do que viu, ficarei feliz em conversar.</p>'+links
     : '<span class="shape s-circle c-blue" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>conquiste os '+SECS.length+' emblemas para zerar o portfólio! (faltam '+(SECS.length-points)+').</p>'+links;
 }
 
