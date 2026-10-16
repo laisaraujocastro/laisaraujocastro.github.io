@@ -7,36 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-  .case-link{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:16px;
-  padding:6px 6px 6px 22px;
-  background:var(--navy);
-  color:#f4f2ed;
-  border-radius:99px;
-  font-weight:800;
-  font-size:15px;
-  text-decoration:none;
-  transition:transform .12s,background .12s;
-}
-.case-link .arr{
-  width:32px;
-  height:32px;
-  flex:none;
-  border-radius:50%;
-  background:var(--yellow);
-  color:var(--navy);
-  display:grid;
-  place-items:center;
-  font-size:16px;
-  transition:transform .2s;
-}
-.case-link:hover{background:var(--red)}
-.case-link:hover .arr{transform:translateX(3px)}
-.case-link:active{transform:scale(.96)}
 #quests .detail{margin-top:12px;padding-top:12px}
 #quests .detail p{max-width:none}
 :root{
@@ -316,6 +286,36 @@ h2 .pt { display: none !important; }
 .gate.open .quest-top > .thumb{animation:wiggle .5s}
   .boss .btn:hover,
 .boss .btn.alt:hover{background:var(--red);color:#fff}
+  .case-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:16px;
+  padding:6px 6px 6px 22px;
+  background:var(--navy);
+  color:#f4f2ed;
+  border-radius:99px;
+  font-weight:800;
+  font-size:15px;
+  text-decoration:none;
+  transition:transform .12s,background .12s;
+}
+.case-link .arr{
+  width:32px;
+  height:32px;
+  flex:none;
+  border-radius:50%;
+  background:var(--yellow);
+  color:var(--navy);
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  transition:transform .2s;
+}
+.case-link:hover{background:var(--red)}
+.case-link:hover .arr{transform:translateX(3px)}
+.case-link:active{transform:scale(.96)}
 </style>
 </head>
 <body>
