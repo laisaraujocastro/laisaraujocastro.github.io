@@ -1,116 +1,197 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Case · Trilha gamificada</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #e6e4de;
-      --card: #f4f2ed;
-      --ink: #132c4a;
-      --yellow: #fbb814;
-      --blue: #2e7cc4;
-      --muted: #5b5f66;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>estudo de caso · laís araújo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e6e4de;--card:#f4f2ed;--ink:#132c4a;--muted:#5b5f66;--track:#d3d0c8;--yellow:#fbb814;--red:#e30613;--blue:#2e7cc4;--navy:#132c4a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);background-image:radial-gradient(rgba(19,44,74,.07) 1px,transparent 1.2px);background-size:7px 7px;color:var(--ink);font-family:'Raleway',system-ui,sans-serif;font-size:17px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 70px}
+.btn{font:inherit;font-weight:800;font-size:15px;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:11px 22px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
+.btn:hover{background:var(--red)}.btn:active{transform:scale(.96)}
+.btn.y{background:var(--yellow);color:#132c4a}.btn.y:hover{background:var(--blue);color:#fff}
+#theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0 8px}
 
-    * { box-sizing: border-box; }
+.head{display:flex;gap:22px;align-items:center;padding:20px 0 6px}
+.shape{width:84px;height:84px;display:grid;flex:none}.shape i{display:block;width:100%;height:100%}
+.s-circle i{border-radius:50%}.s-half{align-items:end}.s-half i{height:50%;border-radius:99px 99px 0 0}.s-quarter i{border-radius:100% 0 0 0}.s-arch i{border-radius:99px 99px 0 0}
+.c-yellow i{background:var(--yellow)}.c-red i{background:var(--red)}.c-blue i{background:var(--blue)}.c-navy i{background:var(--navy)}
+h1{font-size:clamp(34px,7vw,60px);line-height:1;margin:0;font-weight:800;letter-spacing:-.03em;text-transform:lowercase}
+.tag{color:var(--muted);font-weight:600;font-size:18px;margin-top:6px}
+h2{font-size:clamp(24px,4.5vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:48px 0 8px;text-transform:lowercase}
+.sub{margin:0 0 16px;color:var(--muted);font-weight:600;font-size:16px}
+.cover{width:100%;border-radius:28px;display:block;margin-top:20px}
+@media(max-width:560px){.head{flex-direction:column;align-items:flex-start}.shape{width:64px;height:64px}}
 
-    body {
-      margin: 0;
-      padding: 32px 20px 60px;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'Raleway', sans-serif;
-      line-height: 1.7;
-    }
+.card{background:var(--card);border-radius:28px;padding:22px 24px}
+.card p{margin:0 0 14px;max-width:68ch}.card p:last-child{margin-bottom:0}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.k{display:block;font-size:14px;font-weight:800;color:var(--red);text-transform:lowercase}
+ul.dots{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
+ul.dots li{padding-left:22px;position:relative}
+ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;background:var(--blue)}
 
-    main {
-      max-width: 820px;
-      margin: auto;
-    }
+/* persona */
+.persona{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.avatar{width:84px;height:84px;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:28px;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.persona h3{margin:0 0 4px;font-size:22px;font-weight:800;line-height:1.2}
+.persona .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:14px}
+@media(max-width:560px){.persona{grid-template-columns:1fr}}
 
-    .back {
-      display: inline-block;
-      margin-bottom: 36px;
-      color: var(--ink);
-      font-weight: 800;
-      text-decoration: none;
-    }
+/* objetivos: cartões nas cores da identidade */
+.obj{border-radius:28px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-height:150px}
+.obj .bl{font-size:13px;font-weight:800;border-radius:99px;padding:3px 14px;text-transform:lowercase;background:rgba(255,255,255,.22)}
+.obj p{margin:0;font-weight:600;font-size:18px;line-height:1.35}
+.o-yellow{background:var(--yellow);color:#132c4a}.o-yellow .bl{background:rgba(19,44,74,.14)}
+.o-red{background:var(--red);color:#fff}
+.o-blue{background:var(--blue);color:#fff}
+.o-navy{background:var(--navy);color:#f4f2ed}
 
-    .tag {
-      font-weight: 800;
-      color: var(--blue);
-      text-transform: uppercase;
-      font-size: 13px;
-    }
+/* ferramentas */
+.tool{background:var(--card);border-radius:24px;padding:16px 18px;display:flex;gap:14px;align-items:center}
+.tool .shape{width:46px;height:46px}
+.tool strong{display:block;font-weight:800;line-height:1.2}
+.tool small{color:var(--muted);font-weight:600;font-size:14px;line-height:1.3;display:block;margin-top:2px}
 
-    h1 {
-      font-size: clamp(38px, 8vw, 64px);
-      line-height: 1.05;
-      margin: 12px 0;
-      letter-spacing: -.04em;
-    }
-
-    .intro {
-      font-size: 20px;
-      color: var(--muted);
-    }
-
-    section {
-      margin-top: 28px;
-      padding: 26px;
-      background: var(--card);
-      border-radius: 24px;
-    }
-
-    h2 {
-      margin-top: 0;
-      line-height: 1.2;
-    }
-
-    .highlight {
-      display: inline-block;
-      background: var(--yellow);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-weight: 800;
-    }
-  </style>
+/* links das fotos */
+.links{display:grid;gap:12px}
+.link{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:24px;padding:16px 20px;text-decoration:none;color:inherit;transition:transform .15s}
+.link:hover{transform:translateY(-2px)}
+.link .dot{width:40px;height:40px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-weight:800;color:#132c4a;flex:none;font-size:13px}
+.link strong{display:block;font-weight:800;line-height:1.2}
+.link small{color:var(--muted);font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.foot{margin-top:56px;text-align:center}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-  <main>
-    <a class="back" href="../index.html">← voltar ao portfólio</a>
+<main class="wrap">
+  <div class="top">
+    <a class="btn" id="voltar" href="../index.html#amostras">voltar ao portfólio</a>
+    <button id="theme" aria-label="Alternar tema claro e escuro">◐</button>
+  </div>
+  <header class="head" id="head"></header>
+  <div id="intro"></div>
+  <div id="content"></div>
+  <div class="foot" id="foot"></div>
+</main>
 
-    <p class="tag">case de design instrucional</p>
-    <h1>Trilha de aprendizagem gamificada</h1>
-    <p class="intro">
-      Como transformei um desafio educacional em uma experiência
-      de aprendizagem mais envolvente.
-    </p>
+<script>
+/* =====================================================================
+   EDITE AQUI. Cada campo é opcional: deixe "" ou [] e a seção some.
+   ===================================================================== */
+var CASE = {
+  voltar: "../index.html#amostras",
+  shape: "circle", color: "yellow",     // circle | half | quarter | arch  ·  yellow | red | blue | navy
+  title: "Curso online de [tema]",
+  tag: "EAD · Storyline",
+  capa: "",                              // imagem de capa (ex.: "img/capa.png"), opcional
 
-    <section>
-      <h2>01. Contexto</h2>
-      <p>Apresente aqui o projeto, o público e o cenário educacional.</p>
-    </section>
+  /* FOTOS DO PROJETO: cole aqui o link do álbum (Google Drive, Behance, Canva, Notion...).
+     Pode colocar mais de um link. */
+  fotos: [
+    { titulo: "Ver fotos do projeto", url: "https://seu-link-das-fotos.com", icone: "FOTO" }
+    // { titulo: "Roteiro em PDF", url: "arquivos/roteiro.pdf", icone: "PDF" },
+    // { titulo: "Vídeo de apresentação", url: "https://youtu.be/XXXX", icone: "▶" }
+  ],
 
-    <section>
-      <h2>02. O desafio</h2>
-      <p>Explique qual problema precisava ser resolvido.</p>
-    </section>
+  /* DESCRIÇÃO DO PROJETO: cada texto entre aspas vira um parágrafo */
+  descricao: [
+    "[Parágrafo 1: qual era o contexto e o problema que o projeto precisava resolver.]",
+    "[Parágrafo 2: o que você criou, como a solução funciona e qual foi o seu papel.]",
+    "[Parágrafo 3 (opcional): como foi a recepção, o que mudou depois do projeto.]"
+  ],
 
-    <section>
-      <h2>03. Meu processo</h2>
-      <p>Descreva as etapas, as decisões pedagógicas e as ferramentas utilizadas.</p>
-    </section>
+  /* PARA QUEM EU CRIEI: persona ou descrição do público */
+  persona: {
+    nome: "[Nome fictício, ex.: Carla, 34 anos]",
+    foto: "",
+    perfil: "[Quem é, onde trabalha, quanto tempo tem para estudar, que dispositivo usa.]",
+    dores: ["[Pouco tempo para estudar]", "[Conteúdo muito teórico]"],
+    necessidades: ["[Aprender no celular]", "[Praticar com situações reais]"]
+  },
 
-    <section>
-      <h2>04. Resultado e aprendizados</h2>
-      <p>Apresente os materiais entregues, os resultados observados e o que aprendeu.</p>
-      <p><span class="highlight">Seu aprendizado em destaque</span></p>
-    </section>
-  </main>
+  /* OBJETIVOS DE APRENDIZAGEM. nivel (Bloom): lembrar, entender, aplicar, analisar, avaliar, criar.
+     As cores dos cartões alternam entre amarelo, vermelho, azul e azul-marinho. */
+  objetivos: [
+    { nivel: "entender", texto: "[Explicar as etapas do processo de atendimento.]" },
+    { nivel: "aplicar",  texto: "[Aplicar o roteiro de abordagem em simulações.]" },
+    { nivel: "analisar", texto: "[Analisar casos reais e identificar erros comuns.]" },
+    { nivel: "avaliar",  texto: "[Avaliar o próprio desempenho com uma rubrica.]" }
+  ],
+
+  /* FERRAMENTAS QUE UTILIZEI: nome + para que usou (uso é opcional) */
+  ferramentas: [
+    { nome: "Articulate Storyline", uso: "[autoria das telas interativas]" },
+    { nome: "Canva", uso: "[identidade visual e infográficos]" },
+    { nome: "Moodle", uso: "[publicação e acompanhamento]" },
+    { nome: "Miro", uso: "[mapa de conteúdo e storyboard]" }
+  ]
+};
+/* ===================== fim da área de edição ===================== */
+
+var $ = function(id){return document.getElementById(id)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function url(u){return /^\s*javascript:/i.test(u)?"#":esc(u)}
+function has(a){return a&&a.length}
+function list(a){return '<ul class="dots">'+a.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>'}
+
+var C = CASE, secs = [], COLS = ["yellow","red","blue","navy"], SHAPES = ["circle","half","quarter","arch"];
+function sec(id,label,title,sub,html){
+  secs.push([id,label]);
+  return '<section id="'+id+'"><h2>'+title+'</h2>'+(sub?'<p class="sub">'+sub+'</p>':'')+html+'</section>';
+}
+
+function render(){
+  var h = "";
+  document.title = C.title+" · laís araújo";
+  $("voltar").href = C.voltar||"../index.html";
+  $("head").innerHTML = '<span class="shape s-'+esc(C.shape)+' c-'+esc(C.color)+'" aria-hidden="true"><i></i></span><div><h1>'+esc(C.title)+'</h1><div class="tag">'+esc(C.tag)+'</div></div>';
+  $("intro").innerHTML = C.capa?'<img class="cover" src="'+esc(C.capa)+'" alt="Capa: '+esc(C.title)+'">':'';
+
+  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","clique para abrir em uma nova aba",
+    '<div class="links">'+C.fotos.map(function(l){return '<a class="link" href="'+url(l.url)+'" target="_blank" rel="noopener"><span class="dot" aria-hidden="true">'+esc(l.icone||"↗")+'</span><span><strong>'+esc(l.titulo)+'</strong><small>'+esc(l.url)+'</small></span></a>'}).join("")+'</div>');
+
+  if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
+
+  var p = C.persona;
+  if(p && p.nome){
+    var av = p.foto?'<img src="'+esc(p.foto)+'" alt="">':esc(p.nome.replace(/[^A-Za-zÀ-ú]/g,"").charAt(0).toUpperCase());
+    h += sec("publico","para quem criei","para quem eu criei","",
+      '<div class="card persona"><div class="avatar" aria-hidden="true">'+av+'</div><div><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
+      '<div class="cols">'+(has(p.dores)?'<div><span class="k">dores</span>'+list(p.dores)+'</div>':'')+(has(p.necessidades)?'<div><span class="k">necessidades</span>'+list(p.necessidades)+'</div>':'')+'</div></div></div>');
+  }
+
+  if(has(C.objetivos)) h += sec("objetivos","objetivos","objetivos de aprendizagem","ao final, a pessoa será capaz de…",
+    '<div class="grid g2">'+C.objetivos.map(function(o,i){return '<div class="obj o-'+COLS[i%4]+'"><span class="bl">'+esc(o.nivel||"")+'</span><p>'+esc(o.texto)+'</p></div>'}).join("")+'</div>');
+
+  if(has(C.ferramentas)) h += sec("ferramentas","ferramentas","ferramentas que utilizei","",
+    '<div class="grid g2">'+C.ferramentas.map(function(t,i){return '<div class="tool"><span class="shape s-'+SHAPES[i%4]+' c-'+COLS[i%4]+'" aria-hidden="true"><i></i></span><div><strong>'+esc(t.nome)+'</strong>'+(t.uso?'<small>'+esc(t.uso)+'</small>':'')+'</div></div>'}).join("")+'</div>');
+
+
+  $("content").innerHTML = h;
+  $("foot").innerHTML = '<a class="btn y" href="'+esc(C.voltar||"../index.html")+'">ver outras amostras</a>';
+
+}
+
+$("theme").addEventListener("click",function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme")==="dark"||(!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme",dark?"light":"dark");
+});
+render();
+</script>
 </body>
 </html>
