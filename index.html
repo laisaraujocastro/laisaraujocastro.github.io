@@ -280,6 +280,8 @@ h2 .pt { display: none !important; }
 .toast{display:block;background:var(--card);color:var(--ink);padding:12px 28px;box-shadow:0 8px 28px rgba(19,44,74,.2);text-align:center;border-radius:28px}
 .toast small{display:block;font-size:13px;font-weight:600;color:var(--muted);line-height:1.2}
 .toast b{display:block;font-size:17px;font-weight:800;line-height:1.25}
+  .thumb{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;display:block}
+.gate.open .quest-top > .thumb{animation:wiggle .5s}
 </style>
 </head>
 <body>
@@ -345,7 +347,7 @@ h2 .pt { display: none !important; }
 var PROFILE = { email:"seuemail@exemplo.com", linkedin:"https://www.linkedin.com/in/seu-perfil" };
 
 var QUESTS = [
-  { shape:"circle", color:"yellow", title:"joy education", tag:"slides, planos de aula e texto interativo", img:"Raleway (2).png", url: "cases/curso-online.html",
+  { shape:"circle", color:"yellow", title:"joy education", tag:"slides, planos de aula e texto interativo", foto: "Raleway (2).png", img:"", url: "cases/curso-online.html",
     papel:"[Qual era o seu papel: ex. designer instrucional responsável por roteiro, slides e textos interativos.]" },
   { shape:"half", color:"red", title:"Trilha gamificada de [tema]", tag:"Gamificação · Moodle", img:"",
     papel:"[Qual era o seu papel neste projeto.]" },
@@ -432,7 +434,7 @@ function bindGates(){
 function renderQuests(){
 $("quests").innerHTML = QUESTS.map(function(q,i){
 return '<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
-'<div class="quest-top">'+shape(q)+
+'<div class="quest-top">'+(q.foto?'<img class="thumb" src="'+esc(q.foto)+'" alt="">':shape(q))+
 '<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+PILL+'</div>'+
 '<div class="detail">'+
 (q.img?'<img src="'+esc(q.img)+'" alt="'+esc(q.title)+'">':'')+
@@ -489,8 +491,8 @@ function renderBoss(){
   b.className = "boss"+(ok?" win":"");
   var links = '<div class="links"><a class="btn" href="mailto:'+esc(PROFILE.email)+'">enviar e-mail</a><a class="btn alt" href="'+esc(PROFILE.linkedin)+'" target="_blank" rel="noopener">linkedin</a></div>';
   b.innerHTML = ok
-    ? '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>você zerou o jogo!</h3><p>Que tal criar a próxima missão juntos? Conte qual é o seu desafio de aprendizagem.</p>'+links
-    : '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>me conte qual é o seu desafio de aprendizagem. bônus: conquiste os '+SECS.length+' emblemas para zerar o portfólio! (faltam '+(SECS.length-points)+').</p>'+links;
+    ? '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>você zerou o jogo!</h3><p>Que tal criar a próxima missão juntos? Conte qual é o seu  de aprendizagem.</p>'+links
+    : '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>me conte qual é o seu  de aprendizagem. bônus: conquiste os '+SECS.length+' emblemas para zerar o portfólio! (faltam '+(SECS.length-points)+').</p>'+links;
 }
 
 function renderPts(){
