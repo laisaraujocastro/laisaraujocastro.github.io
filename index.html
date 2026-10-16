@@ -17,7 +17,7 @@
   :root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f;--locked:#22364f}
 }
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f;--locked:#22364f}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px);scroll-behavior:smooth}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);background-image:radial-gradient(rgba(19,44,74,.07) 1px,transparent 1.2px);background-size:7px 7px;color:var(--ink);font-family:'Raleway',system-ui,sans-serif;font-size:17px;line-height:1.6;font-weight:400}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
@@ -36,7 +36,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   position: relative;
   overflow: hidden;
 }
-
 .bar > i {
   position: absolute;
   inset: 0 auto 0 0;
@@ -46,11 +45,19 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   transition: width .6s cubic-bezier(.2,.9,.3,1.1);
 }
 .bar span{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:800;color:#132c4a}
-#theme{border:0;var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
+#theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
+/* Emblemas no HUD */
+.slots{display:flex;gap:8px;align-items:center}
+.slots a{display:block;line-height:0;border-radius:50%;transition:transform .15s}
+.slots a:hover{transform:translateY(-2px)}
+.slots .shape{width:28px;height:28px}
+.slots .shape.lock i{background:var(--track)!important}
+.slots a.pop .shape{animation:pop .5s}
+
 /* Hero */
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 0px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 0}
 .hero h1{font-size:clamp(44px,9vw,84px);line-height:.95;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;text-transform:lowercase}
 .hero .tg {
   font-size: clamp(20px, 3.4vw, 27px);
@@ -58,18 +65,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   color: var(--muted);
   margin: 0 0 18px;
 }
-.hero p{max-width:480px;margin:0 0 24px}
+.hero p{max-width:480px;margin:0 0 16px}
 .btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
 .btn:hover{background:var(--red)}
 .btn:active{transform:scale(.96)}
 .btn.alt{background:var(--blue)}
 .tip{font-size:15px;color:var(--muted);margin-top:16px}
-  .hero .btn {
+.hero .btn {
   margin-bottom: 12px;
 }
-
 .hero .tip {
   margin-top: 8px;
+  margin-bottom: 0;
 }
 .art{width:100%;max-width:320px;justify-self:center}
 @media(max-width:640px){.hero{grid-template-columns:1fr}.art{max-width:220px;order:-1;justify-self:start}}
@@ -82,10 +89,10 @@ h2 {
   margin: 40px 0 0;
   text-transform: lowercase;
 }
-
 #sobre {
   margin-top: 0;
 }
+
 .sub {
   margin: 0 0 16px;
   color: var(--muted);
@@ -102,7 +109,6 @@ h2 {
 .nav a:hover{background:var(--yellow);color:#132c4a}
 
 /* Sobre, linha do tempo */
-/* Sobre, linha do tempo */
 .about {
   display: flex;
   align-items: flex-start;
@@ -116,53 +122,44 @@ h2 {
   height: auto;
   overflow-wrap: anywhere;
 }
-
 .about > div:not(.avatar) {
   flex: 1 1 0;
   min-width: 0;
 }
-
 .about h3 {
   margin: 0;
   font-size: 21px;
   font-weight: 800;
   line-height: 1.3;
 }
-
 .about .detail {
   width: 100%;
   min-width: 0;
 }
-
 .about .detail p {
   margin: 0 0 14px;
   max-width: 100%;
   line-height: 1.7;
   overflow-wrap: anywhere;
 }
-
 .about .chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .about .chip {
   max-width: 100%;
   overflow-wrap: anywhere;
 }
-
 @media (max-width: 560px) {
   .about {
     flex-direction: column;
     padding: 22px;
     gap: 18px;
   }
-
   .about > div:not(.avatar) {
     width: 100%;
   }
-
   .about .quest-top {
     flex-wrap: wrap;
   }
@@ -172,27 +169,13 @@ h2 {
 .about p{margin:0 0 14px;max-width:600px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{background:var(--track);border-radius:99px;padding:4px 14px;font-weight:600;font-size:15px}
-.tl{border-left:4px solid var(--track);margin-left:10px;padding-left:28px;display:grid;gap:18px}
+.tl{display:grid;gap:18px}
 .tl-item{position:relative;background:var(--card);border-radius:24px;padding:16px 20px}
-.tl-item::before {
-  content: "";
-  position: absolute;
-  left: -40px;
-  top: 30px;
-  width: 20px;
-  height: 20px;
-  box-sizing: border-box;
-  border-radius: 50%;
-  background: var(--c, var(--yellow));
-  border: 4px solid var(--bg);
-  z-index: 1;
-}
 .when{font-size:14px;font-weight:800;color:var(--muted)}
 .tl-item h3{margin:2px 0 0;font-size:20px;font-weight:800;line-height:1.2}
 .where{color:var(--muted);font-weight:800;font-size:16px}
 .tl-item p{margin:8px 0 0;max-width:620px}
 .mini{font-size:22px;font-weight:800;margin:34px 0 14px;text-transform:lowercase}
-@media(max-width:560px){.about{flex-direction:column}}
 
 /* Shapes */
 .shape{width:60px;height:60px;display:grid;flex:none}
@@ -221,52 +204,18 @@ h2 {
 .xp{margin-left:auto;font-weight:800;font-size:13px;background:var(--yellow);color:#132c4a;padding:4px 12px;border-radius:99px;white-space:nowrap}
 .gate.done .xp{background:var(--track);color:var(--ink)}
 .detail{display:none;margin-top:18px;padding-top:16px;border-top:2px solid var(--track)}
-.gate.open .detail{display:block}
+.gate.open .detail{display:block;animation:reveal .35s ease}
 .detail b{font-weight:800;font-size:14px;display:block;color:var(--red);text-transform:lowercase}
 .detail p{margin:2px 0 14px;max-width:640px}
-
 .detail img{width:100%;max-width:640px;border-radius:20px;display:block;margin:0 0 16px}
 
 /* Skills */
-.skills {
-  display: grid;
-  gap: 14px;
-}
-
-.skill {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: nowrap;
-}
-
-.skill .n {
-  flex: 1;
-  min-width: 0;
-  font-weight: 600;
-}
-
-.pips {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.pips i {
-  display: block;
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--track);
-}
-
-.pips i.on {
-  background: var(--blue);
-}
+.skills { display: grid; gap: 14px; }
+.skill { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: nowrap; }
+.skill .n { flex: 1; min-width: 0; font-weight: 600; }
+.pips { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-shrink: 0; }
+.pips i { display: block; width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%; background: var(--track); }
+.pips i.on { background: var(--blue); }
 
 /* Badges */
 .badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
@@ -288,40 +237,43 @@ h2 {
 .boss .btn.alt{background:var(--blue);color:#fff}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translate(-50%,130px);background:var(--navy);color:#f4f2ed;padding:11px 22px;border-radius:99px;font-weight:600;font-size:15px;transition:transform .35s;z-index:20;text-align:center;max-width:92vw}
 .toast.show{transform:translate(-50%,0)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-  h2 .pt {
-  display: none !important;
-} 
-  
-.case-link {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-margin-top: 16px;
-padding: 10px 16px;
-background: #fbb814;
-color: #132c4a;
-border-radius: 8px;
-font-weight: 700;
-font-size: 14px;
-text-decoration: none;
-transition: transform 0.2s ease, opacity 0.2s ease;
-}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+h2 .pt { display: none !important; }
 
 .case-link {
-transform: translateY(-2px);
-opacity: 0.9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 16px;
+  background: #fbb814;
+  color: #132c4a;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-  /* Emblemas no HUD */
-.slots{display:flex;gap:8px;align-items:center}
-.slots a{display:block;line-height:0;border-radius:50%;transition:transform .15s}
-.slots a:hover{transform:translateY(-2px)}
-.slots .shape{width:28px;height:28px}
-.slots .shape.lock i{background:var(--track)!important}
-.slots a.pop .shape{animation:pop .5s}
-  
+/* ===== Animações ao clicar ===== */
+@keyframes reveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg) scale(1.1)}75%{transform:rotate(12deg) scale(1.1)}}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.25) rotate(-4deg)}100%{transform:scale(1)}}
+@keyframes flash{0%{box-shadow:0 0 0 0 rgba(251,184,20,.9)}100%{box-shadow:0 0 0 16px rgba(251,184,20,0)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.gate:active{transform:scale(.98)}
+.gate.open .quest-top > .shape{animation:wiggle .5s}
+.xp.pop{animation:pop .45s}
+.lvl.bump{animation:bump .5s}
+.bar.flash{animation:flash .7s}
+.confetti{position:fixed;z-index:30;pointer-events:none;will-change:transform,opacity}
+.boss.win .shape{animation:bob 1.2s ease-in-out infinite}
+.chip{transition:transform .15s}
+.chip:hover{transform:translateY(-3px) rotate(-3deg)}
+.badge.on:hover .shape{animation:pop .5s}
+#theme{transition:transform .3s}
+#theme:active{transform:rotate(180deg) scale(.9)}
 </style>
 </head>
 <body>
@@ -329,11 +281,10 @@ opacity: 0.9;
 <div class="hud">
   <div class="hud-in">
     <span class="lvl" id="lvl">nível 1</span>
-    <div class="bar" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="100" id="barwrap"><i id="fill"></i><span id="xptxt">0 / 5 pontos</span></div>
+    <div class="bar" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="100" id="barwrap"><i id="fill"></i><span id="xptxt">0 / 5</span></div>
     <div class="slots" id="slots" aria-label="Emblemas"></div>
     <button id="theme" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
-  <nav class="nav" aria-label="Seções"><a href="#sobre">sobre mim</a><a href="#formacao">formação</a><a href="#experiencia">experiências</a><a href="#habilidades">habilidades</a><a href="#amostras">amostras</a><a href="#contato">contato</a></nav>
 </div>
 
 <main class="wrap">
@@ -343,7 +294,7 @@ opacity: 0.9;
       <p class="tg">tech, psicologia e educação.</p>
       <p>designer instrucional. me divirto criando e gosto de fazer as pessoas se divertirem aprendendo. para saber mais sobre mim, abra cada card!</p>
       <a class="btn" href="#sobre">começar</a>
-      <p class="tip">esse portfólio é interativo. cada seção vale 1 ponto e 1 emblema. clique nos cards para abrir; ao abrir todos de uma seção, voalá: o ponto é seu.</p>
+      <p class="tip">cada seção vale 1 ponto e 1 emblema. abra os cards para conquistar.</p>
     </div>
     <svg class="art" viewBox="0 0 200 200" aria-hidden="true">
       <circle cx="100" cy="100" r="92" fill="#fbb814"/>
@@ -387,9 +338,8 @@ opacity: 0.9;
 /* ===== EDITE AQUI: seus dados ===== */
 var PROFILE = { email:"seuemail@exemplo.com", linkedin:"https://www.linkedin.com/in/seu-perfil" };
 
-/* shape: circle | half | quarter | arch   ·   color: yellow | red | blue | navy */
 var QUESTS = [
-  { shape:"circle", color:"yellow", title:"Curso online de [tema]", tag:"EAD · Storyline", img:"", url: "cases/curso-online.html", /* imagem da missão: ex. "missao1.jpg" */
+  { shape:"circle", color:"yellow", title:"Curso online de [tema]", tag:"EAD · Storyline", img:"", url: "cases/curso-online.html",
     desafio:"[Descreva o problema: ex. alta evasão, conteúdo extenso, público diverso.]",
     fiz:"[O que você fez: mapeamento de público, objetivos de aprendizagem, roteiro, protótipo, testes.]",
     resultado:"[Resultado: ex. 85% de conclusão, nota de satisfação 4,7/5.]" },
@@ -415,10 +365,11 @@ var SKILLS = [
   ["roteirização",5],
   ["avaliação e métricas de aprendizagem",4]
 ];
-var HERO_IMG = "Creative and Minimal Portfolio Presentation.png"; /* foto ou logo do topo da página: ex. "topo.jpg". Se ficar vazio, aparecem as formas coloridas. */
+/* No preview as imagens ficam vazias (os arquivos estão no seu computador). No seu site, mantenha os nomes originais. */
+var HERO_IMG = "";
 
 var ABOUT = {
-  foto:"Raleway.png", /* opcional: coloque o endereço de uma foto, ex.: foto.jpg (o arquivo vai na mesma pasta do site) */
+  foto:"",
   iniciais:"LA",
   text:[
     "além do meu trabalho, também gosto de explorar minhas paixões para desenvolver a criatividade: adoro jogar jogos de tabuleiro, morrer 500 vezes em um jogo indie e assistir a conteúdos (ou aprender) sobre educação inclusiva.",
@@ -465,10 +416,13 @@ function onGate(e){
   el.setAttribute("aria-expanded", open);
   if(open && !s.got[i]){
     s.got[i] = true; s.count++;
-    el.classList.add("done"); el.querySelector(".xp").textContent = "✔ visto";
+    el.classList.add("done");
+    var pill = el.querySelector(".xp"); pill.textContent = "✔ visto"; bump(pill,"pop");
     if(s.count === s.n){
       awarded[s.k] = true; points++; update();
+      bump($("lvl"),"bump"); bump($("barwrap"),"flash");
       toast("+1 ponto · emblema: "+s.badge);
+      if(points === SECS.length) celebrate();
     } else renderPts();
   }
 }
@@ -493,20 +447,14 @@ return '<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expan
 $("quests").querySelectorAll(".quest").forEach(function(card){
 var q = QUESTS[Number(card.dataset.i)];
 if(!q.url) return;
-
 var detail = card.querySelector(".detail");
 var link = document.createElement("a");
 link.className = "case-link";
 link.href = q.url;
 link.textContent = "Ver estudo de caso ↗";
 link.target = "_self";
-
-link.addEventListener("click", function(event){
-  event.stopPropagation();
-});
-
+link.addEventListener("click", function(event){ event.stopPropagation(); });
 detail.appendChild(link);
-
 });
 }
 
@@ -527,9 +475,22 @@ function renderBadges(){
   }).join("");
 }
 
+var shown = {};
+function renderSlots(){
+  $("slots").innerHTML = SECS.map(function(s){
+    var on = awarded[s.k];
+    var fresh = on && !shown[s.k];
+    if(on) shown[s.k] = true;
+    return '<a href="#'+s.k+'"'+(fresh?' class="pop"':'')+
+      ' title="'+esc(s.label)+(on?' · '+esc(s.badge):' · bloqueada')+'"'+
+      ' aria-label="'+esc(s.label)+(on?' (conquistada)':' (bloqueada)')+'">'+
+      shape(s,!on)+'</a>';
+  }).join("");
+}
+
 function renderBoss(){
   var ok = points === SECS.length, b = $("boss");
-  b.className = "boss";
+  b.className = "boss"+(ok?" win":"");
   var links = '<div class="links"><a class="btn" href="mailto:'+esc(PROFILE.email)+'">enviar e-mail</a><a class="btn alt" href="'+esc(PROFILE.linkedin)+'" target="_blank" rel="noopener">linkedin</a></div>';
   b.innerHTML = ok
     ? '<span class="shape s-circle c-yellow" aria-hidden="true"><i></i></span><h3>você zerou o jogo!</h3><p>Que tal criar a próxima missão juntos? Conte qual é o seu desafio de aprendizagem.</p>'+links
@@ -544,27 +505,14 @@ function renderPts(){
   });
 }
 
-  var shown = {};
-function renderSlots(){
-  $("slots").innerHTML = SECS.map(function(s){
-    var on = awarded[s.k];
-    var fresh = on && !shown[s.k];
-    if(on) shown[s.k] = true;
-    return '<a href="#'+s.k+'"'+(fresh?' class="pop"':'')+
-      ' title="'+esc(s.label)+(on?' · '+esc(s.badge):' · bloqueada')+'"'+
-      ' aria-label="'+esc(s.label)+(on?' (conquistada)':' (bloqueada)')+'">'+
-      shape(s,!on)+'</a>';
-  }).join("");
-}
-
 function update(){
   var total = SECS.length, pct = Math.round(points/total*100);
   $("fill").style.width = pct+"%";
-  $("xptxt").textContent = points+" / "+total+" pontos";
+  $("xptxt").textContent = points+" / "+total;
   $("barwrap").setAttribute("aria-valuenow", pct);
   $("lvl").textContent = "nível "+(points+1);
   renderPts(); renderBadges(); renderBoss();
-  renderSlots(); 
+  renderSlots();
 }
 
 function tl(items,sec){
@@ -590,13 +538,39 @@ function renderEdu(){
 }
 function renderJobs(){ $("jobs").innerHTML = tl(JOBS, "experiencia"); }
 
+var REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+var COLORS = ["#fbb814","#e30613","#2e7cc4","#132c4a"];
+function bump(el,cls){ el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+function burst(x,y,n){
+  if(REDUCED) return;
+  for(var k=0;k<n;k++){
+    var p = document.createElement("i"), size = 8+Math.random()*8;
+    p.className = "confetti";
+    p.style.cssText = "left:"+x+"px;top:"+y+"px;width:"+size+"px;height:"+size+"px;background:"+COLORS[k%4]+
+      ";border-radius:"+(k%3===0?"50%":k%3===1?"3px":"99px 99px 0 0");
+    document.body.appendChild(p);
+    var a = Math.random()*Math.PI*2, d = 50+Math.random()*90, dx = Math.cos(a)*d, dy = Math.sin(a)*d-30;
+    var anim = p.animate([
+      {transform:"translate(-50%,-50%) scale(.4) rotate(0deg)",opacity:1},
+      {transform:"translate(calc(-50% + "+dx+"px),calc(-50% + "+dy+"px)) scale(1) rotate("+(Math.random()*540-270)+"deg)",opacity:1,offset:.6},
+      {transform:"translate(calc(-50% + "+dx+"px),calc(-50% + "+(dy+60)+"px)) scale(.8) rotate("+(Math.random()*720-360)+"deg)",opacity:0}
+    ],{duration:900+Math.random()*400,easing:"cubic-bezier(.2,.8,.3,1)"});
+    anim.onfinish = (function(el){return function(){el.remove()}})(p);
+  }
+}
+function celebrate(){
+  for(var k=0;k<6;k++) (function(k){
+    setTimeout(function(){ burst(innerWidth*(k+1)/7, 140+Math.random()*80, 28); }, k*180);
+  })(k);
+}
+
 var tt;
 function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("show")},2600)}
 
-$("").addEventListener("click", function(){
-  var r = document.documentElement, dark = r.getAttribute("data-")==="dark" ||
-    (!r.getAttribute("data-") && matchMedia("(prefers-color-scheme: dark)").matches);
-  r.setAttribute("data-", dark ? "light" : "dark");
+$("theme").addEventListener("click", function(){
+  var r = document.documentElement, dark = r.getAttribute("data-theme")==="dark" ||
+    (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  r.setAttribute("data-theme", dark ? "light" : "dark");
 });
 
 renderHero(); renderAbout(); renderEdu(); renderJobs(); renderQuests(); renderSkills(); bindGates(); update();
