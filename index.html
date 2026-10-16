@@ -316,6 +316,35 @@ h2 .pt { display: none !important; }
 .boss .btn:hover{background:var(--blue);color:#fff}
 .boss .btn.alt:hover{background:var(--red);color:#fff}
 .case-link:hover{background:var(--blue)}
+  .quest .case-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:16px;
+  padding:6px 6px 6px 22px;
+  background:var(--navy);
+  color:#f4f2ed;
+  border-radius:99px;
+  font-weight:800;
+  font-size:15px;
+  text-decoration:none;
+  transition:transform .12s,background .12s;
+}
+.quest .case-link .arr{
+  width:32px;
+  height:32px;
+  flex:none;
+  border-radius:50%;
+  background:var(--yellow);
+  color:var(--navy);
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  transition:transform .2s;
+}
+.quest .case-link:hover{background:var(--blue);color:#fff}
+.quest .case-link:active{transform:scale(.96)}
 </style>
 </head>
 <body>
