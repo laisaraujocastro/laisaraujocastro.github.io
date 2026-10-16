@@ -573,7 +573,7 @@ function celebrate(){
 var tt;
   function badgeToast(s){
   var t=$("toast");
-  t.innerHTML = shape(s)+'<span><small>emblema conquistado · +1 ponto</small><b>'+esc(s.badge)+'</b></span>';
+  t.innerHTML = '<small>emblema conquistado · +1 ponto</small><b>'+esc(s.badge)+'</b>';
   t.classList.add("show"); clearTimeout(tt);
   tt=setTimeout(function(){t.classList.remove("show")},3200);
 }
