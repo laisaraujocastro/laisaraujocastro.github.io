@@ -7,6 +7,36 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
+  .case-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:16px;
+  padding:6px 6px 6px 22px;
+  background:var(--navy);
+  color:#f4f2ed;
+  border-radius:99px;
+  font-weight:800;
+  font-size:15px;
+  text-decoration:none;
+  transition:transform .12s,background .12s;
+}
+.case-link .arr{
+  width:32px;
+  height:32px;
+  flex:none;
+  border-radius:50%;
+  background:var(--yellow);
+  color:var(--navy);
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  transition:transform .2s;
+}
+.case-link:hover{background:var(--red)}
+.case-link:hover .arr{transform:translateX(3px)}
+.case-link:active{transform:scale(.96)}
 #quests .detail{margin-top:12px;padding-top:12px}
 #quests .detail p{max-width:none}
 :root{
@@ -207,7 +237,7 @@ h2 {
 .gate.done .xp{background:var(--track);color:var(--ink)}
 .detail{display:none;margin-top:18px;padding-top:16px;border-top:2px solid var(--track)}
 .gate.open .detail{display:block;animation:reveal .35s ease}
-.detail b{font-weight:800;font-size:18px;display:block;color:var(--red);text-transform:lowercase;margin-bottom:4px}
+.detail b{font-weight:800;font-size:18px;display:block;color:var(--muted);text-transform:lowercase;margin-bottom:4px}
 .detail p{margin:2px 0 14px;max-width:640px}
 .detail img{width:100%;max-width:640px;border-radius:20px;display:block;margin:0 0 16px}
 
@@ -453,7 +483,7 @@ var detail = card.querySelector(".detail");
 var link = document.createElement("a");
 link.className = "case-link";
 link.href = q.url;
-link.textContent = "ver estudo de caso";
+link.innerHTML = 'ver estudo de caso<span class="arr" aria-hidden="true">→</span>';
 link.target = "_self";
 link.addEventListener("click", function(event){ event.stopPropagation(); });
 detail.appendChild(link);
