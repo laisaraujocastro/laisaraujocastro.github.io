@@ -162,10 +162,10 @@ function render(){
   $("head").innerHTML = '<span class="shape s-'+esc(C.shape)+' c-'+esc(C.color)+'" aria-hidden="true"><i></i></span><div><h1>'+esc(C.title)+'</h1><div class="tag">'+esc(C.tag)+'</div></div>';
   $("intro").innerHTML = C.capa?'<img class="cover" src="'+esc(C.capa)+'" alt="Capa: '+esc(C.title)+'">':'';
 
+   if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
+
   if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","clique para abrir em uma nova aba",
     '<div class="links">'+C.fotos.map(function(l){return '<a class="link" href="'+url(l.url)+'" target="_blank" rel="noopener"><span class="dot" aria-hidden="true">'+esc(l.icone||"↗")+'</span><span><strong>'+esc(l.titulo)+'</strong><small>'+esc(l.url)+'</small></span></a>'}).join("")+'</div>');
-
-  if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
 
   var p = C.persona;
   if(p && p.nome){
