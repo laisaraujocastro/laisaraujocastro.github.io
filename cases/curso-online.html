@@ -48,12 +48,39 @@ ul.dots li{padding-left:22px;position:relative}
 ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;background:var(--blue)}
 
 /* persona: foto opcional ao lado do texto */
-.persona{display:flex;gap:22px;align-items:flex-start}
+.persona{display:block}
+.p-top{display:flex;gap:22px;align-items:flex-start}
 .persona .foto{width:110px;height:110px;border-radius:50%;object-fit:cover;flex:none;display:block}
 .persona .info{flex:1;min-width:0}
 .persona h3{margin:0 0 4px;font-size:22px;font-weight:800;line-height:1.2}
 .persona .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:14px}
-@media(max-width:560px){.persona{flex-direction:column}}
+@media(max-width:560px){.p-top{flex-direction:column}}
+
+/* ficha da persona: quem é · tempo para estudar · dispositivo */
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
+.fi{--sh:#fff;position:relative;overflow:hidden;isolation:isolate;border-radius:28px;padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;min-height:190px;transition:transform .2s;animation:subir .55s both;animation-delay:calc(var(--i,0) * 110ms)}
+.fi:hover{transform:translateY(-4px) rotate(-.6deg)}
+.fi::before{content:"";position:absolute;z-index:-1;right:-44px;top:-44px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.2);transition:transform .35s}
+.fi:hover::before{transform:scale(1.35)}
+.f-yellow{background:var(--yellow);color:var(--navy);--sh:var(--navy)}
+.f-yellow::before{background:rgba(19,44,74,.09)}
+.f-blue{background:var(--blue);color:#fff;--sh:var(--yellow)}
+.f-red{background:var(--red);color:#fff;--sh:var(--yellow)}
+.fi .fh{display:flex;align-items:center;gap:10px}
+.fi .fh .ico{width:34px;height:34px;flex:none;color:var(--sh);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.fi:hover .ico{transform:scale(1.12) rotate(-6deg)}
+.fi .bl{font-size:13px;font-weight:800;border-radius:99px;padding:3px 14px;text-transform:lowercase;background:rgba(255,255,255,.22)}
+.f-yellow .bl{background:rgba(19,44,74,.14)}
+.fi .val{font-size:clamp(24px,4.2vw,30px);font-weight:800;line-height:1.05;letter-spacing:-.02em;text-transform:lowercase}
+.fi .det{margin:0;font-weight:600;font-size:15px;line-height:1.3;opacity:.92}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.chips span{font-size:13px;font-weight:800;text-transform:lowercase;border-radius:99px;padding:4px 12px;background:rgba(255,255,255,.22)}
+.meter{margin-top:auto}
+.meter .tr{height:12px;border-radius:99px;background:rgba(255,255,255,.25);overflow:hidden}
+.meter .tr i{display:block;height:100%;width:var(--w);border-radius:99px;background:var(--yellow);animation:encher 1.1s .35s cubic-bezier(.2,.8,.2,1) both}
+.meter small{display:block;margin-top:6px;font-weight:800;font-size:13px;text-transform:lowercase}
+@keyframes subir{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes encher{from{width:0}to{width:var(--w)}}
 
 /* objetivos: cartões nas cores da identidade */
 .obj{border-radius:28px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-height:150px}
@@ -78,7 +105,10 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 .bloco.k-blue{--acc:var(--blue)}
 .bloco.k-navy{--acc:var(--navy);--txt:#f4f2ed}
 /* bola clarinha decorativa no canto */
-.bloco::before{content:"";position:absolute;z-index:-1;right:-56px;top:-56px;width:210px;height:210px;border-radius:50%;background:rgba(255,255,255,.2)}
+.bloco{transition:transform .25s;animation:subir .55s both}
+.bloco:hover{transform:translateY(-4px) rotate(-.4deg)}
+.bloco::before{content:"";position:absolute;z-index:-1;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.2);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.bloco:hover::before{transform:translate(-26px,22px) scale(1.4)}
 .bloco.k-yellow::before{background:rgba(19,44,74,.09)}
 .bloco h3{margin:0;font-size:clamp(34px,6.5vw,52px);font-weight:800;line-height:1.1;text-transform:lowercase;letter-spacing:-.035em}
 .bloco-desc{margin:0 0 16px;max-width:46ch;font-weight:600;font-size:18px;line-height:1.3;opacity:.9}
@@ -90,7 +120,7 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 .link:active{transform:scale(.97)}
 .link.off{opacity:.5;cursor:default}
 .link.off:hover{background:var(--card);color:var(--ink);transform:none}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -150,12 +180,31 @@ var CASE = {
     "durante o meu cargo de designer instrucional na joy education, eu desenvolvi alguns planos de aula para diversas aulas de estética e tecnologia. o nosso objetivo principal era unir a diversão, a interatividade e o dinamismo nas aulas, focados na gamificação e atividades lúdicas. dessa forma, conseguíamos desenvolver um conteúdo que fosse engajante e interessante para os alunos."
   ],
 
-  /* PARA QUEM EU CRIEI: persona ou descrição do público */
+  /* PARA QUEM EU CRIEI: persona ou descrição do público.
+     A ficha (quem, tempo, dispositivo) aparece em três cartões coloridos.
+     Cada parte é opcional: apague uma e o cartão some.
+       quem:        { titulo, detalhe }
+       tempo:       { titulo, detalhe, momentos: ["...", "..."] }   (momentos viram etiquetas)
+       dispositivo: { titulo, detalhe, uso: 85, usoTexto: "..." }   (uso é um número de 0 a 100 e vira uma barra) */
   persona: {
     nome: "beatriz, 22 anos",
     foto: "ícone persona.png",           // nome da sua imagem, ou "" para ficar sem foto
-    perfil: "estudante do curso técnico em estética, em recife. trabalha como recepcionista em um salão de beleza e quer, no futuro, abrir seu próprio espaço.]"]
-  
+    perfil: "estudante do curso técnico em estética, em recife. trabalha como recepcionista em um salão de beleza e quer, no futuro, abrir seu próprio espaço.",
+    quem: {
+      titulo: "estudante de estética",
+      detalhe: "curso técnico em recife. trabalha como recepcionista em um salão de beleza."
+    },
+    tempo: {
+      titulo: "5 horas por semana",
+      detalhe: "estuda em momentos curtos, entre uma tarefa e outra.",
+      momentos: ["no ônibus", "no intervalo", "à noite"]
+    },
+    dispositivo: {
+      titulo: "celular android",
+      detalhe: "plano de dados limitado.",
+      uso: 85,
+      usoTexto: "do estudo acontece no celular"
+    }
   },
 
   /* OBJETIVOS DE APRENDIZAGEM. nivel (Bloom): lembrar, entender, aplicar, analisar, avaliar, criar.
@@ -206,6 +255,35 @@ function bloco(b,i){
     '<div class="links">'+bt.map(botao).join("")+'</div></div>';
 }
 
+/* ficha da persona: três cartões coloridos (quem é, tempo para estudar, dispositivo) */
+var ICONES = {
+  pessoa: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>',
+  relogio: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+  celular: '<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>'
+};
+function ficha(p){
+  var cards = [], n = 0;
+  function card(cor,icone,rotulo,d,extra){
+    var i = n++;
+    return '<div class="fi f-'+cor+'" style="--i:'+i+'">'+
+      '<div class="fh"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">'+ICONES[icone]+'</svg><span class="bl">'+rotulo+'</span></div>'+
+      '<div class="val">'+esc(d.titulo||"")+'</div>'+
+      (d.detalhe?'<p class="det">'+esc(d.detalhe)+'</p>':'')+
+      (extra||'')+'</div>';
+  }
+  if(p.quem && p.quem.titulo) cards.push(card("yellow","pessoa","quem é",p.quem));
+  if(p.tempo && p.tempo.titulo){
+    var m = has(p.tempo.momentos) ? '<div class="chips">'+p.tempo.momentos.map(function(x){return '<span>'+esc(x)+'</span>'}).join("")+'</div>' : '';
+    cards.push(card("blue","relogio","tempo para estudar",p.tempo,m));
+  }
+  if(p.dispositivo && p.dispositivo.titulo){
+    var d = p.dispositivo, u = Math.max(0,Math.min(100,Number(d.uso)||0));
+    var bar = u ? '<div class="meter"><div class="tr"><i style="--w:'+u+'%"></i></div><small>'+u+'% '+esc(d.usoTexto||"")+'</small></div>' : '';
+    cards.push(card("red","celular","dispositivo",d,bar));
+  }
+  return cards.length ? '<div class="ficha">'+cards.join("")+'</div>' : '';
+}
+
 function render(){
   var h = "";
   document.title = C.title+" · laís araújo";
@@ -222,8 +300,9 @@ function render(){
   if(p && p.nome){
     var foto = p.foto ? '<img class="foto" src="'+esc(p.foto)+'" alt="'+esc(p.nome)+'">' : '';
     h += sec("publico","para quem criei","para quem eu criei","",
-      '<div class="card persona">'+foto+'<div class="info"><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
-      '<div class="cols">'+(has(p.dores)?'<div><span class="k">dores</span>'+list(p.dores)+'</div>':'')+(has(p.necessidades)?'<div><span class="k">necessidades</span>'+list(p.necessidades)+'</div>':'')+'</div></div></div>');
+      '<div class="card persona"><div class="p-top">'+foto+'<div class="info"><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
+      '<div class="cols">'+(has(p.dores)?'<div><span class="k">dores</span>'+list(p.dores)+'</div>':'')+(has(p.necessidades)?'<div><span class="k">necessidades</span>'+list(p.necessidades)+'</div>':'')+'</div></div></div>'+
+      ficha(p)+'</div>');
   }
 
   if(has(C.objetivos)) h += sec("objetivos","objetivos","objetivos de aprendizagem","ao final, a pessoa será capaz de…",
