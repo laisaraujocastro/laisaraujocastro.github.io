@@ -47,6 +47,24 @@ ul.dots{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
 ul.dots li{padding-left:22px;position:relative}
 ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;background:var(--blue)}
 
+/* sobre o projeto: destaque, fatos rápidos e foco */
+.resumo{display:grid;gap:18px}
+.resumo .lead{margin:0;max-width:26ch;font-size:clamp(24px,4.4vw,34px);font-weight:800;line-height:1.1;letter-spacing:-.025em;text-transform:lowercase}
+.fatos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.fato{background:var(--bg);border-radius:22px;padding:14px 16px;transition:transform .2s;animation:subir .55s both;animation-delay:calc(var(--i,0) * 90ms)}
+.fato:hover{transform:translateY(-3px)}
+.fato strong{display:block;margin-top:2px;font-weight:800;line-height:1.2;text-transform:lowercase}
+.foco{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{font-size:14px;font-weight:800;border-radius:99px;padding:5px 16px;text-transform:lowercase;transition:transform .15s}
+.pill:hover{transform:translateY(-2px) rotate(-2deg)}
+.p-yellow{background:var(--yellow);color:var(--navy)}
+.p-red{background:var(--red);color:#fff}
+.p-blue{background:var(--blue);color:#fff}
+.p-navy{background:var(--ink);color:var(--card)}
+.resumo .detalhe{border-top:2px dotted var(--track);padding-top:16px}
+.resumo .detalhe p{color:var(--muted);font-weight:600;margin:0 0 10px}
+.resumo .detalhe p:last-child{margin-bottom:0}
+
 /* persona: foto opcional ao lado do texto */
 .personas{display:grid;gap:16px}
 .persona{display:block}
@@ -96,7 +114,6 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 
 /* ferramentas */
 .tool{background:var(--card);border-radius:24px;padding:16px 18px;display:flex;gap:14px;align-items:center}
-.tool .shape{width:46px;height:46px}
 .tool strong{display:block;font-weight:800;line-height:1.2}
 .tool small{color:var(--muted);font-weight:600;font-size:14px;line-height:1.3;display:block;margin-top:2px}
 
@@ -178,6 +195,19 @@ var CASE = {
     }
   ],
 
+  /* RESUMO DO PROJETO: o que a pessoa lê primeiro (tudo opcional).
+     destaque: uma frase que explica o projeto · fatos: pares k (rótulo) e v (valor) · foco: palavras-chave */
+  resumo: {
+    destaque: "aulas de estética e tecnologia mais divertidas, interativas e dinâmicas",
+    fatos: [
+      { k: "meu papel", v: "designer instrucional" },
+      { k: "empresa", v: "joy education" },
+      { k: "áreas", v: "estética e tecnologia" },
+      { k: "materiais", v: "slides, planos de aula e textos interativos" }
+    ],
+    foco: ["gamificação", "atividades lúdicas", "interatividade", "engajamento"]
+  },
+
   /* DESCRIÇÃO DO PROJETO: cada texto entre aspas vira um parágrafo */
   descricao: [
     "durante o meu cargo de designer instrucional na joy education, eu desenvolvi alguns planos de aula para diversas aulas de estética e tecnologia. o nosso objetivo principal era unir a diversão, a interatividade e o dinamismo nas aulas, focados na gamificação e atividades lúdicas. dessa forma, conseguíamos desenvolver um conteúdo que fosse engajante e interessante para os alunos."
@@ -192,7 +222,7 @@ var CASE = {
   /* Para mais de uma persona, coloque cada uma entre { } separadas por vírgula, dentro dos colchetes [ ]. */
   persona: [{
     nome: "beatriz, 22 anos",
-    foto: "foto-persona-6.svg",           // nome da sua imagem, ou "" para ficar sem foto
+    foto: "ícone persona.png",           // nome da sua imagem, ou "" para ficar sem foto
     perfil: "estudante do curso técnico em estética. trabalha como recepcionista em um salão de beleza e quer, no futuro, abrir seu próprio espaço.",
     quem: {
       titulo: "estudante",
@@ -307,6 +337,16 @@ function ficha(p){
   return cards.length ? '<div class="ficha">'+cards.join("")+'</div>' : '';
 }
 
+/* sobre o projeto: destaque, fatos rápidos, foco e o texto completo */
+function descCard(){
+  var r = C.resumo||{}, h = '<div class="card resumo">';
+  if(r.destaque) h += '<p class="lead">'+esc(r.destaque)+'</p>';
+  if(has(r.fatos)) h += '<div class="fatos">'+r.fatos.map(function(f,i){return '<div class="fato" style="--i:'+i+'"><span class="k">'+esc(f.k)+'</span><strong>'+esc(f.v)+'</strong></div>'}).join("")+'</div>';
+  if(has(r.foco)) h += '<div class="foco">'+r.foco.map(function(x,i){return '<span class="pill p-'+COLS[i%4]+'">'+esc(x)+'</span>'}).join("")+'</div>';
+  if(has(C.descricao)) h += '<div class="detalhe">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>';
+  return h+'</div>';
+}
+
 /* um cartão de persona: foto, nome, perfil e a ficha colorida */
 function personaCard(p){
   var foto = p.foto ? '<img class="foto" src="'+esc(p.foto)+'" alt="'+esc(p.nome)+'">' : '';
@@ -322,7 +362,7 @@ function render(){
   $("head").innerHTML = '<div><h1>'+esc(C.title)+'</h1><div class="tag">'+esc(C.tag)+'</div></div>';
   $("intro").innerHTML = C.capa?'<img class="cover" src="'+esc(C.capa)+'" alt="Capa: '+esc(C.title)+'">':'';
 
-  if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
+  if(C.resumo||has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",descCard());
 
   if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","exemplos de materiais desenvolvidos",
     '<div class="blocos">'+C.fotos.map(bloco).join("")+'</div>');
@@ -334,7 +374,7 @@ function render(){
     '<div class="grid g2">'+C.objetivos.map(function(o,i){return '<div class="obj o-'+COLS[i%4]+'"><span class="bl">'+esc(o.nivel||"")+'</span><p>'+esc(o.texto)+'</p></div>'}).join("")+'</div>');
 
   if(has(C.ferramentas)) h += sec("ferramentas","ferramentas","ferramentas que utilizei","",
-    '<div class="grid g2">'+C.ferramentas.map(function(t,i){return '<div class="tool"><span class="shape s-'+SHAPES[i%4]+' c-'+COLS[i%4]+'" aria-hidden="true"><i></i></span><div><strong>'+esc(t.nome)+'</strong>'+(t.uso?'<small>'+esc(t.uso)+'</small>':'')+'</div></div>'}).join("")+'</div>');
+    '<div class="grid g2">'+C.ferramentas.map(function(t,i){return '<div class="tool"><div><strong>'+esc(t.nome)+'</strong>'+(t.uso?'<small>'+esc(t.uso)+'</small>':'')+'</div></div>'}).join("")+'</div>');
 
   $("content").innerHTML = h;
 }
