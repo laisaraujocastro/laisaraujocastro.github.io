@@ -378,7 +378,7 @@ function render(){
 
   if(C.resumo||has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",descCard());
 
-  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","exemplos de materiais desenvolvidos",
+  if(has(C.fotos)) h += sec("fotos","fotos","amostra do projeto","exemplos de materiais desenvolvidos",
     '<div class="blocos">'+C.fotos.map(bloco).join("")+'</div>');
 
   var ps = (Array.isArray(C.persona)?C.persona:[C.persona]).filter(function(x){return x&&x.nome}).map(personaCard);
