@@ -67,13 +67,22 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 .tool strong{display:block;font-weight:800;line-height:1.2}
 .tool small{color:var(--muted);font-weight:600;font-size:14px;line-height:1.3;display:block;margin-top:2px}
 
-/* links das fotos */
-.links{display:grid;gap:16px}
-.link{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:24px;padding:16px 20px;text-decoration:none;color:inherit;transition:transform .15s}
+/* fotos do projeto: dois blocos (estética / tecnologia) com botões */
+.blocos{display:grid;gap:20px}
+.bloco{background:var(--card);border-radius:28px;padding:24px}
+.bloco-head{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+.bloco-head .shape{width:52px;height:52px}
+.bloco h3{margin:0;font-size:24px;font-weight:800;line-height:1.15;text-transform:lowercase}
+.bloco-desc{margin:2px 0 0;color:var(--muted);font-weight:600;font-size:15px;line-height:1.3}
+.links{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.link{display:flex;align-items:center;gap:14px;background:var(--bg);border-radius:22px;padding:14px 18px;text-decoration:none;color:inherit;transition:transform .15s}
 .link:hover{transform:translateY(-2px)}
 .link .dot{width:40px;height:40px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-weight:800;color:#132c4a;flex:none;font-size:13px}
+.bloco.b-tec .link .dot{background:var(--blue);color:#fff}
 .link strong{display:block;font-weight:800;line-height:1.2}
 .link small{color:var(--muted);font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.link.off{opacity:.55;cursor:default}
+.link.off:hover{transform:none}
 .foot{margin-top:56px;text-align:center}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -97,16 +106,40 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 var CASE = {
   voltar: "../index.html#amostras",
   shape: "circle", color: "yellow",     // circle | half | quarter | arch  ·  yellow | red | blue | navy
-  title: "Curso online de [tema]",
-  tag: "EAD · Storyline",
+  title: "joy education",
+  tag: "slides, planos de aula e texto interativo",
   capa: "",                              // imagem de capa (ex.: "img/capa.png"), opcional
 
-  /* FOTOS DO PROJETO: cole aqui o link do álbum (Google Drive, Behance, Canva, Notion...).
-     Pode colocar mais de um link. */
+  /* FOTOS DO PROJETO: agora em BLOCOS. Cada bloco tem título, uma frase de apoio,
+     uma forma/cor e uma lista de botões (links).
+     Em cada botão: titulo, tipo (texto pequeno abaixo), url, icone (texto curto).
+     Se a url ficar "", o botão aparece apagado, como "em breve".
+     Para adicionar mais botões, copie uma linha { ... } e cole depois de uma vírgula. */
   fotos: [
-    { titulo: "Ver fotos do projeto", url: "https://seu-link-das-fotos.com", icone: "FOTO" }
-    // { titulo: "Roteiro em PDF", url: "arquivos/roteiro.pdf", icone: "PDF" },
-    // { titulo: "Vídeo de apresentação", url: "https://youtu.be/XXXX", icone: "▶" }
+    {
+      titulo: "estética",
+      desc: "identidade visual, layout e design das telas",
+      shape: "circle", color: "yellow", classe: "b-est",
+      botoes: [
+        { titulo: "Ver fotos do projeto",  tipo: "álbum de imagens",          url: "https://drive.google.com/file/d/1PwOjkFxryHEX0FPSzaXjG4gFzMLWQn08/view", icone: "FOTO" },
+        { titulo: "Slides",                tipo: "apresentação",              url: "", icone: "▤" },
+        { titulo: "Texto interativo",      tipo: "experiência interativa",    url: "", icone: "✎" },
+        { titulo: "Plano de aula 1",       tipo: "documento em PDF",          url: "", icone: "1" },
+        { titulo: "Plano de aula 2",       tipo: "documento em PDF",          url: "", icone: "2" }
+      ]
+    },
+    {
+      titulo: "tecnologia",
+      desc: "ferramentas, recursos digitais e produção",
+      shape: "quarter", color: "blue", classe: "b-tec",
+      botoes: [
+        { titulo: "Ver fotos do projeto",  tipo: "álbum de imagens",          url: "", icone: "FOTO" },
+        { titulo: "Slides",                tipo: "apresentação",              url: "", icone: "▤" },
+        { titulo: "Texto interativo",      tipo: "experiência interativa",    url: "", icone: "✎" },
+        { titulo: "Plano de aula 1",       tipo: "documento em PDF",          url: "", icone: "1" },
+        { titulo: "Plano de aula 2",       tipo: "documento em PDF",          url: "", icone: "2" }
+      ]
+    }
   ],
 
   /* DESCRIÇÃO DO PROJETO: cada texto entre aspas vira um parágrafo */
@@ -154,6 +187,24 @@ function sec(id,label,title,sub,html){
   return '<section id="'+id+'"><h2>'+title+'</h2>'+(sub?'<p class="sub">'+sub+'</p>':'')+html+'</section>';
 }
 
+/* um botão: com url vira link; sem url fica apagado ("em breve") */
+function botao(b){
+  var dot = '<span class="dot" aria-hidden="true">'+esc(b.icone||"↗")+'</span>';
+  if(!b.url){
+    return '<div class="link off" aria-disabled="true">'+dot+'<span><strong>'+esc(b.titulo)+'</strong><small>em breve</small></span></div>';
+  }
+  return '<a class="link" href="'+url(b.url)+'" target="_blank" rel="noopener">'+dot+'<span><strong>'+esc(b.titulo)+'</strong><small>'+esc(b.tipo||"abrir em nova aba")+'</small></span></a>';
+}
+
+/* um bloco (estética ou tecnologia) */
+function bloco(b,i){
+  var sh = b.shape||SHAPES[i%4], co = b.color||COLS[i%4];
+  return '<div class="bloco '+esc(b.classe||"")+'">'+
+    '<div class="bloco-head"><span class="shape s-'+esc(sh)+' c-'+esc(co)+'" aria-hidden="true"><i></i></span>'+
+    '<div><h3>'+esc(b.titulo)+'</h3>'+(b.desc?'<p class="bloco-desc">'+esc(b.desc)+'</p>':'')+'</div></div>'+
+    '<div class="links">'+(b.botoes||[]).map(botao).join("")+'</div></div>';
+}
+
 function render(){
   var h = "";
   document.title = C.title+" · laís araújo";
@@ -163,8 +214,8 @@ function render(){
 
    if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
 
-  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","clique para abrir em uma nova aba",
-    '<div class="links">'+C.fotos.map(function(l){return '<a class="link" href="'+url(l.url)+'" target="_blank" rel="noopener"><span class="dot" aria-hidden="true">'+esc(l.icone||"↗")+'</span><span><strong>'+esc(l.titulo)+'</strong><small>'+esc(l.url)+'</small></span></a>'}).join("")+'</div>');
+  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","escolha um bloco e abra os materiais em uma nova aba",
+    '<div class="blocos">'+C.fotos.map(bloco).join("")+'</div>');
 
   var p = C.persona;
   if(p && p.nome){
