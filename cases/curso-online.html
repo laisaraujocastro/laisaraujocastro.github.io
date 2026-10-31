@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#e6e4de;--card:#f4f2ed;--ink:#132c4a;--muted:#5b5f66;--track:#d3d0c8;--yellow:#fbb814;--red:#e30613;--blue:#2e7cc4;--navy:#132c4a;--sky:#9fd0f5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#e6e4de;--card:#f4f2ed;--ink:#132c4a;--muted:#5b5f66;--track:#d3d0c8;--yellow:#fbb814;--red:#e30613;--blue:#2e7cc4;--navy:#132c4a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
@@ -20,7 +20,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn{font:inherit;font-weight:800;font-size:15px;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:11px 22px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s,color .12s}
 .btn:hover{background:var(--red)}.btn:active{transform:scale(.96)}
 .btn.y{background:var(--yellow);color:#132c4a}.btn.y:hover{background:var(--blue);color:#fff}
-/* voltar ao portfólio: azul claro ao passar o mouse */
+/* voltar ao portfólio: azul da identidade ao passar o mouse */
 #voltar:hover,#voltar:focus-visible{background:var(--blue);color:#fff}
 #theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
 .top{display:flex;justify-content:space-between;align-items:center;padding:20px 0 8px}
@@ -47,13 +47,10 @@ ul.dots{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px}
 ul.dots li{padding-left:22px;position:relative}
 ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;background:var(--blue)}
 
-/* persona */
-.persona{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
-.avatar{width:84px;height:84px;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:28px;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover}
+/* persona (sem ícone) */
+.persona{display:block}
 .persona h3{margin:0 0 4px;font-size:22px;font-weight:800;line-height:1.2}
 .persona .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:14px}
-@media(max-width:560px){.persona{grid-template-columns:1fr}}
 
 /* objetivos: cartões nas cores da identidade */
 .obj{border-radius:28px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-height:150px}
@@ -153,7 +150,6 @@ var CASE = {
   /* PARA QUEM EU CRIEI: persona ou descrição do público */
   persona: {
     nome: "[Nome fictício, ex.: Carla, 34 anos]",
-    foto: "mulher case 1.png",
     perfil: "[Quem é, onde trabalha, quanto tempo tem para estudar, que dispositivo usa.]",
     dores: ["[Pouco tempo para estudar]", "[Conteúdo muito teórico]"],
     necessidades: ["[Aprender no celular]", "[Praticar com situações reais]"]
@@ -221,9 +217,8 @@ function render(){
 
   var p = C.persona;
   if(p && p.nome){
-    var av = p.foto?'<img src="'+esc(p.foto)+'" alt="">':esc(p.nome.replace(/[^A-Za-zÀ-ú]/g,"").charAt(0).toUpperCase());
     h += sec("publico","para quem criei","para quem eu criei","",
-      '<div class="card persona"><div class="avatar" aria-hidden="true">'+av+'</div><div><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
+      '<div class="card persona"><div><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
       '<div class="cols">'+(has(p.dores)?'<div><span class="k">dores</span>'+list(p.dores)+'</div>':'')+(has(p.necessidades)?'<div><span class="k">necessidades</span>'+list(p.necessidades)+'</div>':'')+'</div></div></div>');
   }
 
