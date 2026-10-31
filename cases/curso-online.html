@@ -111,7 +111,7 @@ var CASE = {
 
   /* FOTOS DO PROJETO: em BLOCOS. Cada bloco tem título, uma frase de apoio,
      uma cor (yellow | red | blue | navy) e uma lista de botões.
-     Em cada botão: titulo, tipo (texto pequeno abaixo) e url.
+     Em cada botão: titulo, tipo (aparece ao passar o mouse) e url.
      Se a url ficar "", o botão aparece apagado, como "em breve".
      Para adicionar mais botões, copie uma linha { ... } e cole depois de uma vírgula. */
   fotos: [
@@ -120,11 +120,11 @@ var CASE = {
       desc: "clique nas opções para visualizar os exemplos",
       cor: "yellow",
       botoes: [
-        { titulo: "slide",  tipo: "álbum de imagens",       url: "https://drive.google.com/file/d/1PwOjkFxryHEX0FPSzaXjG4gFzMLWQn08/view" },
-        { titulo: "plano de aula 1",                tipo: "apresentação",           url: "https://drive.google.com/file/d/1PdfcxY2WTAyKON-wsAiLC99TUll0CUhJ/view" },
-        { titulo: "plano de aula 2",      tipo: "experiência interativa", url: "https://drive.google.com/file/d/17XRwg1xeugOzRgCsXduA9wmRS6Fur8_W/view" },
-        { titulo: "texto interativo",       tipo: "documento em PDF",       url: "https://slides.com/administrador/ht1_tecnologiasavanadas_esttica_proz?token=7no4LpMb" },
-        { titulo: "texto interativo",       tipo: "documento em PDF",       url: "https://slides.com/administrador/ht1_atendimentohumanizado_esttica_proz?token=c_smUI2A" }
+        { titulo: "slide",            tipo: "álbum de imagens",       url: "https://drive.google.com/file/d/1PwOjkFxryHEX0FPSzaXjG4gFzMLWQn08/view" },
+        { titulo: "plano de aula 1",  tipo: "apresentação",           url: "https://drive.google.com/file/d/1PdfcxY2WTAyKON-wsAiLC99TUll0CUhJ/view" },
+        { titulo: "plano de aula 2",  tipo: "experiência interativa", url: "https://drive.google.com/file/d/17XRwg1xeugOzRgCsXduA9wmRS6Fur8_W/view" },
+        { titulo: "texto interativo", tipo: "documento em PDF",       url: "https://slides.com/administrador/ht1_tecnologiasavanadas_esttica_proz?token=7no4LpMb" },
+        { titulo: "texto interativo", tipo: "documento em PDF",       url: "https://slides.com/administrador/ht1_atendimentohumanizado_esttica_proz?token=c_smUI2A" }
       ]
     },
     {
@@ -207,9 +207,9 @@ function render(){
   $("head").innerHTML = '<div><h1>'+esc(C.title)+'</h1><div class="tag">'+esc(C.tag)+'</div></div>';
   $("intro").innerHTML = C.capa?'<img class="cover" src="'+esc(C.capa)+'" alt="Capa: '+esc(C.title)+'">':'';
 
-   if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
+  if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
 
-  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","exemplos de materiais desenvolvidos,
+  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","exemplos de materiais desenvolvidos",
     '<div class="blocos">'+C.fotos.map(bloco).join("")+'</div>');
 
   var p = C.persona;
