@@ -53,6 +53,7 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 .fatos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
 .fato{background:var(--bg);border-radius:22px;padding:14px 16px;transition:transform .2s;animation:subir .55s both;animation-delay:calc(var(--i,0) * 90ms)}
 .fato:hover{transform:translateY(-3px)}
+.fato .k{color:var(--muted)}
 .fato strong{display:block;margin-top:2px;font-weight:800;line-height:1.2;text-transform:lowercase}
 .foco{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .pill{font-size:14px;font-weight:800;border-radius:99px;padding:5px 16px;text-transform:lowercase;transition:transform .15s}
@@ -78,27 +79,23 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 
 /* ficha da persona: quem é · tempo para estudar · dispositivo */
 .ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
-.fi{--sh:#fff;position:relative;overflow:hidden;isolation:isolate;border-radius:28px;padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;min-height:190px;transition:transform .2s;animation:subir .55s both;animation-delay:calc(var(--i,0) * 110ms)}
-.fi:hover{transform:translateY(-4px) rotate(-.6deg)}
-.fi::before{content:"";position:absolute;z-index:-1;right:-28px;top:-28px;width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.2);transition:transform .35s}
-.fi:hover::before{transform:scale(1.5)}
-.f-yellow{background:var(--yellow);color:var(--navy);--sh:var(--navy)}
-.f-yellow::before{background:rgba(19,44,74,.09)}
-.f-blue{background:var(--blue);color:#fff;--sh:var(--yellow)}
-.f-red{background:var(--red);color:#fff;--sh:var(--yellow)}
+.fi{--acc:var(--yellow);--on:var(--navy);background:var(--bg);color:var(--ink);border-radius:28px;padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;min-height:190px;transition:transform .2s;animation:subir .55s both;animation-delay:calc(var(--i,0) * 110ms)}
+.fi:hover{transform:translateY(-4px)}
+.f-yellow{--acc:var(--yellow);--on:var(--navy)}
+.f-blue{--acc:var(--blue);--on:#fff}
+.f-red{--acc:var(--red);--on:#fff}
 .fi .fh{display:flex;align-items:center;gap:10px}
-.fi .fh .ico{width:34px;height:34px;flex:none;color:var(--sh);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
-.fi:hover .ico{transform:scale(1.12) rotate(-6deg)}
-.fi .bl{font-size:13px;font-weight:800;border-radius:99px;padding:3px 14px;text-transform:lowercase;background:rgba(255,255,255,.22)}
-.f-yellow .bl{background:rgba(19,44,74,.14)}
+.fi .fh .ico{width:40px;height:40px;flex:none;padding:9px;border-radius:50%;background:var(--acc);color:var(--on);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.fi:hover .ico{transform:scale(1.1) rotate(-6deg)}
+.fi .bl{font-size:14px;font-weight:800;text-transform:lowercase;color:var(--muted)}
 .fi .val{font-size:clamp(24px,4.2vw,30px);font-weight:800;line-height:1.05;letter-spacing:-.02em;text-transform:lowercase}
 .fi .det{margin:0;font-weight:600;font-size:15px;line-height:1.3;opacity:.92}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.chips span{font-size:13px;font-weight:800;text-transform:lowercase;border-radius:99px;padding:4px 12px;background:rgba(255,255,255,.22)}
+.chips span{font-size:13px;font-weight:800;text-transform:lowercase;border-radius:99px;padding:4px 12px;background:var(--acc);color:var(--on)}
 .meter{margin-top:auto}
-.meter .tr{height:12px;border-radius:99px;background:rgba(255,255,255,.25);overflow:hidden}
-.meter .tr i{display:block;height:100%;width:var(--w);border-radius:99px;background:var(--yellow);animation:encher 1.1s .35s cubic-bezier(.2,.8,.2,1) both}
-.meter small{display:block;margin-top:6px;font-weight:800;font-size:13px;text-transform:lowercase}
+.meter .tr{height:12px;border-radius:99px;background:var(--track);overflow:hidden}
+.meter .tr i{display:block;height:100%;width:var(--w);border-radius:99px;background:var(--acc);animation:encher 1.1s .35s cubic-bezier(.2,.8,.2,1) both}
+.meter small{display:block;margin-top:6px;font-weight:800;font-size:13px;text-transform:lowercase;color:var(--muted)}
 @keyframes subir{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes encher{from{width:0}to{width:var(--w)}}
 
