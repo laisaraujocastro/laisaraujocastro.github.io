@@ -48,9 +48,11 @@ ul.dots li{padding-left:22px;position:relative}
 ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;background:var(--blue)}
 
 /* persona: foto opcional ao lado do texto */
+.personas{display:grid;gap:16px}
 .persona{display:block}
 .p-top{display:flex;gap:22px;align-items:flex-start}
-.persona .foto{width:110px;height:110px;border-radius:50%;object-fit:cover;flex:none;display:block}
+.persona .foto{width:110px;height:110px;border-radius:50%;object-fit:cover;flex:none;display:block;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.persona .foto:hover{transform:scale(1.07) rotate(-5deg)}
 .persona .info{flex:1;min-width:0}
 .persona h3{margin:0 0 4px;font-size:22px;font-weight:800;line-height:1.2}
 .persona .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:14px}
@@ -60,8 +62,8 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 .ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
 .fi{--sh:#fff;position:relative;overflow:hidden;isolation:isolate;border-radius:28px;padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;min-height:190px;transition:transform .2s;animation:subir .55s both;animation-delay:calc(var(--i,0) * 110ms)}
 .fi:hover{transform:translateY(-4px) rotate(-.6deg)}
-.fi::before{content:"";position:absolute;z-index:-1;right:-44px;top:-44px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.2);transition:transform .35s}
-.fi:hover::before{transform:scale(1.35)}
+.fi::before{content:"";position:absolute;z-index:-1;right:-28px;top:-28px;width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.2);transition:transform .35s}
+.fi:hover::before{transform:scale(1.5)}
 .f-yellow{background:var(--yellow);color:var(--navy);--sh:var(--navy)}
 .f-yellow::before{background:rgba(19,44,74,.09)}
 .f-blue{background:var(--blue);color:#fff;--sh:var(--yellow)}
@@ -83,13 +85,14 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 @keyframes encher{from{width:0}to{width:var(--w)}}
 
 /* objetivos: cartões nas cores da identidade */
-.obj{border-radius:28px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-height:150px}
-.obj .bl{font-size:13px;font-weight:800;border-radius:99px;padding:3px 14px;text-transform:lowercase;background:rgba(255,255,255,.22)}
+.obj{position:relative;background:var(--card);border-radius:28px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-height:150px;transition:transform .2s}
+.obj:hover{transform:translateY(-3px)}
+.obj .bl{font-size:13px;font-weight:800;border-radius:99px;padding:3px 14px;text-transform:lowercase}
 .obj p{margin:0;font-weight:600;font-size:18px;line-height:1.35}
-.o-yellow{background:var(--yellow);color:#132c4a}.o-yellow .bl{background:rgba(19,44,74,.14)}
-.o-red{background:var(--red);color:#fff}
-.o-blue{background:var(--blue);color:#fff}
-.o-navy{background:var(--navy);color:#f4f2ed}
+.o-yellow .bl{background:var(--yellow);color:var(--navy)}
+.o-red .bl{background:var(--red);color:#fff}
+.o-blue .bl{background:var(--blue);color:#fff}
+.o-navy .bl{background:var(--ink);color:var(--card)}
 
 /* ferramentas */
 .tool{background:var(--card);border-radius:24px;padding:16px 18px;display:flex;gap:14px;align-items:center}
@@ -186,9 +189,10 @@ var CASE = {
        quem:        { titulo, detalhe }
        tempo:       { titulo, detalhe, momentos: ["...", "..."] }   (momentos viram etiquetas)
        dispositivo: { titulo, detalhe, uso: 85, usoTexto: "..." }   (uso é um número de 0 a 100 e vira uma barra) */
-  persona: {
+  /* Para mais de uma persona, coloque cada uma entre { } separadas por vírgula, dentro dos colchetes [ ]. */
+  persona: [{
     nome: "beatriz, 22 anos",
-    foto: "cases/foto-persona-6.svg",           // nome da sua imagem, ou "" para ficar sem foto
+    foto: "foto-persona-6.svg",           // nome da sua imagem, ou "" para ficar sem foto
     perfil: "estudante do curso técnico em estética. trabalha como recepcionista em um salão de beleza e quer, no futuro, abrir seu próprio espaço.",
     quem: {
       titulo: "estudante",
@@ -205,7 +209,26 @@ var CASE = {
       uso: 85,
       usoTexto: "do estudo acontece no celular"
     }
-  },
+  }, {
+    nome: "juliana, 35 anos",
+    foto: "foto-persona-3.svg",
+    perfil: "estudante do curso técnico em estética, em transição de carreira. trabalhava como auxiliar administrativa e quer atender clientes como autônoma.",
+    quem: {
+      titulo: "estudante",
+      detalhe: "curso técnico. mudou de área e é mãe de um filho pequeno."
+    },
+    tempo: {
+      titulo: "4 horas por semana",
+      detalhe: "estuda quando a casa fica em silêncio.",
+      momentos: ["à noite", "fim de semana"]
+    },
+    dispositivo: {
+      titulo: "celular e notebook",
+      detalhe: "usa o notebook para trabalhos e o celular para revisar.",
+      uso: 60,
+      usoTexto: "do estudo acontece no celular"
+    }
+  }],
 
   /* OBJETIVOS DE APRENDIZAGEM. nivel (Bloom): lembrar, entender, aplicar, analisar, avaliar, criar.
      As cores dos cartões alternam entre amarelo, vermelho, azul e azul-marinho. */
@@ -284,6 +307,14 @@ function ficha(p){
   return cards.length ? '<div class="ficha">'+cards.join("")+'</div>' : '';
 }
 
+/* um cartão de persona: foto, nome, perfil e a ficha colorida */
+function personaCard(p){
+  var foto = p.foto ? '<img class="foto" src="'+esc(p.foto)+'" alt="'+esc(p.nome)+'">' : '';
+  return '<div class="card persona"><div class="p-top">'+foto+'<div class="info"><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
+    '<div class="cols">'+(has(p.dores)?'<div><span class="k">dores</span>'+list(p.dores)+'</div>':'')+(has(p.necessidades)?'<div><span class="k">necessidades</span>'+list(p.necessidades)+'</div>':'')+'</div></div></div>'+
+    ficha(p)+'</div>';
+}
+
 function render(){
   var h = "";
   document.title = C.title+" · laís araújo";
@@ -296,14 +327,8 @@ function render(){
   if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","exemplos de materiais desenvolvidos",
     '<div class="blocos">'+C.fotos.map(bloco).join("")+'</div>');
 
-  var p = C.persona;
-  if(p && p.nome){
-    var foto = p.foto ? '<img class="foto" src="'+esc(p.foto)+'" alt="'+esc(p.nome)+'">' : '';
-    h += sec("publico","para quem criei","para quem eu criei","",
-      '<div class="card persona"><div class="p-top">'+foto+'<div class="info"><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
-      '<div class="cols">'+(has(p.dores)?'<div><span class="k">dores</span>'+list(p.dores)+'</div>':'')+(has(p.necessidades)?'<div><span class="k">necessidades</span>'+list(p.necessidades)+'</div>':'')+'</div></div></div>'+
-      ficha(p)+'</div>');
-  }
+  var ps = (Array.isArray(C.persona)?C.persona:[C.persona]).filter(function(x){return x&&x.nome}).map(personaCard);
+  if(ps.length) h += sec("publico","para quem criei","para quem eu criei","",'<div class="personas">'+ps.join("")+'</div>');
 
   if(has(C.objetivos)) h += sec("objetivos","objetivos","objetivos de aprendizagem","ao final, a pessoa será capaz de…",
     '<div class="grid g2">'+C.objetivos.map(function(o,i){return '<div class="obj o-'+COLS[i%4]+'"><span class="bl">'+esc(o.nivel||"")+'</span><p>'+esc(o.texto)+'</p></div>'}).join("")+'</div>');
