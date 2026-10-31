@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>estudo de caso · laís araújo</title>
-  <link rel="icon" href="Creative and Minimal Portfolio Presentation.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -207,7 +206,7 @@ function render(){
   var h = "";
   document.title = C.title+" · laís araújo";
   $("voltar").href = C.voltar||"../index.html";
-  $("head").innerHTML = '<span class="shape s-'+esc(C.shape)+' c-'+esc(C.color)+'" aria-hidden="true"><i></i></span><div><h1>'+esc(C.title)+'</h1><div class="tag">'+esc(C.tag)+'</div></div>';
+  $("head").innerHTML = '<div><h1>'+esc(C.title)+'</h1><div class="tag">'+esc(C.tag)+'</div></div>';
   $("intro").innerHTML = C.capa?'<img class="cover" src="'+esc(C.capa)+'" alt="Capa: '+esc(C.title)+'">':'';
 
    if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
