@@ -117,14 +117,14 @@ var CASE = {
   fotos: [
     {
       titulo: "estética",
-      desc: "identidade visual, layout e design das telas",
+      desc: "clique nas opções para visualizar os exemplos",
       cor: "yellow",
       botoes: [
-        { titulo: "Ver fotos do projeto",  tipo: "álbum de imagens",       url: "https://drive.google.com/file/d/1PwOjkFxryHEX0FPSzaXjG4gFzMLWQn08/view" },
-        { titulo: "Slides",                tipo: "apresentação",           url: "" },
-        { titulo: "Texto interativo",      tipo: "experiência interativa", url: "" },
-        { titulo: "Plano de aula 1",       tipo: "documento em PDF",       url: "" },
-        { titulo: "Plano de aula 2",       tipo: "documento em PDF",       url: "" }
+        { titulo: "slide",  tipo: "álbum de imagens",       url: "https://drive.google.com/file/d/1PwOjkFxryHEX0FPSzaXjG4gFzMLWQn08/view" },
+        { titulo: "plano de aula 1",                tipo: "apresentação",           url: "https://drive.google.com/file/d/1PdfcxY2WTAyKON-wsAiLC99TUll0CUhJ/view" },
+        { titulo: "plano de aula 2",      tipo: "experiência interativa", url: "https://drive.google.com/file/d/17XRwg1xeugOzRgCsXduA9wmRS6Fur8_W/view" },
+        { titulo: "texto interativo",       tipo: "documento em PDF",       url: "https://slides.com/administrador/ht1_tecnologiasavanadas_esttica_proz?token=7no4LpMb" },
+        { titulo: "texto interativo",       tipo: "documento em PDF",       url: "https://slides.com/administrador/ht1_atendimentohumanizado_esttica_proz?token=c_smUI2A" }
       ]
     },
     {
@@ -209,7 +209,7 @@ function render(){
 
    if(has(C.descricao)) h += sec("descricao","descrição","sobre o projeto","",'<div class="card">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>');
 
-  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","escolha um bloco e abra os materiais em uma nova aba",
+  if(has(C.fotos)) h += sec("fotos","fotos","fotos do projeto","exemplos de materiais desenvolvidos,
     '<div class="blocos">'+C.fotos.map(bloco).join("")+'</div>');
 
   var p = C.persona;
