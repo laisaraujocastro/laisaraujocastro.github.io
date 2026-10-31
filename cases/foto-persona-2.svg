@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Avatar geométrico azul">
+<rect width="400" height="400" fill="#2e7cc4"/>
+<path d="M400 0V120A120 120 0 0 1 280 0Z" fill="#fbb814"/>
+<path d="M60 400A140 140 0 0 1 340 400Z" fill="#fbb814"/>
+<circle cx="200" cy="100" r="40" fill="#132c4a"/>
+<circle cx="200" cy="190" r="75" fill="#f4f2ed"/>
+<path d="M125 190A75 75 0 0 1 275 190Z" fill="#132c4a"/>
+<circle cx="70" cy="320" r="30" fill="#e30613"/>
+</svg>

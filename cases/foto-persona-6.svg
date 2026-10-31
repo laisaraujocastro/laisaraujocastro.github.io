@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Avatar geométrico com halo">
+<rect width="400" height="400" fill="#fbb814"/>
+<circle cx="200" cy="200" r="150" fill="#132c4a"/>
+<path d="M60 400A140 140 0 0 1 340 400Z" fill="#e30613"/>
+<circle cx="145" cy="150" r="38" fill="#2e7cc4"/>
+<circle cx="200" cy="118" r="38" fill="#2e7cc4"/>
+<circle cx="255" cy="150" r="38" fill="#2e7cc4"/>
+<circle cx="200" cy="190" r="75" fill="#f4f2ed"/>
+</svg>
