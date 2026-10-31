@@ -49,12 +49,17 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 
 /* sobre o projeto: destaque, fatos rápidos e foco */
 .resumo{display:grid;gap:18px}
-.resumo .lead{margin:0;max-width:26ch;font-size:clamp(24px,4.4vw,34px);font-weight:800;line-height:1.1;letter-spacing:-.025em;text-transform:lowercase}
+.resumo .lead{margin:0;max-width:none;font-size:clamp(24px,4.4vw,34px);font-weight:800;line-height:1.1;letter-spacing:-.025em;text-transform:lowercase}
 .fatos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
 .fato{background:var(--bg);border-radius:22px;padding:14px 16px;transition:transform .2s;animation:subir .55s both;animation-delay:calc(var(--i,0) * 90ms)}
 .fato:hover{transform:translateY(-3px)}
 .fato .k{color:var(--muted)}
 .fato strong{display:block;margin-top:2px;font-weight:800;line-height:1.2;text-transform:lowercase}
+.metas{display:grid;gap:10px}
+.metas .k{color:var(--muted)}
+.meta-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.meta{display:flex;gap:12px;align-items:flex-start;font-weight:600;line-height:1.3}
+.meta b{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:800;background:var(--bg);color:var(--ink)}
 .foco{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .pill{font-size:14px;font-weight:800;border-radius:99px;padding:5px 16px;text-transform:lowercase;transition:transform .15s}
 .pill:hover{transform:translateY(-2px) rotate(-2deg)}
@@ -193,7 +198,7 @@ var CASE = {
   ],
 
   /* RESUMO DO PROJETO: o que a pessoa lê primeiro (tudo opcional).
-     destaque: uma frase que explica o projeto · fatos: pares k (rótulo) e v (valor) · foco: palavras-chave */
+     destaque: uma frase que explica o projeto · fatos: pares k (rótulo) e v (valor) · objetivos: frases curtas */
   resumo: {
     destaque: "curso técnico de estética e tecnologia",
     fatos: [
@@ -202,7 +207,11 @@ var CASE = {
       { k: "áreas", v: "estética e tecnologia" },
       { k: "materiais", v: "slides, planos de aula, textos interativos e roteiro para vídeos" }
     ],
-    foco: ["gamificação", "atividades lúdicas", "interatividade", "engajamento"]
+    objetivos: [
+      "unir diversão, interatividade e dinamismo nas aulas",
+      "aplicar gamificação e atividades lúdicas",
+      "criar conteúdo engajante e interessante para os alunos"
+    ]
   },
 
   /* DESCRIÇÃO DO PROJETO: cada texto entre aspas vira um parágrafo */
@@ -222,7 +231,7 @@ var CASE = {
     foto: "",                            // nome da sua imagem, ou "" para ficar sem foto
     perfil: "estudante do curso técnico em estética. trabalha como recepcionista em um salão de beleza e quer, no futuro, abrir seu próprio espaço.",
     quem: {
-      titulo: "estudante",
+      titulo: "estudante de estética",
       detalhe: "curso técnico. trabalha como recepcionista em um salão de beleza."
     },
     tempo: {
@@ -237,22 +246,22 @@ var CASE = {
       usoTexto: "do estudo acontece no celular"
     }
   }, {
-    nome: "juliana, 35 anos",
+    nome: "fernanda, 26 anos",
     foto: "",
-    perfil: "estudante do curso técnico em estética, em transição de carreira. trabalhava como auxiliar administrativa e quer atender clientes como autônoma.",
+    perfil: "estudante do curso técnico em desenvolvimento de sistemas. trabalha como atendente em uma loja e quer conseguir seu primeiro estágio na área de tecnologia.",
     quem: {
-      titulo: "estudante",
-      detalhe: "curso técnico. mudou de área e é mãe de um filho pequeno."
+      titulo: "estudante de tecnologia",
+      detalhe: "curso técnico à noite. trabalha como atendente em uma loja."
     },
     tempo: {
-      titulo: "4 horas por semana",
-      detalhe: "estuda quando a casa fica em silêncio.",
-      momentos: ["à noite", "fim de semana"]
+      titulo: "6 horas por semana",
+      detalhe: "revisa durante o dia e pratica à noite.",
+      momentos: ["no intervalo", "à noite", "fim de semana"]
     },
     dispositivo: {
       titulo: "celular e notebook",
-      detalhe: "usa o notebook para trabalhos e o celular para revisar.",
-      uso: 60,
+      detalhe: "celular para revisar, notebook para praticar.",
+      uso: 40,
       usoTexto: "do estudo acontece no celular"
     }
   }],
@@ -339,7 +348,7 @@ function descCard(){
   var r = C.resumo||{}, h = '<div class="card resumo">';
   if(r.destaque) h += '<p class="lead">'+esc(r.destaque)+'</p>';
   if(has(r.fatos)) h += '<div class="fatos">'+r.fatos.map(function(f,i){return '<div class="fato" style="--i:'+i+'"><span class="k">'+esc(f.k)+'</span><strong>'+esc(f.v)+'</strong></div>'}).join("")+'</div>';
-  if(has(r.foco)) h += '<div class="foco">'+r.foco.map(function(x,i){return '<span class="pill p-'+COLS[i%4]+'">'+esc(x)+'</span>'}).join("")+'</div>';
+  if(has(r.objetivos)) h += '<div class="metas"><span class="k">objetivos do projeto</span><div class="meta-list">'+r.objetivos.map(function(o,i){return '<div class="meta"><b>'+(i+1)+'</b><span>'+esc(o)+'</span></div>'}).join("")+'</div></div>';
   if(has(C.descricao)) h += '<div class="detalhe">'+C.descricao.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+'</div>';
   return h+'</div>';
 }
@@ -348,7 +357,7 @@ function descCard(){
 function personaCard(p){
   var foto = p.foto ? '<img class="foto" src="'+esc(p.foto)+'" alt="'+esc(p.nome)+'">' : '';
   return '<div class="card persona"><div class="p-top">'+foto+'<div class="info"><h3>'+esc(p.nome)+'</h3>'+(p.perfil?'<p>'+esc(p.perfil)+'</p>':'')+
-    '<div class="cols">'+(has(p.dores)?'<div><span class="k">dores</span>'+list(p.dores)+'</div>':'')+(has(p.necessidades)?'<div><span class="k">necessidades</span>'+list(p.necessidades)+'</div>':'')+'</div></div></div>'+
+    '</div></div>'+
     ficha(p)+'</div>';
 }
 
