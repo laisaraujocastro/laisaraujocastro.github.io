@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>estudo de caso · laís araújo</title>
-<link rel="icon" href="Creative and Minimal Portfolio Presentation.png" type="image/png">
+<link rel="icon" href="favicon.png?v=2" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#e6e4de;--card:#f4f2ed;--ink:#132c4a;--muted:#5b5f66;--track:#d3d0c8;--yellow:#fbb814;--red:#e30613;--blue:#2e7cc4;--navy:#132c4a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#e6e4de;--card:#f4f2ed;--ink:#132c4a;--muted:#5b5f66;--track:#d3d0c8;--yellow:#fbb814;--red:#e30613;--blue:#2e7cc4;--navy:#132c4a;--sky:#9fd0f5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
@@ -17,9 +17,11 @@ body{margin:0;background:var(--bg);background-image:radial-gradient(rgba(19,44,7
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 .wrap{max-width:900px;margin:0 auto;padding:0 20px 70px}
-.btn{font:inherit;font-weight:800;font-size:15px;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:11px 22px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
+.btn{font:inherit;font-weight:800;font-size:15px;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:11px 22px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s,color .12s}
 .btn:hover{background:var(--red)}.btn:active{transform:scale(.96)}
 .btn.y{background:var(--yellow);color:#132c4a}.btn.y:hover{background:var(--blue);color:#fff}
+/* voltar ao portfólio: azul claro ao passar o mouse */
+#voltar:hover,#voltar:focus-visible{background:var(--sky);color:#132c4a}
 #theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
 .top{display:flex;justify-content:space-between;align-items:center;padding:20px 0 8px}
 
@@ -88,7 +90,6 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
 .link:active{transform:scale(.97)}
 .link.off{opacity:.5;cursor:default}
 .link.off:hover{background:var(--card);color:var(--ink);transform:none}
-.foot{margin-top:56px;text-align:center}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -101,7 +102,6 @@ ul.dots li::before{content:"";position:absolute;left:0;top:.5em;width:11px;heigh
   <header class="head" id="head"></header>
   <div id="intro"></div>
   <div id="content"></div>
-  <div class="foot" id="foot"></div>
 </main>
 
 <script>
@@ -139,9 +139,8 @@ var CASE = {
       cor: "blue",
       botoes: [
         { titulo: "plano de aula 1",  tipo: "álbum de imagens",       url: "https://drive.google.com/file/d/1TROgAxUO5iIRfDY0fW488Lvk4YQS7DYl/view" },
-        { titulo: "plano de aula 2",                tipo: "apresentação",           url: "https://drive.google.com/file/d/1ssr4Cey7sXZyVOoLVCkSroLMODFvmG3W/view" },
-        { titulo: "slide",      tipo: "experiência interativa", url: "https://drive.google.com/file/d/1DdTVcTU4Mst60sH8_zejFUsvlSI4X0aH/view?usp=sharing" },
-      
+        { titulo: "plano de aula 2",  tipo: "apresentação",           url: "https://drive.google.com/file/d/1ssr4Cey7sXZyVOoLVCkSroLMODFvmG3W/view" },
+        { titulo: "slide",            tipo: "experiência interativa", url: "https://drive.google.com/file/d/1DdTVcTU4Mst60sH8_zejFUsvlSI4X0aH/view?usp=sharing" }
       ]
     }
   ],
@@ -172,7 +171,7 @@ var CASE = {
   ferramentas: [
     { nome: "Articulate Storyline", uso: "[autoria das telas interativas]" },
     { nome: "Canva", uso: "[identidade visual e infográficos]" },
-    { nome: "Moodle", uso: "[publicação e acompanhamento]" },
+    { nome: "Moodle", uso: "[publicação e acompanhamento]" }
   ]
 };
 /* ===================== fim da área de edição ===================== */
@@ -234,10 +233,7 @@ function render(){
   if(has(C.ferramentas)) h += sec("ferramentas","ferramentas","ferramentas que utilizei","",
     '<div class="grid g2">'+C.ferramentas.map(function(t,i){return '<div class="tool"><span class="shape s-'+SHAPES[i%4]+' c-'+COLS[i%4]+'" aria-hidden="true"><i></i></span><div><strong>'+esc(t.nome)+'</strong>'+(t.uso?'<small>'+esc(t.uso)+'</small>':'')+'</div></div>'}).join("")+'</div>');
 
-
   $("content").innerHTML = h;
-  $("foot").innerHTML = '<a class="btn y" href="'+esc(C.voltar||"../index.html")+'">ver outras amostras</a>';
-
 }
 
 $("theme").addEventListener("click",function(){
