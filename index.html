@@ -179,6 +179,13 @@ h2 {
 .tl-item p{margin:8px 0 0;max-width:620px}
 .mini{font-size:22px;font-weight:800;margin:34px 0 14px;text-transform:lowercase}
 
+/* Graduação: destaque do coeficiente e listas */
+.cra{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:var(--yellow);color:#132c4a;border-radius:24px;padding:12px 20px;margin:6px 0 18px}
+.cra-n{font-size:38px;font-weight:800;line-height:1;letter-spacing:-.02em}
+.cra-l{font-size:14px;font-weight:800;line-height:1.2}
+.tl-item .detail ul{margin:2px 0 16px;padding-left:20px}
+.tl-item .detail li{margin-bottom:6px;font-weight:400}
+
 /* Shapes */
 .shape{width:60px;height:60px;display:grid;flex:none}
 .shape i{display:block;width:100%;height:100%}
@@ -358,6 +365,8 @@ h2 .pt { display: none !important; }
   background:var(--blue);
   color:#fff;
 }
+.tl-item .case-link{background:var(--navy);color:#f4f2ed}
+.tl-item .case-link:hover{background:var(--blue);color:#fff}
 </style>
 </head>
 <body>
@@ -456,10 +465,25 @@ var ABOUT = {
 };
 
 var EDU = [
-  { when:"2019 - 2025", title:"graduação em psicologia", where:"universidade federal de pernambuco", text:"bolsista cnpq 2024 - 2025", color:"blue" },
+  { when:"2019 - 2025", title:"graduação em psicologia", where:"universidade federal de pernambuco", text:"bolsista cnpq 2024 - 2025", color:"blue",
+    html:
+      '<div class="cra"><span class="cra-n">[0,00]</span><span class="cra-l">coeficiente de<br>rendimento geral</span></div>'+
+      '<b>marcos acadêmicos</b>'+
+      '<ul>'+
+        '<li>[marco 1, ex.: monitoria em disciplina X]</li>'+
+        '<li>[marco 2, ex.: apresentação de trabalho em congresso]</li>'+
+        '<li>[marco 3, ex.: publicação, prêmio ou menção]</li>'+
+      '</ul>'+
+      '<b>projetos de que participei</b>'+
+      '<ul>'+
+        '<li>[projeto de pesquisa/extensão 1 · papel · período]</li>'+
+        '<li>[projeto de pesquisa/extensão 2 · papel · período]</li>'+
+      '</ul>'+
+      '<a class="case-link" href="https://lattes.cnpq.br/SEU-ID" target="_blank" rel="noopener" onclick="event.stopPropagation()">ver meu currículo lattes<span class="arr" aria-hidden="true">→</span></a>'
+  },
   { when:"2025 - atual", title:"mestrado em psicologia", where:"universidade federal de pernambuco", text:"bolsista capes 2025 - 2027", color:"red" }
 ];
-var COURSES = ["aperfeiçoamento em design educacional · ifes","criação de conteúdo educacional personalizado · C · 4 horas","narrativas e personagens para jogos · joy education"];
+var COURSES = ["aperfeiçoamento em design educacional · ifes","criação de conteúdo educacional personalizado · EBAC · 4 horas","narrativas e personagens para jogos · joy education"];
 
 var JOBS = [
   { when:"2021 - 2021", title:"estagiária em educação inclusiva", where:"colégio vera cruz recife", color:"yellow",
