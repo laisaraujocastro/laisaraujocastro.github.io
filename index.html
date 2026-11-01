@@ -367,6 +367,25 @@ h2 .pt { display: none !important; }
 }
 .tl-item .case-link{background:var(--navy);color:#f4f2ed}
 .tl-item .case-link:hover{background:var(--blue);color:#fff}
+
+/* Botãozinho de link ao lado de itens de lista */
+.li-link{
+  display:inline-grid;
+  place-items:center;
+  width:26px;
+  height:26px;
+  margin-left:8px;
+  vertical-align:middle;
+  border-radius:50%;
+  background:var(--yellow);
+  color:var(--navy);
+  font-size:14px;
+  font-weight:800;
+  line-height:1;
+  text-decoration:none;
+  transition:transform .15s,background .15s;
+}
+.li-link:hover{background:var(--blue);color:#fff;transform:translateX(2px)}
 </style>
 </head>
 <body>
@@ -465,23 +484,20 @@ var ABOUT = {
 };
 
 var EDU = [
-  { when:"2019 - 2025", title:"graduação em psicologia", where:"universidade federal de pernambuco", text:"bolsista cnpq 2024 - 2025", color:"blue",
+  { when:"2019 - 2025", title:"graduação em psicologia - ufpe", where:"", text:"", color:"blue",
     html:
-      '<div class="cra"><span class="cra-n">[0,00]</span><span class="cra-l">coeficiente de<br>rendimento geral</span></div>'+
+      '<div class="cra"><span class="cra-n">9.47</span><span class="cra-l">coeficiente de<br>rendimento geral</span></div>'+
       '<b>marcos acadêmicos</b>'+
       '<ul>'+
-        '<li>[marco 1, ex.: monitoria em disciplina X]</li>'+
-        '<li>[marco 2, ex.: apresentação de trabalho em congresso]</li>'+
-        '<li>[marco 3, ex.: publicação, prêmio ou menção]</li>'+
+        '<li>participação no projeto de pesquisa "a mediação de um jogo digital na regulação de processos argumentativos na sala de aula do ensino fundamental".</li>'+
+        '<li>monitoria na disciplina "psicologia e linguagem".</li>'+
+        '<li>colaboração no desenvolvimento do jogo 2d "luka" <a class="li-link" href="https://www.abed.org.br/congresso2022/anais/trabalhos/78259.pdf" target="_blank" rel="noopener" aria-label="abrir o jogo luka" title="abrir o jogo luka" onclick="event.stopPropagation()">↗</a></li>'+
+       '<li>bolsista cnpq 2024-2025</li>'+
       '</ul>'+
-      '<b>projetos de que participei</b>'+
-      '<ul>'+
-        '<li>[projeto de pesquisa/extensão 1 · papel · período]</li>'+
-        '<li>[projeto de pesquisa/extensão 2 · papel · período]</li>'+
-      '</ul>'+
+      
       '<a class="case-link" href="https://lattes.cnpq.br/SEU-ID" target="_blank" rel="noopener" onclick="event.stopPropagation()">ver meu currículo lattes<span class="arr" aria-hidden="true">→</span></a>'
   },
-  { when:"2025 - atual", title:"mestrado em psicologia", where:"universidade federal de pernambuco", text:"bolsista capes 2025 - 2027", color:"red" }
+  { when:"2025 - atual", title:"mestrado em psicologia - ufpe", where:"", text:"o título do meu projeto de dissertação é 'representações sociais da demência por cuidadores familiares'. através da pesquisa, também sou bolsista capes.", color:"red" }
 ];
 var COURSES = ["aperfeiçoamento em design educacional · ifes","criação de conteúdo educacional personalizado · EBAC · 4 horas","narrativas e personagens para jogos · joy education"];
 
