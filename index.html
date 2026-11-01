@@ -4,388 +4,160 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>laís araújo · designer instrucional</title>
-  <link rel="icon" type="image/png" href="Design sem nome (1).png">
+<link rel="icon" type="image/png" href="Design sem nome (1).png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-#quests .detail{margin-top:12px;padding-top:12px}
-#quests .detail p{max-width:none}
 :root{
   --bg:#e6e4de; --card:#f4f2ed; --ink:#132c4a; --muted:#5b5f66; --track:#d3d0c8; --locked:#cfccc4;
   --yellow:#fbb814; --red:#e30613; --blue:#2e7cc4; --navy:#132c4a;
-  box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f;--locked:#22364f}
 }
 :root[data-theme="dark"]{color-scheme:dark;--bg:#0e1d31;--card:#162a45;--ink:#f1eee6;--muted:#aab4c4;--track:#27405f;--locked:#22364f}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 130px);scroll-behavior:smooth}
 *{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 90px);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);background-image:radial-gradient(rgba(19,44,74,.07) 1px,transparent 1.2px);background-size:7px 7px;color:var(--ink);font-family:'Raleway',system-ui,sans-serif;font-size:17px;line-height:1.6;font-weight:400}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
-.wrap{max-width:900px;margin:0 auto;padding:0 20px 70px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 70px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
 /* HUD */
 .hud{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);padding:12px 0}
-.hud-in{max-width:560px;margin:0 auto;padding:0 20px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}
+.hud-in{max-width:520px;margin:0 auto;padding:0 20px;display:flex;gap:12px;align-items:center}
 .lvl{background:var(--navy);color:#f4f2ed;border-radius:99px;padding:4px 16px;font-weight:800;font-size:14px;white-space:nowrap}
-.bar {
-  flex: 1;
-  min-width: 150px;
-  height: 24px;
-  border-radius: 99px;
-  background: var(--track);
-  position: relative;
-  overflow: hidden;
-}
-.bar > i {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 0;
-  background: var(--yellow);
-  border-radius: 99px;
-  transition: width .6s cubic-bezier(.2,.9,.3,1.1);
-}
+.bar{flex:1;min-width:100px;height:24px;border-radius:99px;background:var(--track);position:relative;overflow:hidden}
+.bar>i{position:absolute;inset:0 auto 0 0;width:0;background:var(--yellow);border-radius:99px;transition:width .6s cubic-bezier(.2,.9,.3,1.1)}
 .bar span{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:800;color:#132c4a}
-#theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-
-/* Emblemas no HUD */
-.slots{display:flex;gap:8px;align-items:center}
-.slots a{display:block;line-height:0;border-radius:50%;transition:transform .15s}
-.slots a:hover{transform:translateY(-2px)}
-.slots .shape{width:28px;height:28px}
-.slots .shape.lock i{background:var(--track)!important}
-.slots a.pop .shape{animation:pop .5s}
+#theme{border:0;background:var(--track);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;transition:transform .3s}
+#theme:active{transform:rotate(180deg) scale(.9)}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:40px 0 0}
-.hero h1{font-size:clamp(44px,9vw,84px);line-height:.95;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;text-transform:lowercase}
-.hero .tg {
-  font-size: clamp(20px, 3.4vw, 27px);
-  font-weight: 600;
-  color: var(--muted);
-  margin: 0 0 18px;
-}
-.hero p{max-width:480px;margin:0 0 16px}
-.btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:13px 26px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
-.btn:active{transform:scale(.96)}
-.btn.alt{background:var(--blue)}
-.tip{font-size:17px;color:var(--muted);margin-top:16px}
-.hero .btn {
-  margin-bottom: 12px;
-}
-.hero .tip {
-  margin-top: 8px;
-  margin-bottom: 0;
-}
-.art{width:100%;max-width:320px;justify-self:center}
-@media(max-width:640px){.hero{grid-template-columns:1fr}.art{max-width:220px;order:-1;justify-self:start}}
-
-h2 {
-  font-size: clamp(28px, 5vw, 38px);
-  font-weight: 800;
-  letter-spacing: -.02em;
-  line-height: 1.1;
-  margin: 40px 0 0;
-  text-transform: lowercase;
-}
-#sobre {
-  margin-top: 20;
-}
-
-.sub {
-  margin: 0 0 16px;
-  color: var(--muted);
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.3;
-}
-
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:36px 0 0}
+.hero h1{font-size:clamp(44px,9vw,76px);line-height:.95;margin:0 0 12px;font-weight:800;letter-spacing:-.03em;text-transform:lowercase}
+.hero .tg{font-size:clamp(20px,3.4vw,25px);font-weight:600;color:var(--muted);margin:0 0 16px}
+.hero p{max-width:460px;margin:0 0 18px}
+.tip{font-size:15px;color:var(--muted);margin:10px 0 0!important}
+.art{width:100%;max-width:280px;justify-self:center}
 .hero-img{border-radius:50%;object-fit:cover;aspect-ratio:1/1;display:block}
+@media(max-width:640px){.hero{grid-template-columns:1fr}.art{max-width:200px;order:-1;justify-self:start}}
 
-/* Nav */
-.nav{max-width:900px;margin:0 auto;padding:8px 20px 0;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;justify-content:center;justify-content:safe center}
-.nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;padding:4px 14px;border-radius:99px;background:var(--track)}
-.nav a:hover{background:var(--yellow);color:#132c4a}
+h2{font-size:clamp(26px,5vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:44px 0 6px;text-transform:lowercase}
+.sub{margin:0 0 14px;color:var(--muted);font-weight:600;font-size:17px;line-height:1.3}
 
-/* Sobre, linha do tempo */
-.about {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  background: var(--card);
-  border-radius: 36px;
-  padding: 28px;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  height: auto;
-  overflow-wrap: anywhere;
-}
-.about > div:not(.avatar) {
-  flex: 1 1 0;
-  min-width: 0;
-}
-.about h3 {
-  margin: 0;
-  font-size: 21px;
-  font-weight: 800;
-  line-height: 1.3;
-}
-.about .detail {
-  width: 100%;
-  min-width: 0;
-}
-.about .detail p {
-  margin: 0 0 14px;
-  max-width: 100%;
-  line-height: 1.7;
-  overflow-wrap: anywhere;
-}
-.about .chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.about .chip {
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
-@media (max-width: 560px) {
-  .about {
-    flex-direction: column;
-    padding: 22px;
-    gap: 18px;
-  }
-  .about > div:not(.avatar) {
-    width: 100%;
-  }
-  .about .quest-top {
-    flex-wrap: wrap;
-  }
-}
-.avatar{flex:none;width:110px;height:110px;aspect-ratio:1/1;border-radius:50%;background: transparent;color:var(--navy);display:grid;place-items:center;font-size:40px;font-weight:800;letter-spacing:-.04em;overflow:hidden}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.about p{margin:0 0 14px;max-width:600px}
+/* Botões */
+.btn{font:inherit;font-weight:800;background:var(--navy);color:#f4f2ed;border:0;border-radius:99px;padding:12px 26px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .12s,background .12s}
+.btn:hover{background:var(--blue);color:#fff}
+.btn:active{transform:scale(.96)}
+
+/* Cards: só o botão abre */
+.card{background:var(--card);border-radius:28px;padding:20px 22px;margin-bottom:14px;cursor:pointer;transition:transform .15s}
+.card:hover{transform:translateY(-2px)}
+.card:active{transform:scale(.99)}
+.card a{cursor:pointer}
+.card-top{display:flex;gap:16px;align-items:center}
+.card h3{margin:0;font-size:21px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+.tag{font-size:16px;color:var(--muted)}
+.xp{margin-left:auto;font:inherit;font-weight:800;font-size:14px;background:var(--yellow);color:#132c4a;border:0;padding:7px 18px;border-radius:99px;white-space:nowrap;cursor:pointer;transition:transform .12s,background .12s}
+.xp:hover{background:var(--blue);color:#fff}
+.xp:active{transform:scale(.94)}
+.xp.pop{animation:pop .45s}
+.card.done .xp{background:var(--track);color:var(--ink)}
+.card.done .xp:hover{background:var(--blue);color:#fff}
+.detail{display:none;margin-top:16px;padding-top:6px;border-top:2px solid var(--track)}
+.card.open .detail{display:block;animation:reveal .35s ease}
+.card.open .card-top>.shape,.card.open .card-top>.thumb{animation:wiggle .5s}
+.detail p{margin:12px 0 14px}
+.thumb{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;display:block}
+
+/* Linhas simples dentro dos cards */
+.row{display:grid;grid-template-columns:110px 1fr;gap:2px 16px;padding:12px 0;border-top:1px solid var(--track)}
+.row:first-child{border-top:0}
+.when{font-size:14px;font-weight:800;color:var(--muted);padding-top:2px}
+.rt{font-weight:800;line-height:1.3}
+.rs{color:var(--muted);font-size:15px;line-height:1.4;margin-top:2px}
+.rp{font-size:16px;line-height:1.55;margin:8px 0 0}
+.lbl{display:block;font-weight:800;font-size:14px;color:var(--muted);text-transform:lowercase;margin:10px 0 0}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{background:var(--track);border-radius:99px;padding:4px 14px;font-weight:600;font-size:15px}
-.tl{display:grid;gap:18px}
-.tl-item{position:relative;background:var(--card);border-radius:24px;padding:16px 20px}
-.when{font-size:14px;font-weight:800;color:var(--muted)}
-.tl-item h3{margin:2px 0 0;font-size:20px;font-weight:800;line-height:1.2}
-.where{color:var(--muted);font-weight:800;font-size:16px}
-.tl-item p{margin:8px 0 0;max-width:620px}
-.mini{font-size:22px;font-weight:800;margin:34px 0 14px;text-transform:lowercase}
+.about-p{margin:12px 0 14px}
 
-/* Graduação: destaque do coeficiente e listas */
-.cra{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:var(--yellow);color:#132c4a;border-radius:24px;padding:12px 20px;margin:6px 0 18px}
-.cra-n{font-size:38px;font-weight:800;line-height:1;letter-spacing:-.02em}
+/* Coeficiente e listas */
+.cra{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--yellow);color:#132c4a;border-radius:24px;padding:12px 20px;margin:10px 0 14px}
+.cra-n{font-size:36px;font-weight:800;line-height:1;letter-spacing:-.02em}
 .cra-l{font-size:14px;font-weight:800;line-height:1.2}
-.tl-item .detail ul{margin:2px 0 16px;padding-left:20px}
-.tl-item .detail li{margin-bottom:6px;font-weight:400}
+.rl{margin:6px 0 12px;padding-left:20px;font-size:15.5px;line-height:1.5}
+.rl li{margin-bottom:6px}
+.li-link{display:inline-grid;place-items:center;width:24px;height:24px;margin-left:8px;vertical-align:middle;border-radius:50%;background:var(--yellow);color:var(--navy);font-size:13px;font-weight:800;line-height:1;text-decoration:none;transition:transform .15s,background .15s}
+.li-link:hover{background:var(--blue);color:#fff;transform:translateX(2px)}
+
+/* Links em forma de botão */
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.case-link{display:inline-flex;align-items:center;gap:10px;padding:4px 4px 4px 16px;background:var(--navy);color:#f4f2ed;border-radius:99px;font-weight:800;font-size:14px;text-decoration:none;transition:transform .12s,background .12s}
+.case-link .arr{width:26px;height:26px;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-size:14px;transition:transform .2s}
+.case-link:hover{background:var(--blue);color:#fff}
+.case-link:hover .arr{transform:translateX(3px)}
+.case-link:active{transform:scale(.96)}
+
+/* Habilidades */
+.skill{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--track)}
+.skill:first-child{border-top:0}
+.skill .n{flex:1;min-width:0;font-weight:800;line-height:1.3}
+.skill .n small{display:block;font-weight:400;font-size:14px;color:var(--muted)}
+.pips{display:flex;gap:5px;flex-shrink:0}
+.pips i{display:block;width:16px;height:16px;border-radius:50%;background:var(--track)}
+.pips i.on{background:var(--blue)}
 
 /* Shapes */
 .shape{width:60px;height:60px;display:grid;flex:none}
 .shape i{display:block;width:100%;height:100%}
 .s-circle i{border-radius:50%}
-.s-half i{height:50%;align-self:end;border-radius:99px 99px 0 0;margin-top:auto}
+.s-half{align-items:end}
+.s-half i{height:50%;border-radius:99px 99px 0 0}
 .s-quarter i{border-radius:100% 0 0 0}
 .s-arch i{border-radius:99px 99px 0 0}
 .c-yellow i{background:var(--yellow)}.c-red i{background:var(--red)}.c-blue i{background:var(--blue)}.c-navy i{background:var(--navy)}
-.s-half{align-items:end}
 .shape.lock i{background:var(--locked)!important}
 
-/* Quests */
-.quest{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--card);border:0;border-radius:28px;padding:20px 22px;margin-bottom:16px;cursor:pointer;transition:transform .15s}
-.gate{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;transition:transform .15s}
-.gate:hover{transform:translateY(-2px)}
-.tl-item.gate{width:100%;display:block}
-.tl-item .quest-top{align-items:flex-start}
-.tl-item .detail{margin-top:12px;padding-top:12px}
-.tl-item .detail .where{margin-bottom:0}
-.pt{display:inline-block;vertical-align:middle;margin-left:10px;font-size:13px;font-weight:800;background:var(--yellow);color:#132c4a;padding:3px 12px;border-radius:99px;letter-spacing:0;text-transform:none;line-height:1.5}
-.pt.done{background:var(--track);color:var(--ink)}
-.quest-top{display:flex;gap:18px;align-items:center}
-.quest h3{margin:0;font-size:21px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
-.tag{font-size:17px;color:var(--muted);font-weight:400}
-.xp{margin-left:auto;font-weight:800;font-size:13px;background:var(--yellow);color:#132c4a;padding:4px 12px;border-radius:99px;white-space:nowrap}
-.gate.done .xp{background:var(--track);color:var(--ink)}
-.detail{display:none;margin-top:18px;padding-top:16px;border-top:2px solid var(--track)}
-.gate.open .detail{display:block;animation:reveal .35s ease}
-.detail b{font-weight:800;font-size:18px;display:block;color:var(--muted);text-transform:lowercase;margin-bottom:4px}
-.detail p{margin:2px 0 14px;max-width:640px}
-.detail img{width:100%;max-width:640px;border-radius:20px;display:block;margin:0 0 16px}
-
-/* Skills */
-.skills { display: grid; gap: 14px; }
-.skill { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: nowrap; }
-.skill .n { flex: 1; min-width: 0; font-weight: 600; }
-.pips { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-shrink: 0; }
-.pips i { display: block; width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%; background: var(--track); }
-.pips i.on { background: var(--blue); }
-
-/* Badges */
-.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
-.badge{background:var(--card);border-radius:28px;padding:20px 12px;text-align:center;display:grid;justify-items:center;gap:10px}
-.badge small{font-size:15px;line-height:1.25;font-weight:600}
-.badge small.h{font-size:13px;font-weight:300;margin-top:-6px}
+/* Emblemas */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.badge{background:var(--card);border-radius:24px;padding:16px 10px;text-align:center;display:grid;justify-items:center;gap:8px}
+.badge .shape{width:44px;height:44px}
+.badge small{font-size:14px;line-height:1.25;font-weight:600}
+.badge small.h{font-size:13px;font-weight:300;margin-top:-4px}
 .badge:not(.on){color:var(--muted)}
 .badge.on .shape{animation:pop .5s}
-@keyframes pop{0%{transform:scale(.6) rotate(-20deg)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
 
-/* Boss */
-.boss{background:var(--navy);color:#f4f2ed;border-radius:36px;padding:34px 24px;text-align:center}
-.boss.locked{background:var(--locked);color:var(--muted)}
+/* Final */
+.boss{background:var(--navy);color:#f4f2ed;border-radius:36px;padding:32px 24px;text-align:center;margin-top:44px}
 .boss .shape{margin:0 auto 10px}
 .boss h3{margin:6px 0;font-size:28px;font-weight:800;letter-spacing:-.02em;text-transform:lowercase}
 .boss p{margin:0 auto;max-width:460px}
 .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
 .boss .btn{background:var(--yellow);color:#132c4a}
-.boss .btn.alt{background:var(--yellow);color:#fff}
-.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translate(-50%,130px);background:var(--navy);color:#f4f2ed;padding:11px 22px;border-radius:99px;font-weight:600;font-size:15px;transition:transform .35s;z-index:20;text-align:center;max-width:92vw}
+.boss .btn:hover{background:var(--blue);color:#fff}
+.boss.win .shape{animation:bob 1.2s ease-in-out infinite}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translate(-50%,130px);background:var(--card);color:var(--ink);padding:12px 28px;box-shadow:0 8px 28px rgba(19,44,74,.2);border-radius:28px;transition:transform .35s;z-index:20;text-align:center;max-width:92vw}
 .toast.show{transform:translate(-50%,0)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-h2 .pt { display: none !important; }
+.toast small{display:block;font-size:13px;font-weight:600;color:var(--muted);line-height:1.2}
+.toast b{display:block;font-size:17px;font-weight:800;line-height:1.25}
 
-.case-link {
-  display:inline-block;
-  margin-top:16px;
-  padding:11px 22px;
-  background:var(--yellow);
-  color:#132c4a;
-  border-radius:99px;
-  font-weight:800;
-  font-size:15px;
-  text-decoration:none;
-  transition:transform .12s,background .12s;
-}
-.case-link:hover{background:var(--blue);color:#fff}
-.case-link:active{transform:scale(.96)
-}
-
-/* ===== Animações ao clicar ===== */
+/* Animações */
 @keyframes reveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 @keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg) scale(1.1)}75%{transform:rotate(12deg) scale(1.1)}}
+@keyframes pop{0%{transform:scale(.6) rotate(-20deg)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
 @keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.25) rotate(-4deg)}100%{transform:scale(1)}}
 @keyframes flash{0%{box-shadow:0 0 0 0 rgba(251,184,20,.9)}100%{box-shadow:0 0 0 16px rgba(251,184,20,0)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.gate:active{transform:scale(.98)}
-.gate.open .quest-top > .shape{animation:wiggle .5s}
-.xp.pop{animation:pop .45s}
 .lvl.bump{animation:bump .5s}
 .bar.flash{animation:flash .7s}
 .confetti{position:fixed;z-index:30;pointer-events:none;will-change:transform,opacity}
-.boss.win .shape{animation:bob 1.2s ease-in-out infinite}
-.chip{transition:transform .15s}
-.chip:hover{transform:translateY(-3px) rotate(-3deg)}
-.badge.on:hover .shape{animation:pop .5s}
-#theme{transition:transform .3s}
-#theme:active{transform:rotate(180deg) scale(.9)}
-  .tl-item .detail p{
-  max-width:none;
-}
-.toast{display:block;background:var(--card);color:var(--ink);padding:12px 28px;box-shadow:0 8px 28px rgba(19,44,74,.2);text-align:center;border-radius:28px}
-.toast small{display:block;font-size:13px;font-weight:600;color:var(--muted);line-height:1.2}
-.toast b{display:block;font-size:17px;font-weight:800;line-height:1.25}
-  .thumb{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;display:block}
-.gate.open .quest-top > .thumb{animation:wiggle .5s}
-  .case-link{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:16px;
-  padding:6px 6px 6px 22px;
-  background:var(--navy);
-  color:#f4f2ed;
-  border-radius:99px;
-  font-weight:800;
-  font-size:15px;
-  text-decoration:none;
-  transition:transform .12s,background .12s;
-}
-.case-link .arr{
-  width:32px;
-  height:32px;
-  flex:none;
-  border-radius:50%;
-  background:var(--yellow);
-  color:var(--navy);
-  display:grid;
-  place-items:center;
-  font-size:16px;
-  transition:transform .2s;
-}
-.case-link:hover .arr{transform:translateX(3px)}
-.case-link:active{transform:scale(.96)}
- .btn:hover{background:var(--blue);color:#fff}
-.boss .btn:hover{background:var(--blue);color:#fff}
-.boss .btn.alt:hover{background:var(--blue);color:#fff}
-.case-link:hover{background:var(--blue)}
-  .quest .case-link{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-top:16px;
-  padding:6px 6px 6px 22px;
-  background:var(--navy);
-  color:#f4f2ed;
-  border-radius:99px;
-  font-weight:800;
-  font-size:15px;
-  text-decoration:none;
-  transition:transform .12s,background .12s;
-}
-.quest .case-link .arr{
-  width:32px;
-  height:32px;
-  flex:none;
-  border-radius:50%;
-  background:var(--yellow);
-  color:var(--navy);
-  display:grid;
-  place-items:center;
-  font-size:16px;
-  transition:transform .2s;
-}
-.quest .case-link:hover{background:var(--blue);color:#fff}
-.quest .case-link:active{transform:scale(.96)}
-  @keyframes jump{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
-}
-.boss .links .btn.alt{
-  background:var(--yellow);
-  color:#132c4a;
-}
-.boss .links .btn.alt:hover{
-  background:var(--blue);
-  color:#fff;
-}
-.tl-item .case-link{background:var(--navy);color:#f4f2ed}
-.tl-item .case-link:hover{background:var(--blue);color:#fff}
-
-/* Botãozinho de link ao lado de itens de lista */
-.li-link{
-  display:inline-grid;
-  place-items:center;
-  width:26px;
-  height:26px;
-  margin-left:8px;
-  vertical-align:middle;
-  border-radius:50%;
-  background:var(--yellow);
-  color:var(--navy);
-  font-size:14px;
-  font-weight:800;
-  line-height:1;
-  text-decoration:none;
-  transition:transform .15s,background .15s;
-}
-.li-link:hover{background:var(--blue);color:#fff;transform:translateX(2px)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -394,7 +166,6 @@ h2 .pt { display: none !important; }
   <div class="hud-in">
     <span class="lvl" id="lvl">nível 1</span>
     <div class="bar" role="progressbar" aria-label="Experiência" aria-valuemin="0" aria-valuemax="100" id="barwrap"><i id="fill"></i><span id="xptxt">0 / 5</span></div>
-    <div class="slots" id="slots" aria-label="Emblemas"></div>
     <button id="theme" aria-label="Alternar tema claro e escuro">◐</button>
   </div>
 </div>
@@ -402,7 +173,7 @@ h2 .pt { display: none !important; }
 <main class="wrap">
   <section class="hero">
     <div>
-      <h1> laís araújo</h1>
+      <h1>laís araújo</h1>
       <p class="tg">tech, psicologia e educação</p>
       <p>designer instrucional. me divirto criando e gosto de fazer as pessoas se divertirem aprendendo. para saber mais sobre mim, abra cada card!</p>
       <a class="btn" href="#sobre">começar</a>
@@ -417,31 +188,30 @@ h2 .pt { display: none !important; }
     </svg>
   </section>
 
-  <h2 id="sobre">sobre mim<span class="pt" id="pt-sobre"></span></h2>
+  <h2 id="sobre">sobre mim</h2>
   <p class="sub">quem está por trás dos projetos</p>
-  <button class="about gate" id="about" data-sec="sobre" data-i="0" aria-expanded="false"></button>
+  <div id="about"></div>
 
-  <h2 id="formacao">formação e cursos<span class="pt" id="pt-formacao"></span></h2>
+  <h2 id="formacao">formação e cursos</h2>
   <p class="sub">onde estudei</p>
   <div id="edu"></div>
 
-  <h2 id="experiencia">experiências<span class="pt" id="pt-experiencia"></span></h2>
+  <h2 id="experiencia">experiências</h2>
   <p class="sub">por onde passei</p>
   <div id="jobs"></div>
 
-  <h2 id="habilidades">habilidades<span class="pt" id="pt-habilidades"></span></h2>
+  <h2 id="habilidades">habilidades</h2>
   <p class="sub">ferramentas e métodos</p>
   <div id="skills"></div>
 
-  <h2 id="amostras">amostras<span class="pt" id="pt-amostras"></span></h2>
+  <h2 id="amostras">amostras</h2>
   <p class="sub">projetos que já fiz</p>
   <div id="quests"></div>
 
-<h2 id="emblemas">emblemas</h2>
-<p class="sub">o que você conquistou ao explorar</p>
+  <h2 id="emblemas">emblemas</h2>
+  <p class="sub">o que você conquistou ao explorar</p>
   <div class="badges" id="badges"></div>
 
-  <h2 id="contato"></h2>
   <div class="boss" id="boss"></div>
 </main>
 
@@ -450,174 +220,160 @@ h2 .pt { display: none !important; }
 <script>
 /* ===== EDITE AQUI: seus dados ===== */
 var PROFILE = { email:"seuemail@exemplo.com", linkedin:"https://www.linkedin.com/in/seu-perfil" };
-
-var QUESTS = [
-  { shape:"circle", color:"yellow", title:"joy education", tag:"slides, planos de aula e texto interativo", foto: "Raleway (2).png", img:"", url: "cases/curso-online.html",
-    papel:"criar materiais pedagógicos para modalidade on-line e presencial para cursos de estética e tecnologia. o nosso objetivo principal era unir a diversão, a interatividade e o dinamismo nas aulas, focados na gamificação e atividades lúdicas." },
-  { shape:"half", color:"red", title:"instituto singular", tag:"glossário e checklist", foto: "Raleway (4).png", img:"",
-    papel:"durante o meu cargo de analista pedagógica no instituto singular, tive o prazer de desenvolver planners e checklists para auxiliar na compreensão dos alunos sobre transtorno do espectro autista." },
-  { shape:"quarter", color:"blue", title:"Material didático impresso/digital", tag:"E-book · Canva", img:"",
-    papel:"[Qual era o seu papel neste projeto.]" },
-  { shape:"arch", color:"navy", title:"Videoaulas e recursos interativos", tag:"Vídeo · H5P", img:"",
-    papel:"[Qual era o seu papel neste projeto.]" }
-];
-
-var SKILLS = [
-  ["ferramentas de autoria e criação de conteúdo (genially, canva, mentimeter)",4],
-  ["design gráfico e multimídia (frame.io, capcut, adobe photoshop)",4],
-  ["plataformas (moodle, ava)",5],
-  ["metodologias (design thinking, taxonomia de bloom, gramificação)",4],
-  ["roteirização",5],
-  ["avaliação e métricas de aprendizagem",4]
-];
-/* No preview as imagens ficam vazias (os arquivos estão no seu computador). No seu site, mantenha os nomes originais. */
 var HERO_IMG = "Creative and Minimal Portfolio Presentation.png";
 
 var ABOUT = {
   foto:"Raleway.png",
-  iniciais:"LA",
   text:[
     "além do meu trabalho, também gosto de explorar minhas paixões para desenvolver a criatividade: adoro jogar jogos de tabuleiro, morrer 500 vezes em um jogo indie e assistir a conteúdos (ou aprender) sobre educação inclusiva.",
-    "criar objetos educacionais também revela um pouco de quem os cria, então eu coloco nos meus projetos tudo aquilo que me move: curiosidade, humor e vontade de aprender brincando.",
+    "criar objetos educacionais também revela um pouco de quem os cria, então eu coloco nos meus projetos tudo aquilo que me move: curiosidade, humor e vontade de aprender brincando."
   ],
   chips:["design instrucional","tecnologia","psicologia","educação"]
 };
 
+var LUKA_URL = "https://www.abed.org.br/congresso2022/anais/trabalhos/78259.pdf";
+var LATTES_URL = "http://lattes.cnpq.br/2222158168328567";
+
 var EDU = [
-  { when:"2019 - 2025", title:"graduação em psicologia - ufpe", where:"", text:"", color:"blue",
+  { when:"2019 – 2025", title:"graduação em psicologia · ufpe",
     html:
       '<div class="cra"><span class="cra-n">9.47</span><span class="cra-l">coeficiente de<br>rendimento geral</span></div>'+
-      '<b>marcos acadêmicos</b>'+
-      '<ul>'+
+      '<span class="lbl" style="margin-top:0">marcos acadêmicos</span>'+
+      '<ul class="rl">'+
         '<li>participação no projeto de pesquisa "a mediação de um jogo digital na regulação de processos argumentativos na sala de aula do ensino fundamental".</li>'+
         '<li>monitoria na disciplina "psicologia e linguagem".</li>'+
-        '<li>colaboração no desenvolvimento do jogo 2d "luka" <a class="li-link" href="https://www.abed.org.br/congresso2022/anais/trabalhos/78259.pdf" target="_blank" rel="noopener" aria-label="abrir o jogo luka" title="abrir o jogo luka" onclick="event.stopPropagation()">↗</a></li>'+
-       '<li>bolsista cnpq 2024-2025</li>'+
-      '</ul>'+
-      
-      '<a class="case-link" href="http://lattes.cnpq.br/2222158168328567" target="_blank" rel="noopener" onclick="event.stopPropagation()">ver meu currículo lattes<span class="arr" aria-hidden="true">→</span></a>'
-  },
-  { when:"2025 - atual", title:"mestrado em psicologia - ufpe", where:"", text:"o título do meu projeto de dissertação é 'representações sociais da demência por cuidadores familiares'. através da pesquisa, também sou bolsista capes.", color:"red" }
+        '<li>colaboração no desenvolvimento do jogo 2d "luka" <a class="li-link" href="'+LUKA_URL+'" target="_blank" rel="noopener" aria-label="abrir o jogo luka" title="abrir o jogo luka">↗</a></li>'+
+        '<li>bolsista cnpq 2024-2025.</li>'+
+      '</ul>',
+    links:[["ver meu currículo lattes", LATTES_URL]] },
+  { when:"2025 – atual", title:"mestrado em psicologia · ufpe",
+    text:"o título do meu projeto de dissertação é 'representações sociais da demência por cuidadores familiares'. através da pesquisa, também sou bolsista capes." },
+  { when:"complementar", title:"cursos e certificações",
+    chipsList:["aperfeiçoamento em design educacional · ifes","criação de conteúdo educacional personalizado · ebac · 4 horas","narrativas e personagens para jogos · joy education"] }
 ];
-var COURSES = ["aperfeiçoamento em design educacional · ifes","criação de conteúdo educacional personalizado · EBAC · 4 horas","narrativas e personagens para jogos · joy education"];
 
 var JOBS = [
-  { when:"2021 - 2021", title:"estagiária em educação inclusiva", where:"colégio vera cruz recife", color:"yellow",
+  { when:"2021", title:"estagiária em educação inclusiva", where:"colégio vera cruz recife",
     text:"tive a oportunidade de acompanhar um aluno diagnosticado com transtorno opositor desafiador e transtorno do déficit de atenção com hiperatividade em um ambiente educacional." },
-  { when:"2022 - 2022", title:"estagiária em psicologia clínica", where:"centro de pesquisa em psicanálise e linguagem", color:"red",
+  { when:"2022", title:"estagiária em psicologia clínica", where:"centro de pesquisa em psicanálise e linguagem",
     text:"participei de encontros terapêuticos em grupo com adolescentes dentro do espectro autista." },
-  { when:"2023 - 2024", title:"designer instrucional", where:"joy education", color:"blue",
+  { when:"2023 – 2024", title:"designer instrucional", where:"joy education",
     text:"foi nesse contexto que tive a honra de descobrir o papel de designer instrucional. durante um ano e meio, desenvolvi diversos modelos de materiais pedagógicos para a sala de aula, incluindo planos de aula, hipertextos, quizzes, vídeos e slides, buscando transformar nossa visão sobre o ambiente escolar." },
-  { when:"2024 - atual", title:"analista pedagógica pleno", where:"instituto singular", color:"yellow",
+  { when:"2024 – atual", title:"analista pedagógica pleno", where:"instituto singular",
     text:"atuo na área de infoprodutos e operações, acompanhando toda a jornada educacional dos alunos, do início do curso até a emissão do certificado. além disso, auxilio de perto a trajetória dos professores, oferecendo suporte para que se sintam seguros, confortáveis e bem preparados." }
+];
+
+var SKILLS = [
+  ["autoria de conteúdo","ferramentas de autoria e criação de conteúdo: genially, canva, mentimeter",4],
+  ["design gráfico e multimídia","frame.io, capcut, adobe photoshop",4],
+  ["plataformas","moodle, ava",5],
+  ["metodologias","design thinking, taxonomia de bloom, gamificação",4],
+  ["roteirização","",5],
+  ["avaliação e métricas de aprendizagem","",4]
+];
+
+var QUESTS = [
+  { title:"joy education", tag:"slides, planos de aula e texto interativo", foto:"Raleway (2).png", url:"cases/curso-online.html",
+    papel:"criar materiais pedagógicos para modalidade on-line e presencial para cursos de estética e tecnologia. o nosso objetivo principal era unir a diversão, a interatividade e o dinamismo nas aulas, focados na gamificação e atividades lúdicas." },
+  { title:"instituto singular", tag:"glossário e checklist", foto:"Raleway (4).png",
+    papel:"durante o meu cargo de analista pedagógica no instituto singular, tive o prazer de desenvolver planners e checklists para auxiliar na compreensão dos alunos sobre transtorno do espectro autista." }
 ];
 /* ===== fim da área de edição ===== */
 
 var SECS = [
-  { k:"sobre",       label:"sobre mim",    badge:"primeiro contato",     shape:"circle",  color:"yellow", n:1 },
-  { k:"formacao",    label:"formação",     badge:"sempre aprendendo",    shape:"half",    color:"red",    n:EDU.length+1 },
-  { k:"experiencia", label:"experiências", badge:"estrada percorrida",   shape:"quarter", color:"blue",   n:JOBS.length },
-  { k:"habilidades", label:"habilidades",  badge:"caixa de ferramentas", shape:"arch",    color:"navy",   n:1 },
-  { k:"amostras",    label:"amostras",     badge:"curadora de projetos", shape:"circle",  color:"red",    n:QUESTS.length }
+  { k:"sobre",       label:"sobre mim",    badge:"primeiro contato",     shape:"circle",  color:"yellow" },
+  { k:"formacao",    label:"formação",     badge:"sempre aprendendo",    shape:"half",    color:"red" },
+  { k:"experiencia", label:"experiências", badge:"estrada percorrida",   shape:"quarter", color:"blue" },
+  { k:"habilidades", label:"habilidades",  badge:"caixa de ferramentas", shape:"arch",    color:"navy" },
+  { k:"amostras",    label:"amostras",     badge:"curadora de projetos", shape:"circle",  color:"red" }
 ];
 var S = {}, awarded = {}, points = 0;
-SECS.forEach(function(s){ S[s.k] = s; s.got = {}; s.count = 0; });
+SECS.forEach(function(s){ S[s.k] = s; });
 var $ = function(id){return document.getElementById(id)};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function shape(q,lock){return '<span class="shape s-'+q.shape+' c-'+q.color+(lock?' lock':'')+'" aria-hidden="true"><i></i></span>'}
-var PILL = '<span class="xp">abrir</span>';
 
-function onGate(e){
-  var el = e.currentTarget, s = S[el.getAttribute("data-sec")], i = el.getAttribute("data-i");
+function card(sec, icon, title, tag, body){
+  return '<article class="card" data-sec="'+sec+'"><div class="card-top">'+icon+
+    '<div><h3>'+esc(title)+'</h3><div class="tag">'+esc(tag)+'</div></div>'+
+    '<button class="xp" type="button" aria-expanded="false">abrir</button></div>'+
+    '<div class="detail">'+body+'</div></article>';
+}
+function linkBtn(label,url,self){
+  return '<a class="case-link" href="'+esc(url)+'"'+(self?'':' target="_blank" rel="noopener"')+'>'+esc(label)+'<span class="arr" aria-hidden="true">→</span></a>';
+}
+function chips(a){return '<div class="chips">'+a.map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join("")+'</div>'}
+function rows(items){
+  return items.map(function(x){
+    return '<div class="row"><div class="when">'+esc(x.when)+'</div><div><div class="rt">'+esc(x.title)+'</div>'+
+      (x.where?'<div class="rs">'+esc(x.where)+'</div>':'')+
+      (x.text?'<p class="rp">'+esc(x.text)+'</p>':'')+
+      (x.html||'')+
+      (x.chipsList?'<div style="margin-top:8px">'+chips(x.chipsList)+'</div>':'')+
+      (x.links?'<div class="actions">'+x.links.map(function(l){return linkBtn(l[0],l[1])}).join("")+'</div>':'')+'</div></div>';
+  }).join("");
+}
+
+function onToggle(e){
+  if(e.target.closest("a")) return;
+  var sel = window.getSelection && window.getSelection().toString();
+  if(sel) return;
+  var el = e.currentTarget, btn = el.querySelector(".xp"), s = S[el.getAttribute("data-sec")];
   var open = el.classList.toggle("open");
-  el.setAttribute("aria-expanded", open);
-  if(open && !s.got[i]){
-    s.got[i] = true; s.count++;
+  btn.setAttribute("aria-expanded", open);
+  btn.textContent = open ? "fechar" : "abrir";
+  if(!awarded[s.k]){
+    awarded[s.k] = true; points++;
     el.classList.add("done");
-    var pill = el.querySelector(".xp"); pill.textContent = "✔ visto"; bump(pill,"pop");
-    if(s.count === s.n){
-      awarded[s.k] = true; points++; update();
-      bump($("lvl"),"bump"); bump($("barwrap"),"flash");
-      badgeToast(s);
-      if(points === SECS.length) celebrate();
-    } else renderPts();
+    bump(btn,"pop"); update();
+    bump($("lvl"),"bump"); bump($("barwrap"),"flash");
+    badgeToast(s);
+    if(points === SECS.length) celebrate();
   }
 }
-function bindGates(){
-  var g = document.querySelectorAll(".gate");
-  for(var k=0;k<g.length;k++) g[k].addEventListener("click", onGate);
-}
 
-function renderQuests(){
-$("quests").innerHTML = QUESTS.map(function(q,i){
-return '<button class="quest gate" data-sec="amostras" data-i="'+i+'" aria-expanded="false">'+
-'<div class="quest-top">'+(q.foto?'<img class="thumb" src="'+esc(q.foto)+'" alt="">':shape(q))+
-'<div><h3>'+esc(q.title)+'</h3><div class="tag">'+esc(q.tag)+'</div></div>'+PILL+'</div>'+
-'<div class="detail">'+
-(q.img?'<img src="'+esc(q.img)+'" alt="'+esc(q.title)+'">':'')+
-'<b>meu papel</b><p>'+esc(q.papel)+'</p>'+
-'</div></button>';
-}).join("");
+function renderAll(){
+  var av = ABOUT.foto ? '<img class="thumb" src="'+esc(ABOUT.foto)+'" alt="Foto de perfil">' : shape(S.sobre);
+  $("about").innerHTML = card("sobre", av, "um pouco sobre mim", "olá! me chamo laís, moro em recife e sou psicóloga ;)",
+    ABOUT.text.map(function(t){return '<p class="about-p">'+esc(t)+'</p>'}).join("")+chips(ABOUT.chips));
 
-$("quests").querySelectorAll(".quest").forEach(function(card){
-var q = QUESTS[Number(card.dataset.i)];
-if(!q.url) return;
-var detail = card.querySelector(".detail");
-var link = document.createElement("a");
-link.className = "case-link";
-link.href = q.url;
-link.innerHTML = 'ver estudo de caso<span class="arr" aria-hidden="true">→</span>';
-link.target = "_self";
-link.addEventListener("click", function(event){ event.stopPropagation(); });
-detail.appendChild(link);
-});
-}
+  $("edu").innerHTML = card("formacao", shape(S.formacao), "formação e cursos", "psicologia · ufpe", rows(EDU));
+  $("jobs").innerHTML = card("experiencia", shape(S.experiencia), "por onde passei", JOBS.length+" experiências", rows(JOBS));
 
-function renderSkills(){
-  var rows = SKILLS.map(function(s){
-    var p = ""; for(var i=1;i<=5;i++) p += '<i class="'+(i<=s[1]?"on":"")+'"></i>';
-    return '<div class="skill"><span class="n">'+esc(s[0])+'</span><span class="pips" role="img" aria-label="Nível '+s[1]+' de 5">'+p+'</span></div>';
-  }).join("");
-  $("skills").innerHTML = '<button class="quest gate" data-sec="habilidades" data-i="0" aria-expanded="false">'+
-    '<div class="quest-top">'+shape({shape:"arch",color:"navy"})+'<div><h3>ferramentas e métodos</h3><div class="tag">'+SKILLS.length+' habilidades</div></div>'+PILL+'</div>'+
-    '<div class="detail"><div class="skills">'+rows+'</div></div></button>';
+  $("skills").innerHTML = card("habilidades", shape(S.habilidades), "ferramentas e métodos", SKILLS.length+" habilidades",
+    SKILLS.map(function(s){
+      var p = ""; for(var i=1;i<=5;i++) p += '<i class="'+(i<=s[2]?"on":"")+'"></i>';
+      return '<div class="skill"><span class="n">'+esc(s[0])+(s[1]?'<small>'+esc(s[1])+'</small>':'')+'</span>'+
+        '<span class="pips" role="img" aria-label="Nível '+s[2]+' de 5">'+p+'</span></div>';
+    }).join(""));
+
+  $("quests").innerHTML = card("amostras", shape(S.amostras), "projetos que já fiz", QUESTS.length+" projetos",
+    QUESTS.map(function(q){
+      return '<div class="row" style="grid-template-columns:60px 1fr"><img class="thumb" src="'+esc(q.foto)+'" alt="">'+
+        '<div><div class="rt">'+esc(q.title)+'</div><div class="rs">'+esc(q.tag)+'</div>'+
+        '<span class="lbl">meu papel</span><p class="rp" style="margin-top:2px">'+esc(q.papel)+'</p>'+
+        (q.url?'<div class="actions">'+linkBtn("ver estudo de caso",q.url,true)+'</div>':'')+'</div></div>';
+    }).join(""));
+
+  var b = document.querySelectorAll(".card");
+  for(var k=0;k<b.length;k++) b[k].addEventListener("click", onToggle);
 }
 
 function renderBadges(){
   $("badges").innerHTML = SECS.map(function(s){
     var on = awarded[s.k];
-    return '<div class="badge'+(on?" on":"")+'">'+shape(s,!on)+'<small>'+(on?esc(s.badge):"bloqueada")+'</small><small class="h">'+(on?"":"abra: ")+esc(s.label)+'</small></div>';
-  }).join("");
-}
-
-var shown = {};
-function renderSlots(){
-  $("slots").innerHTML = SECS.map(function(s){
-    var on = awarded[s.k];
-    var fresh = on && !shown[s.k];
-    if(on) shown[s.k] = true;
-    return '<a href="#'+s.k+'"'+(fresh?' class="pop"':'')+
-      ' title="'+esc(s.label)+(on?' · '+esc(s.badge):' · bloqueada')+'"'+
-      ' aria-label="'+esc(s.label)+(on?' (conquistada)':' (bloqueada)')+'">'+
-      shape(s,!on)+'</a>';
+    return '<div class="badge'+(on?" on":"")+'">'+shape(s,!on)+'<small>'+(on?esc(s.badge):"bloqueada")+'</small>'+
+      '<small class="h">'+(on?"":"abra: ")+esc(s.label)+'</small></div>';
   }).join("");
 }
 
 function renderBoss(){
   var ok = points === SECS.length, b = $("boss");
   b.className = "boss"+(ok?" win":"");
-  var links = '<div class="links"><a class="btn" href="mailto:'+esc(PROFILE.email)+'">enviar e-mail</a><a class="btn alt" href="'+esc(PROFILE.linkedin)+'" target="_blank" rel="noopener">linkedin</a></div>';
-  b.innerHTML = ok
-    ? '<span class="shape s-circle c-blue" aria-hidden="true"><i></i></span><h3>missão cumprida!</h3><p>eba, você chegou ao fim do portfólio! se gostou do que viu, ficarei feliz em conversar.</p>'+links
-    : '<span class="shape s-circle c-blue" aria-hidden="true"><i></i></span><h3>vamos conversar?</h3><p>conquiste os '+SECS.length+' emblemas para zerar o portfólio! (faltam '+(SECS.length-points)+').</p>'+links;
-}
-
-function renderPts(){
-  SECS.forEach(function(s){
-    var p = $("pt-"+s.k), d = awarded[s.k];
-    p.className = "pt"+(d?" done":"");
-    p.textContent = d ? "✔ +1 ponto" : (s.n>1 ? s.count+"/"+s.n+" · +1 ponto" : "+1 ponto");
-  });
+  var links = '<div class="links"><a class="btn" href="mailto:'+esc(PROFILE.email)+'">enviar e-mail</a><a class="btn" href="'+esc(PROFILE.linkedin)+'" target="_blank" rel="noopener">linkedin</a></div>';
+  b.innerHTML = '<span class="shape s-circle c-blue" aria-hidden="true"><i></i></span>'+
+    (ok ? '<h3>missão cumprida!</h3><p>eba, você chegou ao fim do portfólio! se gostou do que viu, ficarei feliz em conversar.</p>'
+        : '<h3>vamos conversar?</h3><p>conquiste os '+SECS.length+' emblemas para zerar o portfólio! (faltam '+(SECS.length-points)+').</p>')+links;
 }
 
 function update(){
@@ -626,32 +382,13 @@ function update(){
   $("xptxt").textContent = points+" / "+total;
   $("barwrap").setAttribute("aria-valuenow", pct);
   $("lvl").textContent = "nível "+(points+1);
-  renderPts(); renderBadges(); renderBoss();
-  renderSlots();
+  renderBadges(); renderBoss();
 }
 
-function tl(items,sec){
-  return '<div class="tl">'+items.map(function(x,i){
-    return '<button class="tl-item gate" data-sec="'+sec+'" data-i="'+i+'" aria-expanded="false" style="--c:var(--'+x.color+')">'+
-      '<div class="quest-top"><div><div class="when">'+esc(x.when)+'</div><h3>'+esc(x.title)+'</h3></div>'+PILL+'</div>'+
-      '<div class="detail">'+(x.where?'<div class="where">'+esc(x.where)+'</div>':'')+(x.text?'<p>'+esc(x.text)+'</p>':'')+(x.html||'')+'</div></button>';
-  }).join("")+'</div>';
-}
-function chips(a){return '<div class="chips">'+a.map(function(c){return '<span class="chip">'+esc(c)+'</span>'}).join("")+'</div>'}
-function renderAbout(){
-  var av = ABOUT.foto ? '<img src="'+esc(ABOUT.foto)+'" alt="Foto de perfil">' : esc(ABOUT.iniciais);
-  $("about").innerHTML = '<div class="avatar">'+av+'</div><div><div class="quest-top"><div><h3>um pouco sobre mim</h3><div class="tag">olá! me chamo laís, moro em recife e sou psicóloga ;)</div></div>'+PILL+'</div>'+
-    '<div class="detail">'+ABOUT.text.map(function(t){return '<p>'+esc(t)+'</p>'}).join("")+chips(ABOUT.chips)+'</div></div>';
-}
 function renderHero(){
   if(!HERO_IMG) return;
-  var s = document.querySelector(".art");
-  s.outerHTML = '<img class="art hero-img" src="'+esc(HERO_IMG)+'" alt="Laís Araújo">';
+  document.querySelector(".art").outerHTML = '<img class="art hero-img" src="'+esc(HERO_IMG)+'" alt="Laís Araújo">';
 }
-function renderEdu(){
-  $("edu").innerHTML = tl(EDU.concat([{ when:"complementar", title:"cursos e certificações", where:"", color:"yellow", html:chips(COURSES) }]), "formacao");
-}
-function renderJobs(){ $("jobs").innerHTML = tl(JOBS, "experiencia"); }
 
 var REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 var COLORS = ["#fbb814","#e30613","#2e7cc4","#132c4a"];
@@ -675,18 +412,17 @@ function burst(x,y,n){
 }
 function celebrate(){
   for(var k=0;k<6;k++) (function(k){
-   setTimeout(function(){ burst(innerWidth*(k+1)/7, innerHeight*0.4+Math.random()*innerHeight*0.2, 28); }, k*180);
+    setTimeout(function(){ burst(innerWidth*(k+1)/7, innerHeight*0.4+Math.random()*innerHeight*0.2, 28); }, k*180);
   })(k);
 }
 
 var tt;
-  function badgeToast(s){
+function badgeToast(s){
   var t=$("toast");
   t.innerHTML = '<small>emblema conquistado · +1 ponto</small><b>'+esc(s.badge)+'</b>';
   t.classList.add("show"); clearTimeout(tt);
   tt=setTimeout(function(){t.classList.remove("show")},3200);
 }
-function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("show")},2600)}
 
 $("theme").addEventListener("click", function(){
   var r = document.documentElement, dark = r.getAttribute("data-theme")==="dark" ||
@@ -694,7 +430,7 @@ $("theme").addEventListener("click", function(){
   r.setAttribute("data-theme", dark ? "light" : "dark");
 });
 
-renderHero(); renderAbout(); renderEdu(); renderJobs(); renderQuests(); renderSkills(); bindGates(); update();
+renderHero(); renderAll(); update();
 </script>
 </body>
 </html>
